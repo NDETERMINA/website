@@ -6,7 +6,6 @@ import {
   Bug,
   CheckCircle2,
   FileJson2,
-  GitCompareArrows,
   ListChecks,
   Plug,
   Route,
@@ -30,15 +29,134 @@ export type DocSection = {
   visual?: "domain-flow";
 };
 
+export type DocCommand = { label: string; command: string };
+
+export type DocStep = {
+  title: string;
+  body?: string;
+  commands?: DocCommand[];
+  code?: string;
+  language?: string;
+  callout?: { variant: "note" | "tip" | "warning" | "info"; title?: string; body: string };
+  verify?: string;
+};
+
+export type DocCard = {
+  title: string;
+  description: string;
+  href: string;
+  icon?: LucideIcon;
+  cta?: string;
+};
+
 export type DocPage = {
   slug: string;
   title: string;
   navTitle: string;
+  eyebrow?: string;
   description: string;
   icon: LucideIcon;
+  kind?: "default" | "overview" | "quickstart" | "reference";
   sections: DocSection[];
   next?: string;
+  prev?: string;
+  /** Overview-only */
+  cards?: DocCard[];
+  mentalModel?: { steps: string[]; rows: Array<{ noun: string; desc: string; href: string }> };
+  /** Quickstart-only */
+  steps?: DocStep[];
+  /** Reference-only sticky sub-nav (anchor ids) */
+  subnav?: Array<{ id: string; label: string }>;
 };
+
+/**
+ * Sidebar IA = single source of truth for nav labels.
+ * navTitle here ALSO drives prev/next labels; do not duplicate this
+ * label on the DocPage. (See getNavTitle in this file.)
+ */
+export const docSidebarIA: Array<{ group: string; pages: Array<{ slug: string; navTitle: string; badge?: "new" | "beta" | "soon" }> }> = [
+  {
+    group: "Get Started",
+    pages: [
+      { slug: "overview", navTitle: "Overview" },
+      { slug: "quickstart", navTitle: "Quickstart" }
+    ]
+  },
+  {
+    group: "Core Concepts",
+    pages: [
+      { slug: "swarm-model", navTitle: "Mental model" },
+      { slug: "target-contract", navTitle: "Targets" },
+      { slug: "domain-products", navTitle: "Specs & Domains" },
+      { slug: "outputs", navTitle: "Evidence Bundles" }
+    ]
+  },
+  {
+    group: "Workflows",
+    pages: [
+      { slug: "workflows", navTitle: "Common workflows" },
+      { slug: "cli-reference", navTitle: "CLI reference" },
+      { slug: "integration-paths", navTitle: "Integration paths" }
+    ]
+  },
+  {
+    group: "Reference",
+    pages: [
+      { slug: "recommender-domain", navTitle: "Recommender" },
+      { slug: "search-domain", navTitle: "Search" },
+      { slug: "agent-domain", navTitle: "Agents" },
+      { slug: "troubleshooting", navTitle: "Troubleshooting" }
+    ]
+  }
+];
+
+/** Lookup the canonical sidebar title for a slug. Used by prev/next so labels never drift. */
+export function getNavTitle(slug: string): string {
+  for (const g of docSidebarIA) {
+    const p = g.pages.find((pg) => pg.slug === slug);
+    if (p) return p.navTitle;
+  }
+  return slug;
+}
+
+const groupNameForSlug = (slug: string): string => {
+  for (const g of docSidebarIA) {
+    if (g.pages.some((p) => p.slug === slug)) return g.group;
+  }
+  return "Docs";
+};
+
+export function getDocPageGroup(slug: string) {
+  return groupNameForSlug(slug);
+}
+
+export function getFlatNav() {
+  const flat: string[] = [];
+  for (const g of docSidebarIA) for (const p of g.pages) flat.push(p.slug);
+  return flat;
+}
+
+export function getNeighbors(slug: string) {
+  const flat = getFlatNav();
+  const idx = flat.indexOf(slug);
+  return {
+    prev: idx > 0 ? flat[idx - 1] : undefined,
+    next: idx >= 0 && idx < flat.length - 1 ? flat[idx + 1] : undefined
+  };
+}
+
+export function getSearchEntries() {
+  return docsPages
+    .filter((p) => docSidebarIA.some((g) => g.pages.some((pg) => pg.slug === p.slug)))
+    .map((p) => ({
+      slug: p.slug,
+      title: p.navTitle,
+      group: groupNameForSlug(p.slug),
+      description: p.description
+    }));
+}
+
+/** Legacy export for backwards-compat with old shell. Prefer docSidebarIA. */
 
 export const docsNav: Array<{ group: string; pages: string[] }> = [
   {
@@ -62,53 +180,57 @@ export const docsNav: Array<{ group: string; pages: string[] }> = [
 export const docsPages: DocPage[] = [
   {
     slug: "overview",
-    title: "Evidpath Docs",
+    title: "Evidpath",
+    eyebrow: "Get Started",
     navTitle: "Overview",
+    kind: "overview",
     description:
-      "Evidpath is a swarm testing and evidence system for AI products. The platform runs repeatable domain swarms, judges traces, and writes launch evidence for recommender, search, and agent systems.",
+      "Run repeatable Specs against your Target, write an Evidence Bundle every time, and ship the Report your team can audit before each release.",
     icon: BookOpen,
-    next: "swarm-model",
-    sections: [
+    next: "quickstart",
+    cards: [
       {
-        title: "What Evidpath Does",
-        body:
-          "Evidpath turns a release question into a repeatable run: choose a domain product, run seeded behavior coverage against a target, judge the traces, and review the evidence bundle before launch.",
-        bullets: [
-          "Use one swarm engine for seeded runs, trace capture, judging, reports, manifests, and compare workflows.",
-          "Use domain products for the behavior language that matters to the system under test.",
-          "Evaluate recommender systems, search rankers, and agent trajectories through public package workflows.",
-          "Keep generated swarm coverage scoped honestly: it is currently strongest for recommenders and expanding across domains."
-        ]
+        title: "Quickstart",
+        description: "Install the CLI, run an audit, inspect the Evidence Bundle — under five minutes.",
+        href: "/docs/quickstart",
+        cta: "Start"
       },
       {
-        title: "Platform And Products",
-        table: {
-          headings: ["Layer", "What it owns"],
-          rows: [
-            ["Evidpath platform", "Planning, deterministic seeds, execution, trace ledger, reports, manifests, and compare artifacts."],
-            ["Domain product", "Target contract, scenario grammar, simulated actors or tasks, judge, metrics, and report language."],
-            ["Integration path", "Native HTTP, schema-mapped HTTP, Python callable, or agent protocol driver depending on the domain."],
-            ["Evidence packet", "report.md, results.json, traces.jsonl, run_manifest.json, and compare outputs."]
-          ]
-        }
+        title: "Mental model",
+        description: "Project → Target → Spec → Run → Evidence Bundle → Report. The six nouns in depth.",
+        href: "/docs/swarm-model",
+        cta: "Read"
       },
       {
-        title: "Public Domains",
-        table: {
-          headings: ["Domain", "Use it for", "Current notes"],
-          rows: [
-            ["recommender", "Recommendation slates, novelty, repetition, cold start, trust collapse, and abandonment.", "Audit, compare, generated scenarios/populations, run-swarm, native/schema-mapped HTTP, Python, and optional adapters."],
-            ["search", "Ranked results, relevance, freshness, ambiguity, typo recovery, zero-result behavior, and personalization.", "Audit and compare with native HTTP, schema-mapped HTTP, Python, and reference runs."],
-            ["agents", "Tool use, grounding, refusal, multi-turn state, unsafe requests, and latency.", "Audit and compare with Python/LangGraph, OpenAI-compatible, Anthropic, MCP stdio, HTTP session, and reference runs."]
-          ]
-        }
+        title: "Targets",
+        description: "How EvidPath reaches your system: HTTP, schema-mapped HTTP, Python, or agent driver.",
+        href: "/docs/target-contract",
+        cta: "Read"
+      },
+      {
+        title: "Evidence Bundles",
+        description: "Every file every Run writes, and how Reports are derived from them.",
+        href: "/docs/outputs",
+        cta: "Read"
       }
-    ]
+    ],
+    mentalModel: {
+      steps: ["project", "target", "spec", "run", "evidence bundle", "report"],
+      rows: [
+        { noun: "Project", desc: "The container you configure once: default Target, scorers, retention, integrations.", href: "/docs/swarm-model" },
+        { noun: "Target", desc: "The system under test — an HTTP service, Python callable, or agent endpoint.", href: "/docs/target-contract" },
+        { noun: "Spec", desc: "A reusable description of what 'correct' looks like for the Target: inputs, expectations, scorers.", href: "/docs/domain-products" },
+        { noun: "Run", desc: "One deterministic execution of a Spec against a Target with a fixed seed.", href: "/docs/workflows" },
+        { noun: "Evidence Bundle", desc: "The full set of artifacts the Run produces: traces, manifest, scorer outputs, sidecars.", href: "/docs/outputs" },
+        { noun: "Report", desc: "Human-readable summary derived from one or two Evidence Bundles, with a pass / warn / fail decision.", href: "/docs/outputs" }
+      ]
+    },
+    sections: []
   },
   {
     slug: "swarm-model",
-    title: "Swarm Testing Model",
-    navTitle: "Swarm model",
+    title: "Mental Model",
+    navTitle: "Mental model",
     description:
       "The core Evidpath model: release questions become seeded behavior swarms, target interactions, judged traces, and launch evidence.",
     icon: Workflow,
@@ -147,8 +269,8 @@ export const docsPages: DocPage[] = [
   },
   {
     slug: "domain-products",
-    title: "Domain Products",
-    navTitle: "Domain products",
+    title: "Specs & Domains",
+    navTitle: "Specs & Domains",
     description:
       "Domain products are the sellable units built on the Evidpath swarm engine: recommender swarms, search swarms, and agent trajectory swarms.",
     icon: Boxes,
@@ -370,53 +492,104 @@ export const docsPages: DocPage[] = [
   },
   {
     slug: "quickstart",
-    title: "Multi-Domain Quickstart",
+    title: "Quickstart",
+    eyebrow: "Get Started",
     navTitle: "Quickstart",
+    kind: "quickstart",
     description:
-      "Install Evidpath, run one audit in each public domain, and compare two versions before launch.",
+      "Install Evidpath, run an audit against a target, and inspect the evidence bundle — in under five minutes.",
     icon: Terminal,
-    next: "cli-reference",
-    sections: [
+    next: "swarm-model",
+    steps: [
       {
-        title: "Install",
-        bullets: ["Python 3.11 or newer.", "A target service, Python callable, or driver config for the domain you want to test."],
-        code: "python -m pip install evidpath"
+        title: "Install the CLI",
+        body: "Evidpath ships as a Python package. Python 3.11+ required.",
+        commands: [
+          { label: "pip", command: "python -m pip install evidpath" },
+          { label: "pipx", command: "pipx install evidpath" },
+          { label: "uv", command: "uv pip install evidpath" }
+        ],
+        verify: "evidpath --version → prints the installed version."
       },
       {
-        title: "Recommender Audit",
+        title: "Check a target",
+        body: "Confirm your target service speaks the domain contract before a full run.",
         code:
-          "evidpath audit --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario returning-user-home-feed \\\n  --seed 7"
+          "evidpath check-target --domain recommender \\\n  --target-url http://127.0.0.1:8051",
+        verify: "Exit code 0 and a check report listing reachable endpoints."
       },
       {
-        title: "Search Audit",
-        code:
-          "evidpath audit --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --seed 7"
+        title: "Run your first audit",
+        body: "Pick a scenario for the domain you ship — recommender, search, or agents.",
+        commands: [
+          {
+            label: "Recommender",
+            command:
+              "evidpath audit --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario returning-user-home-feed \\\n  --seed 7"
+          },
+          {
+            label: "Search",
+            command:
+              "evidpath audit --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --seed 7"
+          },
+          {
+            label: "Agents",
+            command:
+              "evidpath audit --domain agents \\\n  --scenario current-info-tool-use \\\n  --driver-config-path ./driver_config.json \\\n  --seed 7"
+          }
+        ],
+        verify: "evidpath-output/ contains report.md, results.json, traces.jsonl, and run_manifest.json."
       },
       {
-        title: "Agent Audit",
-        code:
-          "evidpath audit --domain agents \\\n  --scenario current-info-tool-use \\\n  --driver-config-path ./driver_config.json \\\n  --seed 7"
-      },
-      {
-        title: "Compare Before Launch",
+        title: "Inspect the evidence bundle",
         body:
-          "Use compare when a candidate target should be reviewed against a baseline under comparable domain coverage.",
+          "The bundle is the durable artifact for a release decision. Read report.md first, then dig into traces.jsonl for representative interactions.",
+        callout: {
+          variant: "tip",
+          body: "Pipe report.md into a PR comment or attach the bundle to a release ticket — that's the workflow the manifest is designed for."
+        }
+      },
+      {
+        title: "Compare for a release decision",
+        body: "When a candidate target needs review against a baseline, use compare to run both under matched coverage.",
         code:
-          "evidpath compare --domain recommender \\\n  --baseline-url http://127.0.0.1:8051 \\\n  --candidate-url http://127.0.0.1:8052 \\\n  --baseline-label current-prod \\\n  --candidate-label next-build \\\n  --rerun-count 2"
+          "evidpath compare --domain recommender \\\n  --baseline-url http://127.0.0.1:8051 \\\n  --candidate-url http://127.0.0.1:8052 \\\n  --baseline-label current-prod \\\n  --candidate-label next-build \\\n  --rerun-count 2",
+        verify: "regression_report.md prints a baseline-vs-candidate verdict (pass / warn / fail)."
+      },
+      {
+        title: "Wire it into CI",
+        body: "Run the same command in your pipeline. The bundle becomes a release artifact.",
+        code:
+          "# .github/workflows/evidpath.yml\n- run: |\n    pip install evidpath\n    evidpath audit --domain recommender \\\n      --target-url ${{ env.TARGET_URL }} \\\n      --scenario returning-user-home-feed \\\n      --output-dir ./evidpath-output\n- uses: actions/upload-artifact@v4\n  with:\n    name: evidpath-bundle\n    path: ./evidpath-output",
+        language: "yaml",
+        callout: {
+          variant: "note",
+          body: "A first-class GitHub Action is on the roadmap; for now the inline run step is the recommended pattern."
+        }
       }
-    ]
+    ],
+    sections: []
   },
   {
     slug: "cli-reference",
     title: "CLI Reference",
+    eyebrow: "SDK / CLI",
     navTitle: "CLI reference",
+    kind: "reference",
     description:
-      "The CLI exposes shared workflows across public domains, with generated coverage commands limited to domains that currently provide generation hooks.",
+      "Every command, every flag — grouped by what it does. The CLI is the surface most teams interact with; the SDK is shaping up alongside it.",
     icon: ListChecks,
-    next: "workflows",
+    next: "integration-paths",
+    subnav: [
+      { id: "commands", label: "Commands" },
+      { id: "domain", label: "Domain" },
+      { id: "targets", label: "Targets" },
+      { id: "examples", label: "Examples" }
+    ],
     sections: [
       {
-        title: "Recommended Commands",
+        title: "Commands",
+        body: "Every CLI verb, mapped to the smallest workflow that answers a release question.",
         table: {
           headings: ["Command", "Use it for"],
           rows: [
@@ -432,7 +605,8 @@ export const docsPages: DocPage[] = [
         }
       },
       {
-        title: "Domain Option",
+        title: "Domain",
+        body: "Every command takes --domain. It selects the contract, scenario grammar, and judge.",
         table: {
           headings: ["Option", "Meaning"],
           rows: [
@@ -443,7 +617,8 @@ export const docsPages: DocPage[] = [
         }
       },
       {
-        title: "Target Options",
+        title: "Targets",
+        body: "How the CLI reaches the system under test. Pick the smallest option that fits.",
         table: {
           headings: ["Option", "Use it when"],
           rows: [
@@ -453,6 +628,12 @@ export const docsPages: DocPage[] = [
             ["--use-mock", "Internal recommender debug/testing only."]
           ]
         }
+      },
+      {
+        title: "Examples",
+        body: "Three patterns you'll actually run, copy-paste ready.",
+        code:
+          "# Smallest useful audit\nevidpath audit --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario returning-user-home-feed\n\n# Compare for a release decision\nevidpath compare --domain agents \\\n  --baseline-driver-config-path ./baseline.json \\\n  --candidate-driver-config-path ./candidate.json \\\n  --scenario current-info-tool-use \\\n  --rerun-count 2\n\n# Plan-first review packet\nevidpath plan-run --workflow audit \\\n  --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --output-dir ./planned-search-audit"
       }
     ]
   },
@@ -492,8 +673,8 @@ export const docsPages: DocPage[] = [
   },
   {
     slug: "outputs",
-    title: "Outputs And Reports",
-    navTitle: "Outputs",
+    title: "Evidence Bundles & Reports",
+    navTitle: "Evidence Bundles",
     description:
       "Evidpath writes readable and machine-readable evidence: reports, JSON, traces, manifests, semantic sidecars, and regression packets.",
     icon: FileJson2,
@@ -634,7 +815,7 @@ export const docsPages: DocPage[] = [
   {
     slug: "target-contract",
     title: "Target Contracts",
-    navTitle: "Contracts",
+    navTitle: "Targets",
     description:
       "Legacy entry point for target contracts. Use integration paths and domain guides for the current multi-domain structure.",
     icon: Plug,
@@ -747,7 +928,7 @@ export const docHomeCards = [
     title: "Compare before launch",
     description: "Use baseline/candidate runs to make release review concrete.",
     href: "/docs/workflows",
-    icon: GitCompareArrows
+    icon: Workflow
   },
   {
     title: "Fix common issues",

@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { DocsShell } from "@/app/components/docs-shell";
-import { Footer } from "@/app/components/footer";
-import { Header } from "@/app/components/header";
+import { DocsArticle } from "@/app/components/docs/article";
 import { docsPages, getDocPage } from "@/app/lib/docs";
 
 export function generateStaticParams() {
-  return docsPages.map((page) => ({
-    slug: page.slug
-  }));
+  return docsPages
+    .filter((p) => p.slug !== "overview")
+    .map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -19,9 +17,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const page = getDocPage(slug);
-  if (!page) {
-    return {};
-  }
+  if (!page) return {};
   return {
     title: page.title,
     description: page.description
@@ -35,16 +31,6 @@ export default async function DocPage({
 }) {
   const { slug } = await params;
   const page = getDocPage(slug);
-
-  if (!page) {
-    notFound();
-  }
-
-  return (
-    <main>
-      <Header />
-      <DocsShell page={page} />
-      <Footer />
-    </main>
-  );
+  if (!page) notFound();
+  return <DocsArticle page={page} />;
 }
