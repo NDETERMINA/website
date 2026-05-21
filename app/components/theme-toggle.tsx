@@ -15,11 +15,11 @@ function getCurrentTheme(): Theme {
 
 function subscribe(callback: () => void) {
   window.addEventListener("storage", callback);
-  window.addEventListener("evidpath-theme-change", callback);
+  window.addEventListener("determina-theme-change", callback);
 
   return () => {
     window.removeEventListener("storage", callback);
-    window.removeEventListener("evidpath-theme-change", callback);
+    window.removeEventListener("determina-theme-change", callback);
   };
 }
 
@@ -29,8 +29,8 @@ export function ThemeToggle() {
   const toggleTheme = () => {
     const nextTheme: Theme = getCurrentTheme() === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = nextTheme;
-    localStorage.setItem("evidpath-theme", nextTheme);
-    window.dispatchEvent(new Event("evidpath-theme-change"));
+    localStorage.setItem("determina-theme", nextTheme);
+    window.dispatchEvent(new Event("determina-theme-change"));
   };
 
   const Icon = theme === "dark" ? Sun : Moon;

@@ -69,7 +69,7 @@ export function LiveRunConsole() {
       <div className="hero-console-header">
         <div className="workbench-title">
           <Terminal size={18} aria-hidden="true" />
-          Evidpath evidence run
+          Determina evidence run
         </div>
         <div className="status-chip">
           <LockKeyhole size={14} aria-hidden="true" />
@@ -81,7 +81,7 @@ export function LiveRunConsole() {
         <div className="hero-command-line">
           <span className="mono text-[var(--accent)]">$</span>
           <code className="mono min-w-0 break-words">
-            evidpath audit --domain agents --scenario current-info-tool-use --driver-config-path ./driver_config.json
+            determina audit --domain agents --scenario current-info-tool-use --driver-config-path ./driver_config.json
           </code>
         </div>
 

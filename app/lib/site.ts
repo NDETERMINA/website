@@ -1,67 +1,67 @@
 export const siteLinks = {
   waitlist:
     process.env.NEXT_PUBLIC_WAITLIST_URL ||
-    "mailto:alankrit386@gmail.com?subject=Evidpath%20domain%20pilot",
+    "mailto:alankrit386@gmail.com?subject=Determina%20domain%20pilot",
   githubProduct:
-    "https://github.com/NDETERMINA/limitation/tree/main/products/evidpath",
-  githubSource: "https://github.com/NDETERMINA/limitation",
-  pyPI: "https://pypi.org/project/evidpath/",
-  releases: "https://github.com/NDETERMINA/limitation/releases",
-  issues: "https://github.com/NDETERMINA/limitation/issues",
+    "https://github.com/NDETERMINA/determina/tree/main/packages/python/public/determina",
+  githubSource: "https://github.com/NDETERMINA/determina",
+  pyPI: "https://pypi.org/project/determina/",
+  releases: "https://github.com/NDETERMINA/determina/releases",
+  issues: "https://github.com/NDETERMINA/determina/issues",
   externalContract:
-    "https://github.com/NDETERMINA/limitation/blob/main/products/evidpath/EXTERNAL_TARGET_CONTRACT.md",
+    "https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/EXTERNAL_TARGET_CONTRACT.md",
   searchContract:
-    "https://github.com/NDETERMINA/limitation/blob/main/products/evidpath/EXTERNAL_TARGET_CONTRACT_SEARCH.md",
+    "https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/EXTERNAL_TARGET_CONTRACT_SEARCH.md",
   agentContract:
-    "https://github.com/NDETERMINA/limitation/blob/main/products/evidpath/EXTERNAL_TARGET_CONTRACT_AGENTS.md",
+    "https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/EXTERNAL_TARGET_CONTRACT_AGENTS.md",
   demoGuide:
-    "https://github.com/NDETERMINA/limitation/blob/main/products/evidpath/DEMO.md",
+    "https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/DEMO.md",
   exampleService:
-    "https://github.com/NDETERMINA/limitation/tree/main/products/evidpath/examples/recommender_http_service",
+    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/recommender_http_service",
   hfExample:
-    "https://github.com/NDETERMINA/limitation/tree/main/products/evidpath/examples/hf_recommender_service",
+    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/hf_recommender_service",
   recommenderSchemaMappedJsonpath:
-    "https://github.com/NDETERMINA/limitation/tree/main/products/evidpath/examples/recommender_schema_mapped_jsonpath",
+    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/recommender_schema_mapped_jsonpath",
   recommenderSchemaMappedTransform:
-    "https://github.com/NDETERMINA/limitation/tree/main/products/evidpath/examples/recommender_schema_mapped_transform",
+    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/recommender_schema_mapped_transform",
   recommenderPythonExample:
-    "https://github.com/NDETERMINA/limitation/tree/main/products/evidpath/examples/recommender_in_process_python_api",
+    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/recommender_in_process_python_api",
   agentPythonExample:
-    "https://github.com/NDETERMINA/limitation/tree/main/products/evidpath/examples/agent_in_process_python_api",
+    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/agent_in_process_python_api",
   agentHttpSessionExample:
-    "https://github.com/NDETERMINA/limitation/tree/main/products/evidpath/examples/agent_http_session",
+    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/agent_http_session",
   agentMcpExample:
-    "https://github.com/NDETERMINA/limitation/tree/main/products/evidpath/examples/agent_mcp_stdio",
+    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/agent_mcp_stdio",
   agentLangGraphExample:
-    "https://github.com/NDETERMINA/limitation/tree/main/products/evidpath/examples/agent_langgraph_in_process",
+    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/agent_langgraph_in_process",
   proofStudy:
-    "https://github.com/NDETERMINA/limitation/tree/main/studies/01-recommender-offline-eval"
+    "https://github.com/NDETERMINA/determina/tree/main/studies/01-recommender-offline-eval"
 };
 
 export const workflowSteps = [
   {
     command:
-      "evidpath check-target --domain recommender --target-url http://127.0.0.1:8051",
-    label: "Check the target",
-    body: "Validate that a native HTTP target for the selected domain is reachable before a full run."
+      "determina projects create --name \"Release checks\"",
+    label: "Create a project",
+    body: "Create the hosted workspace that owns targets, runs, artifacts, and release evidence."
   },
   {
     command:
-      "evidpath audit --domain agents --scenario current-info-tool-use --seed 7",
-    label: "Run an audit",
-    body: "Run repeatable domain scenarios, judge completed traces, and save an evidence bundle."
+      "determina targets create --project-id prj_123 --name \"Search API\" --domain search --kind http --config-json '{\"base_url\":\"https://candidate.example.com\"}'",
+    label: "Register a target",
+    body: "Register the system under test and create a platform target version."
   },
   {
     command:
-      "evidpath compare --domain search --baseline-url http://127.0.0.1:8051 --candidate-url http://127.0.0.1:8052",
-    label: "Compare versions",
-    body: "Run baseline and candidate targets through comparable domain coverage before a launch decision."
+      "determina audit --project-id prj_123 --target-version-id tv_123",
+    label: "Run hosted evidence",
+    body: "Queue a hosted audit and let the platform/private core produce artifacts and status."
   },
   {
     command:
-      'evidpath run-swarm --domain recommender --target-url http://127.0.0.1:8051 --brief "test trust collapse"',
-    label: "Expand coverage",
-    body: "Turn a plain-English risk goal into generated recommender swarm coverage where generation is currently strongest."
+      "determina compare --project-id prj_123 --baseline-id base_123 --candidate-target-version-id tv_456",
+    label: "Gate a release",
+    body: "Run a hosted compare against an approved baseline before launch."
   }
 ];
 
@@ -74,7 +74,7 @@ export const docsLinks = [
   },
   {
     title: "PyPI package",
-    description: "Current public package page for `python -m pip install evidpath`.",
+    description: "Current public package page for `python -m pip install determina`.",
     href: siteLinks.pyPI,
     eyebrow: "Install"
   },
@@ -104,7 +104,7 @@ export const docsLinks = [
   },
   {
     title: "Recommender HTTP example",
-    description: "A small external-style HTTP recommender service you can run locally against Evidpath.",
+    description: "A small external-style HTTP recommender service you can run locally against Determina.",
     href: siteLinks.exampleService,
     eyebrow: "Example"
   },
@@ -116,7 +116,7 @@ export const docsLinks = [
   },
   {
     title: "Agent MCP stdio example",
-    description: "A local MCP server that exposes an Evidpath-compatible agent task tool.",
+    description: "A local MCP server that exposes a Determina-compatible agent task tool.",
     href: siteLinks.agentMcpExample,
     eyebrow: "Example"
   },

@@ -9,7 +9,7 @@ export function DocsFooter() {
       <div className="docs-container docs-footer-grid">
         <div className="docs-footer-brand">
           <div className="docs-footer-wordmark">
-            <span>Evidpath</span>
+            <span>Determina</span>
             <span className="docs-footer-by">
               <span aria-hidden>·</span>
               by <span className="docs-footer-parent">NDETERMINA</span>
@@ -52,7 +52,7 @@ export function DocsFooter() {
 
       <div className="docs-container docs-footer-bottom">
         <span className="docs-footer-meta">
-          © {new Date().getFullYear()} NDETERMINA · Evidpath is open-source under MIT
+          © {new Date().getFullYear()} NDETERMINA · Determina is open-source under MIT
         </span>
         <a
           href={siteLinks.githubProduct}

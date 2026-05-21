@@ -180,7 +180,7 @@ export const docsNav: Array<{ group: string; pages: string[] }> = [
 export const docsPages: DocPage[] = [
   {
     slug: "overview",
-    title: "Evidpath",
+    title: "Determina",
     eyebrow: "Get Started",
     navTitle: "Overview",
     kind: "overview",
@@ -232,7 +232,7 @@ export const docsPages: DocPage[] = [
     title: "Mental Model",
     navTitle: "Mental model",
     description:
-      "The core Evidpath model: release questions become seeded behavior swarms, target interactions, judged traces, and launch evidence.",
+      "The core Determina model: release questions become seeded behavior swarms, target interactions, judged traces, and launch evidence.",
     icon: Workflow,
     next: "domain-products",
     sections: [
@@ -272,7 +272,7 @@ export const docsPages: DocPage[] = [
     title: "Specs & Domains",
     navTitle: "Specs & Domains",
     description:
-      "Domain products are the sellable units built on the Evidpath swarm engine: recommender swarms, search swarms, and agent trajectory swarms.",
+      "Domain products are the sellable units built on the Determina swarm engine: recommender swarms, search swarms, and agent trajectory swarms.",
     icon: Boxes,
     next: "recommender-domain",
     sections: [
@@ -291,9 +291,9 @@ export const docsPages: DocPage[] = [
         table: {
           headings: ["Product", "Failure language", "Integration paths"],
           rows: [
-            ["Evidpath for Recommenders", "Slate repetition, novelty drift, cold start, trust collapse, abandonment.", "Native HTTP, schema-mapped HTTP, Python callable, Hugging Face/MLflow/sklearn adapters."],
-            ["Evidpath for Search", "Relevance loss, freshness gaps, ambiguity, typo recovery, zero-result behavior, personalization drift.", "Native HTTP, schema-mapped HTTP, Python callable."],
-            ["Evidpath for Agents", "Tool misuse, grounding gaps, refusal failure, multi-turn state loss, unsafe requests, latency cliffs.", "Python/LangGraph, OpenAI-compatible Chat Completions, Anthropic Messages, MCP stdio, HTTP session."]
+            ["Determina for Recommenders", "Slate repetition, novelty drift, cold start, trust collapse, abandonment.", "Native HTTP, schema-mapped HTTP, Python callable, Hugging Face/MLflow/sklearn adapters."],
+            ["Determina for Search", "Relevance loss, freshness gaps, ambiguity, typo recovery, zero-result behavior, personalization drift.", "Native HTTP, schema-mapped HTTP, Python callable."],
+            ["Determina for Agents", "Tool misuse, grounding gaps, refusal failure, multi-turn state loss, unsafe requests, latency cliffs.", "Python/LangGraph, OpenAI-compatible Chat Completions, Anthropic Messages, MCP stdio, HTTP session."]
           ]
         }
       },
@@ -312,7 +312,7 @@ export const docsPages: DocPage[] = [
     title: "Recommender Domain",
     navTitle: "Recommenders",
     description:
-      "Use Evidpath for Recommenders to test recommendation slates, simulated users, trust collapse, repetition, novelty, cold start, and abandonment before release.",
+      "Use Determina for Recommenders to test recommendation slates, simulated users, trust collapse, repetition, novelty, cold start, and abandonment before release.",
     icon: Boxes,
     next: "search-domain",
     sections: [
@@ -339,9 +339,9 @@ export const docsPages: DocPage[] = [
       {
         title: "Useful Commands",
         code:
-          "evidpath check-target --domain recommender \\\n  --target-url http://127.0.0.1:8051\n\n" +
-          "evidpath audit --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario returning-user-home-feed \\\n  --seed 7\n\n" +
-          "evidpath run-swarm --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --brief \"test trust collapse and weak first-slate behavior\""
+          "determina check-target --domain recommender \\\n  --target-url http://127.0.0.1:8051\n\n" +
+          "determina audit --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario returning-user-home-feed \\\n  --seed 7\n\n" +
+          "determina run-swarm --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --brief \"test trust collapse and weak first-slate behavior\""
       },
       {
         title: "Source Links",
@@ -359,7 +359,7 @@ export const docsPages: DocPage[] = [
     title: "Search Domain",
     navTitle: "Search",
     description:
-      "Use Evidpath for Search to test rankers across relevance, freshness, ambiguity, typo tolerance, zero-result behavior, and personalization.",
+      "Use Determina for Search to test rankers across relevance, freshness, ambiguity, typo tolerance, zero-result behavior, and personalization.",
     icon: Search,
     next: "agent-domain",
     sections: [
@@ -387,9 +387,9 @@ export const docsPages: DocPage[] = [
       {
         title: "Useful Commands",
         code:
-          "evidpath check-target --domain search \\\n  --target-url http://127.0.0.1:8051\n\n" +
-          "evidpath audit --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --seed 7\n\n" +
-          "evidpath compare --domain search \\\n  --baseline-url http://127.0.0.1:8051 \\\n  --candidate-url http://127.0.0.1:8052 \\\n  --rerun-count 2"
+          "determina check-target --domain search \\\n  --target-url http://127.0.0.1:8051\n\n" +
+          "determina audit --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --seed 7\n\n" +
+          "determina compare --domain search \\\n  --baseline-url http://127.0.0.1:8051 \\\n  --candidate-url http://127.0.0.1:8052 \\\n  --rerun-count 2"
       },
       {
         title: "Source Links",
@@ -406,7 +406,7 @@ export const docsPages: DocPage[] = [
     title: "Agent Trajectory Domain",
     navTitle: "Agents",
     description:
-      "Use Evidpath for Agents to evaluate task trajectories, tool use, grounding, refusal, multi-turn state, unsafe requests, and latency.",
+      "Use Determina for Agents to evaluate task trajectories, tool use, grounding, refusal, multi-turn state, unsafe requests, and latency.",
     icon: Bot,
     next: "integration-paths",
     sections: [
@@ -436,8 +436,8 @@ export const docsPages: DocPage[] = [
       {
         title: "Useful Commands",
         code:
-          "evidpath audit --domain agents \\\n  --scenario current-info-tool-use \\\n  --driver-config-path ./driver_config.json \\\n  --seed 7\n\n" +
-          "evidpath compare --domain agents \\\n  --baseline-driver-config-path ./baseline.json \\\n  --candidate-driver-config-path ./candidate.json \\\n  --scenario multi-turn-support-follow-up \\\n  --rerun-count 2"
+          "determina audit --domain agents \\\n  --scenario current-info-tool-use \\\n  --driver-config-path ./driver_config.json \\\n  --seed 7\n\n" +
+          "determina compare --domain agents \\\n  --baseline-driver-config-path ./baseline.json \\\n  --candidate-driver-config-path ./candidate.json \\\n  --scenario multi-turn-support-follow-up \\\n  --rerun-count 2"
       },
       {
         title: "Source Links",
@@ -465,7 +465,7 @@ export const docsPages: DocPage[] = [
         table: {
           headings: ["Path", "Best for", "Domains"],
           rows: [
-            ["Native HTTP", "Services that can speak Evidpath's domain contract directly.", "recommender, search"],
+            ["Native HTTP", "Services that can speak Determina's domain contract directly.", "recommender, search"],
             ["Schema-mapped HTTP", "Existing HTTP services whose request or response shape differs from the native contract.", "recommender, search"],
             ["Python callable", "Local functions, classes, model wrappers, rankers, or agents.", "recommender, search, agents"],
             ["Agent protocol drivers", "Agent services exposed through model APIs, MCP stdio, LangGraph-style objects, or HTTP sessions.", "agents"]
@@ -477,7 +477,7 @@ export const docsPages: DocPage[] = [
         body:
           "Use `--driver-config-path` when a target cannot be represented by a simple native target URL. This is the main path for schema-mapped HTTP and agent protocol drivers.",
         code:
-          "evidpath audit --domain agents \\\n  --driver-config-path ./driver_config.json \\\n  --scenario current-info-tool-use"
+          "determina audit --domain agents \\\n  --driver-config-path ./driver_config.json \\\n  --scenario current-info-tool-use"
       },
       {
         title: "Source Links",
@@ -497,25 +497,25 @@ export const docsPages: DocPage[] = [
     navTitle: "Quickstart",
     kind: "quickstart",
     description:
-      "Install Evidpath, run an audit against a target, and inspect the evidence bundle — in under five minutes.",
+      "Install Determina, run an audit against a target, and inspect the evidence bundle — in under five minutes.",
     icon: Terminal,
     next: "swarm-model",
     steps: [
       {
         title: "Install the CLI",
-        body: "Evidpath ships as a Python package. Python 3.11+ required.",
+        body: "Determina ships as a Python package. Python 3.11+ required.",
         commands: [
-          { label: "pip", command: "python -m pip install evidpath" },
-          { label: "pipx", command: "pipx install evidpath" },
-          { label: "uv", command: "uv pip install evidpath" }
+          { label: "pip", command: "python -m pip install determina" },
+          { label: "pipx", command: "pipx install determina" },
+          { label: "uv", command: "uv pip install determina" }
         ],
-        verify: "evidpath --version → prints the installed version."
+        verify: "determina --version → prints the installed version."
       },
       {
         title: "Check a target",
         body: "Confirm your target service speaks the domain contract before a full run.",
         code:
-          "evidpath check-target --domain recommender \\\n  --target-url http://127.0.0.1:8051",
+          "determina check-target --domain recommender \\\n  --target-url http://127.0.0.1:8051",
         verify: "Exit code 0 and a check report listing reachable endpoints."
       },
       {
@@ -525,20 +525,20 @@ export const docsPages: DocPage[] = [
           {
             label: "Recommender",
             command:
-              "evidpath audit --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario returning-user-home-feed \\\n  --seed 7"
+              "determina audit --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario returning-user-home-feed \\\n  --seed 7"
           },
           {
             label: "Search",
             command:
-              "evidpath audit --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --seed 7"
+              "determina audit --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --seed 7"
           },
           {
             label: "Agents",
             command:
-              "evidpath audit --domain agents \\\n  --scenario current-info-tool-use \\\n  --driver-config-path ./driver_config.json \\\n  --seed 7"
+              "determina audit --domain agents \\\n  --scenario current-info-tool-use \\\n  --driver-config-path ./driver_config.json \\\n  --seed 7"
           }
         ],
-        verify: "evidpath-output/ contains report.md, results.json, traces.jsonl, and run_manifest.json."
+        verify: "determina-output/ contains report.md, results.json, traces.jsonl, and run_manifest.json."
       },
       {
         title: "Inspect the evidence bundle",
@@ -553,14 +553,14 @@ export const docsPages: DocPage[] = [
         title: "Compare for a release decision",
         body: "When a candidate target needs review against a baseline, use compare to run both under matched coverage.",
         code:
-          "evidpath compare --domain recommender \\\n  --baseline-url http://127.0.0.1:8051 \\\n  --candidate-url http://127.0.0.1:8052 \\\n  --baseline-label current-prod \\\n  --candidate-label next-build \\\n  --rerun-count 2",
+          "determina compare --domain recommender \\\n  --baseline-url http://127.0.0.1:8051 \\\n  --candidate-url http://127.0.0.1:8052 \\\n  --baseline-label current-prod \\\n  --candidate-label next-build \\\n  --rerun-count 2",
         verify: "regression_report.md prints a baseline-vs-candidate verdict (pass / warn / fail)."
       },
       {
         title: "Wire it into CI",
         body: "Run the same command in your pipeline. The bundle becomes a release artifact.",
         code:
-          "# .github/workflows/evidpath.yml\n- run: |\n    pip install evidpath\n    evidpath audit --domain recommender \\\n      --target-url ${{ env.TARGET_URL }} \\\n      --scenario returning-user-home-feed \\\n      --output-dir ./evidpath-output\n- uses: actions/upload-artifact@v4\n  with:\n    name: evidpath-bundle\n    path: ./evidpath-output",
+          "# .github/workflows/determina.yml\n- run: |\n    pip install determina\n    determina audit --domain recommender \\\n      --target-url ${{ env.TARGET_URL }} \\\n      --scenario returning-user-home-feed \\\n      --output-dir ./determina-output\n- uses: actions/upload-artifact@v4\n  with:\n    name: determina-bundle\n    path: ./determina-output",
         language: "yaml",
         callout: {
           variant: "note",
@@ -633,7 +633,7 @@ export const docsPages: DocPage[] = [
         title: "Examples",
         body: "Three patterns you'll actually run, copy-paste ready.",
         code:
-          "# Smallest useful audit\nevidpath audit --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario returning-user-home-feed\n\n# Compare for a release decision\nevidpath compare --domain agents \\\n  --baseline-driver-config-path ./baseline.json \\\n  --candidate-driver-config-path ./candidate.json \\\n  --scenario current-info-tool-use \\\n  --rerun-count 2\n\n# Plan-first review packet\nevidpath plan-run --workflow audit \\\n  --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --output-dir ./planned-search-audit"
+          "# Smallest useful audit\ndetermina audit --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario returning-user-home-feed\n\n# Compare for a release decision\ndetermina compare --domain agents \\\n  --baseline-driver-config-path ./baseline.json \\\n  --candidate-driver-config-path ./candidate.json \\\n  --scenario current-info-tool-use \\\n  --rerun-count 2\n\n# Plan-first review packet\ndetermina plan-run --workflow audit \\\n  --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --output-dir ./planned-search-audit"
       }
     ]
   },
@@ -649,25 +649,25 @@ export const docsPages: DocPage[] = [
       {
         title: "Check A Native HTTP Target",
         code:
-          "evidpath check-target --domain recommender \\\n  --target-url http://127.0.0.1:8051\n\n" +
-          "evidpath check-target --domain search \\\n  --target-url http://127.0.0.1:8051"
+          "determina check-target --domain recommender \\\n  --target-url http://127.0.0.1:8051\n\n" +
+          "determina check-target --domain search \\\n  --target-url http://127.0.0.1:8051"
       },
       {
         title: "Inspect One Concrete Run",
         code:
-          "evidpath audit --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario ambiguous-query \\\n  --output-dir ./search-audit"
+          "determina audit --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario ambiguous-query \\\n  --output-dir ./search-audit"
       },
       {
         title: "Decide Whether A Candidate Is Safer",
         code:
-          "evidpath compare --domain agents \\\n  --baseline-driver-config-path ./baseline.json \\\n  --candidate-driver-config-path ./candidate.json \\\n  --scenario current-info-tool-use \\\n  --rerun-count 2 \\\n  --output-dir ./agent-compare"
+          "determina compare --domain agents \\\n  --baseline-driver-config-path ./baseline.json \\\n  --candidate-driver-config-path ./candidate.json \\\n  --scenario current-info-tool-use \\\n  --rerun-count 2 \\\n  --output-dir ./agent-compare"
       },
       {
         title: "Generate A Recommender Swarm",
         body:
           "Use run-swarm after the basic workflow is clear. This generated-coverage path is currently strongest for recommender testing.",
         code:
-          "evidpath run-swarm --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --brief \"test trust collapse and weak first-slate behavior\""
+          "determina run-swarm --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --brief \"test trust collapse and weak first-slate behavior\""
       }
     ]
   },
@@ -676,7 +676,7 @@ export const docsPages: DocPage[] = [
     title: "Evidence Bundles & Reports",
     navTitle: "Evidence Bundles",
     description:
-      "Evidpath writes readable and machine-readable evidence: reports, JSON, traces, manifests, semantic sidecars, and regression packets.",
+      "Determina writes readable and machine-readable evidence: reports, JSON, traces, manifests, semantic sidecars, and regression packets.",
     icon: FileJson2,
     next: "generation",
     sections: [
@@ -730,12 +730,12 @@ export const docsPages: DocPage[] = [
       {
         title: "Generate Recommender Scenarios",
         code:
-          "evidpath generate-scenarios --domain recommender \\\n  --brief \"test trust collapse for exploratory users\" \\\n  --mode provider \\\n  --scenario-count 3"
+          "determina generate-scenarios --domain recommender \\\n  --brief \"test trust collapse for exploratory users\" \\\n  --mode provider \\\n  --scenario-count 3"
       },
       {
         title: "Generate A Recommender Population",
         code:
-          "evidpath generate-population --domain recommender \\\n  --brief \"impatient users, explorers, niche users, and trust-sensitive mainstream users\" \\\n  --mode provider \\\n  --population-size 4"
+          "determina generate-population --domain recommender \\\n  --brief \"impatient users, explorers, niche users, and trust-sensitive mainstream users\" \\\n  --mode provider \\\n  --population-size 4"
       }
     ]
   },
@@ -751,12 +751,12 @@ export const docsPages: DocPage[] = [
       {
         title: "Plan An Audit",
         code:
-          "evidpath plan-run --workflow audit \\\n  --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --output-dir ./planned-search-audit"
+          "determina plan-run --workflow audit \\\n  --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --output-dir ./planned-search-audit"
       },
       {
         title: "Execute The Plan",
         code:
-          "evidpath execute-plan \\\n  --run-plan-path ./planned-search-audit/run_plan.json"
+          "determina execute-plan \\\n  --run-plan-path ./planned-search-audit/run_plan.json"
       },
       {
         title: "When To Use It",
@@ -798,7 +798,7 @@ export const docsPages: DocPage[] = [
         title: "Output Is Missing",
         bullets: [
           "Pass --output-dir explicitly when you need a predictable folder.",
-          "If you omit --output-dir, check ./evidpath-output/ in your current working directory.",
+          "If you omit --output-dir, check ./determina-output/ in your current working directory.",
           "For compare runs, inspect nested baseline/ and candidate/ folders too."
         ]
       },

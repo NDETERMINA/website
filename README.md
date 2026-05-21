@@ -1,6 +1,6 @@
-# Evidpath Website
+# Determina Website
 
-Website and docs for Evidpath by NDETERMINA.
+Website and docs for Determina by NDETERMINA.
 
 ## Routes
 

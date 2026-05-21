@@ -102,7 +102,7 @@ export default function Home() {
               What changes before launch.
             </h2>
             <p className="section-copy">
-              Evidpath gives teams a controlled way to find behavior failures,
+              Determina gives teams a controlled way to find behavior failures,
               rerun the same coverage, compare release candidates, and leave a
               launch packet that can be reviewed by humans.
             </p>
@@ -134,7 +134,7 @@ export default function Home() {
               </h2>
             </div>
             <p className="section-copy mt-0">
-              Evidpath is the shared evidence engine. The domain product gives
+              Determina is the shared evidence engine. The domain product gives
               it the contract, scenario language, judge, and report vocabulary
               for a specific AI system.
             </p>
@@ -188,7 +188,7 @@ export default function Home() {
             <p className="section-kicker">The method</p>
             <h2 className="section-title">Turn a release question into a controlled behavior trial.</h2>
             <p className="section-copy">
-              Evidpath does not stop at a manual spot check. It builds a
+              Determina does not stop at a manual spot check. It builds a
               domain-shaped run, calls the target through the right integration
               path, judges completed traces, then writes artifacts a team can
               inspect and rerun.

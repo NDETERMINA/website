@@ -124,7 +124,7 @@ function OverviewBody({ page }: { page: DocPage }) {
         <section>
           <h2 id="mental-model">The mental model</h2>
           <p>
-            Every Evidpath workflow walks the same six nouns. They map one-to-one to entities in
+            Every Determina workflow walks the same six nouns. They map one-to-one to entities in
             the dashboard, the SDK, and the on-disk Evidence Bundle.
           </p>
           <MentalModelDiagram steps={page.mentalModel.steps} />

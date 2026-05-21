@@ -24,7 +24,7 @@ export function DocsHeader({ searchEntries }: { searchEntries: SearchEntry[] }) 
             letterSpacing: "-0.01em"
           }}
         >
-          <span>Evidpath</span>
+          <span>Determina</span>
           <span style={{ fontSize: 11, color: "var(--docs-text-dim)", fontWeight: 500 }}>docs</span>
         </Link>
 

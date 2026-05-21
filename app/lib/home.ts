@@ -15,7 +15,7 @@ export const heroCopy = {
   qualifier: "Domain products: recommenders, search, agents",
   headline: "Find the AI behavior your tests miss.",
   subtitle:
-    "Evidpath runs controlled domain trials before launch, then writes judged traces and evidence your team can review, rerun, and compare.",
+    "Determina runs controlled domain trials before launch, then writes judged traces and evidence your team can review, rerun, and compare.",
   cta: "Request a domain pilot"
 };
 
@@ -57,7 +57,7 @@ export const liveCommands = [
     id: "recommender",
     label: "recommender",
     command:
-      "evidpath audit --domain recommender --target-url http://127.0.0.1:8051 --scenario returning-user-home-feed",
+      "determina audit --domain recommender --target-url http://127.0.0.1:8051 --scenario returning-user-home-feed",
     state: "slate behavior judged",
     artifact: "trust_collapse + repetition risk",
     trace: "User trial -> Recommender -> Evidence"
@@ -66,7 +66,7 @@ export const liveCommands = [
     id: "search",
     label: "search",
     command:
-      "evidpath audit --domain search --target-url http://127.0.0.1:8051 --scenario time-sensitive-query",
+      "determina audit --domain search --target-url http://127.0.0.1:8051 --scenario time-sensitive-query",
     state: "ranked results judged",
     artifact: "freshness + relevance signals",
     trace: "Query trial -> Search -> Evidence"
@@ -75,7 +75,7 @@ export const liveCommands = [
     id: "agents",
     label: "agents",
     command:
-      "evidpath audit --domain agents --scenario current-info-tool-use --driver-config-path ./driver_config.json",
+      "determina audit --domain agents --scenario current-info-tool-use --driver-config-path ./driver_config.json",
     state: "trajectory judged",
     artifact: "tool_use + grounding + refusal",
     trace: "Task trial -> Agent -> Evidence"
@@ -84,7 +84,7 @@ export const liveCommands = [
     id: "compare",
     label: "compare",
     command:
-      "evidpath compare --domain recommender --baseline-url http://127.0.0.1:8051 --candidate-url http://127.0.0.1:8052 --rerun-count 2",
+      "determina compare --domain recommender --baseline-url http://127.0.0.1:8051 --candidate-url http://127.0.0.1:8052 --rerun-count 2",
     state: "baseline/candidate stable",
     artifact: "regression_summary.json",
     trace: "Baseline -> Candidate -> Release"
@@ -93,7 +93,7 @@ export const liveCommands = [
     id: "run-swarm",
     label: "run-swarm",
     command:
-      'evidpath run-swarm --domain recommender --target-url http://127.0.0.1:8051 --brief "test trust collapse"',
+      'determina run-swarm --domain recommender --target-url http://127.0.0.1:8051 --brief "test trust collapse"',
     state: "generated recommender coverage saved",
     artifact: "run_plan.json + run_manifest.json",
     trace: "Brief -> Recommender swarm -> Evidence"
@@ -207,7 +207,7 @@ export const ctaLabels = {
 export const domainProducts = [
   {
     slug: "recommender",
-    title: "Evidpath for Recommenders",
+    title: "Determina for Recommenders",
     eyebrow: "Generated swarms most mature",
     summary:
       "Run repeatable user coverage against recommendation slates before release changes reach real users.",
@@ -217,7 +217,7 @@ export const domainProducts = [
   },
   {
     slug: "search",
-    title: "Evidpath for Search",
+    title: "Determina for Search",
     eyebrow: "Public audit and compare domain",
     summary:
       "Run repeatable query coverage against rankers to surface relevance, freshness, ambiguity, and zero-result risks.",
@@ -227,7 +227,7 @@ export const domainProducts = [
   },
   {
     slug: "agents",
-    title: "Evidpath for Agents",
+    title: "Determina for Agents",
     eyebrow: "Public trajectory domain",
     summary:
       "Run repeatable task coverage against agents to evaluate tool use, grounding, refusal behavior, state, and latency.",

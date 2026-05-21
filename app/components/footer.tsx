@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="border-t theme-line theme-section">
       <div className="container flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="text-base font-semibold">Evidpath by NDETERMINA</p>
+          <p className="text-base font-semibold">Determina by NDETERMINA</p>
           <p className="mt-2 max-w-xl text-sm leading-6 theme-muted">
             Behavioral evidence and launch packets for recommender, search, and agent systems.
           </p>

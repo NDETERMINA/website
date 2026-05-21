@@ -8,7 +8,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b theme-line bg-[color-mix(in_srgb,var(--bg)_88%,transparent)] backdrop-blur">
       <div className="container flex h-16 items-center justify-between gap-4">
         <Link href="/" className="flex min-w-0 items-baseline gap-2">
-          <span className="text-lg font-semibold tracking-normal text-[var(--text)]">Evidpath</span>
+          <span className="text-lg font-semibold tracking-normal text-[var(--text)]">Determina</span>
           <span className="hidden text-sm theme-muted sm:inline">by NDETERMINA</span>
           <span className="hidden rounded-md border px-2 py-1 text-xs font-semibold theme-line theme-soft md:inline">
             Domain pilots
