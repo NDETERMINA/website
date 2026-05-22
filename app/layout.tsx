@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | Determina"
   },
   description:
-    "Determina finds AI behavior failures ordinary tests miss, running controlled domain coverage for recommender, search, and agent systems before launch.",
+    "Determina finds AI behavior failures ordinary tests miss, running controlled system-type coverage for recommender, search, and agent systems before launch.",
   metadataBase: new URL("https://website.ndetermina.com"),
   openGraph: {
     title: "Determina by NDETERMINA",

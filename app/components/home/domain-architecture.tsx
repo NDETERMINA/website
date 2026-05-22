@@ -11,7 +11,7 @@ export function DomainArchitecture() {
     <div className="workbench" data-spirit-frame="">
       <div className="workbench-header">
         <div className="workbench-title">Platform stack</div>
-        <span className="status-chip">shared core + domain modules</span>
+        <span className="status-chip">shared core + system type modules</span>
       </div>
       <div className="workbench-body">
         <div className="grid gap-3 md:grid-cols-5">

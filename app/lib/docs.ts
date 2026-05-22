@@ -26,7 +26,7 @@ export type DocSection = {
     headings: string[];
     rows: string[][];
   };
-  visual?: "domain-flow";
+  visual?: "system-type-flow";
 };
 
 export type DocCommand = { label: string; command: string };
@@ -86,8 +86,8 @@ export const docSidebarIA: Array<{ group: string; pages: Array<{ slug: string; n
     group: "Core Concepts",
     pages: [
       { slug: "swarm-model", navTitle: "Mental model" },
-      { slug: "target-contract", navTitle: "Targets" },
-      { slug: "domain-products", navTitle: "Specs & Domains" },
+      { slug: "system-contract", navTitle: "Systems" },
+      { slug: "system-type-products", navTitle: "Specs & System Types" },
       { slug: "outputs", navTitle: "Results Bundles" }
     ]
   },
@@ -102,9 +102,9 @@ export const docSidebarIA: Array<{ group: string; pages: Array<{ slug: string; n
   {
     group: "Reference",
     pages: [
-      { slug: "recommender-domain", navTitle: "Recommender" },
-      { slug: "search-domain", navTitle: "Search" },
-      { slug: "agent-domain", navTitle: "Agents" },
+      { slug: "recommender-system-type", navTitle: "Recommender" },
+      { slug: "search-system-type", navTitle: "Search" },
+      { slug: "agent-system-type", navTitle: "Agents" },
       { slug: "troubleshooting", navTitle: "Troubleshooting" }
     ]
   }
@@ -161,11 +161,11 @@ export function getSearchEntries() {
 export const docsNav: Array<{ group: string; pages: string[] }> = [
   {
     group: "Model",
-    pages: ["overview", "swarm-model", "domain-products"]
+    pages: ["overview", "swarm-model", "system-type-products"]
   },
   {
     group: "Domains",
-    pages: ["recommender-domain", "search-domain", "agent-domain"]
+    pages: ["recommender-system-type", "search-system-type", "agent-system-type"]
   },
   {
     group: "Integrate",
@@ -185,7 +185,7 @@ export const docsPages: DocPage[] = [
     navTitle: "Overview",
     kind: "overview",
     description:
-      "Run repeatable Specs against your Target, write an Results Bundle every time, and ship the Report your team can audit before each release.",
+      "Run repeatable Specs against your System, write an Results Bundle every time, and ship the Report your team can audit before each release.",
     icon: BookOpen,
     next: "quickstart",
     cards: [
@@ -197,14 +197,14 @@ export const docsPages: DocPage[] = [
       },
       {
         title: "Mental model",
-        description: "Project → Target → Spec → Run → Results Bundle → Report. The six nouns in depth.",
+        description: "Project → System → Spec → Run → Results Bundle → Report. The six nouns in depth.",
         href: "/docs/swarm-model",
         cta: "Read"
       },
       {
-        title: "Targets",
+        title: "Systems",
         description: "How EvidPath reaches your system: HTTP, schema-mapped HTTP, Python, or agent driver.",
-        href: "/docs/target-contract",
+        href: "/docs/system-contract",
         cta: "Read"
       },
       {
@@ -215,12 +215,12 @@ export const docsPages: DocPage[] = [
       }
     ],
     mentalModel: {
-      steps: ["project", "target", "spec", "run", "results bundle", "report"],
+      steps: ["project", "system", "spec", "run", "results bundle", "report"],
       rows: [
-        { noun: "Project", desc: "The container you configure once: default Target, scorers, retention, integrations.", href: "/docs/swarm-model" },
-        { noun: "Target", desc: "The system under test — an HTTP service, Python callable, or agent endpoint.", href: "/docs/target-contract" },
-        { noun: "Spec", desc: "A reusable description of what 'correct' looks like for the Target: inputs, expectations, scorers.", href: "/docs/domain-products" },
-        { noun: "Run", desc: "One deterministic execution of a Spec against a Target with a fixed seed.", href: "/docs/workflows" },
+        { noun: "Project", desc: "The container you configure once: default System, scorers, retention, integrations.", href: "/docs/swarm-model" },
+        { noun: "System", desc: "The system under test — an HTTP service, Python callable, or agent endpoint.", href: "/docs/system-contract" },
+        { noun: "Spec", desc: "A reusable description of what 'correct' looks like for the System: inputs, expectations, scorers.", href: "/docs/system-type-products" },
+        { noun: "Run", desc: "One deterministic execution of a Spec against a System with a fixed seed.", href: "/docs/workflows" },
         { noun: "Results Bundle", desc: "The full set of artifacts the Run produces: traces, manifest, scorer outputs, sidecars.", href: "/docs/outputs" },
         { noun: "Report", desc: "Human-readable summary derived from one or two Results Bundles, with a pass / warn / fail decision.", href: "/docs/outputs" }
       ]
@@ -232,15 +232,15 @@ export const docsPages: DocPage[] = [
     title: "Mental Model",
     navTitle: "Mental model",
     description:
-      "The core Determina model: release questions become seeded behavior swarms, target interactions, judged traces, and launch results.",
+      "The core Determina model: release questions become seeded behavior swarms, system interactions, judged traces, and launch results.",
     icon: Workflow,
-    next: "domain-products",
+    next: "system-type-products",
     sections: [
       {
         title: "Framework Flow",
         body:
-          "A run moves from release question to domain selection, target integration, seeded behavior coverage, trace judging, and results. The flow stays stable while each domain changes the behavior language.",
-        visual: "domain-flow"
+          "A run moves from release question to system type selection, system integration, seeded behavior coverage, trace judging, and results. The flow stays stable while each system type changes the behavior language.",
+        visual: "system-type-flow"
       },
       {
         title: "Core Terms",
@@ -248,10 +248,10 @@ export const docsPages: DocPage[] = [
           headings: ["Term", "Meaning"],
           rows: [
             ["Release question", "The behavior risk the team wants results for before launch."],
-            ["Swarm", "A repeatable set of users, queries, tasks, journeys, or scenarios used to exercise the target."],
-            ["Target", "The AI system under test: a service, callable, agent graph, or protocol endpoint."],
-            ["Trace", "The recorded interaction between a seeded actor/task and the target."],
-            ["Judge", "The domain-owned scorer that interprets completed traces."],
+            ["Swarm", "A repeatable set of users, queries, tasks, journeys, or scenarios used to exercise the system."],
+            ["System", "The AI system under test: a service, callable, agent graph, or protocol endpoint."],
+            ["Trace", "The recorded interaction between a seeded actor/task and the system."],
+            ["Judge", "The system type-owned scorer that interprets completed traces."],
             ["Results", "Human-readable and machine-readable artifacts used for release review."]
           ]
         }
@@ -260,7 +260,7 @@ export const docsPages: DocPage[] = [
         title: "What Makes It Different",
         bullets: [
           "The run is replayable enough to compare releases, not a one-off prompt review.",
-          "The judge is domain-shaped, so the results uses the right failure language.",
+          "The judge is system type-shaped, so the results uses the right failure language.",
           "The artifacts preserve inputs, outputs, traces, manifests, and compare decisions.",
           "Generation is an optional coverage layer, not the source of truth for scoring."
         ]
@@ -268,26 +268,26 @@ export const docsPages: DocPage[] = [
     ]
   },
   {
-    slug: "domain-products",
-    title: "Specs & Domains",
-    navTitle: "Specs & Domains",
+    slug: "system-type-products",
+    title: "Specs & System Types",
+    navTitle: "Specs & System Types",
     description:
-      "Domain products are the sellable units built on the Determina swarm engine: recommender swarms, search swarms, and agent trajectory swarms.",
+      "System Type products are the sellable units built on the Determina swarm engine: recommender swarms, search swarms, and agent trajectory swarms.",
     icon: Boxes,
-    next: "recommender-domain",
+    next: "recommender-system-type",
     sections: [
       {
         title: "Why Domains Exist",
         body:
-          "AI systems fail in domain-shaped ways. A recommender can lose trust through repeated slates. A search ranker can miss freshness or intent. An agent can misuse tools or refuse incorrectly. Domain products make those failures testable.",
+          "AI systems fail in system type-shaped ways. A recommender can lose trust through repeated slates. A search ranker can miss freshness or intent. An agent can misuse tools or refuse incorrectly. System Type products make those failures testable.",
         bullets: [
           "The platform owns repeatability, execution, traces, reports, manifests, and compare workflows.",
-          "The domain owns the target contract, scenarios, simulated actor or task model, judge, metrics, and report vocabulary.",
-          "Customers choose the domain product that matches the AI system they ship."
+          "The system type owns the system contract, scenarios, simulated actor or task model, judge, metrics, and report vocabulary.",
+          "Customers choose the system type product that matches the AI system they ship."
         ]
       },
       {
-        title: "Domain Matrix",
+        title: "System Type Matrix",
         table: {
           headings: ["Product", "Failure language", "Integration paths"],
           rows: [
@@ -302,19 +302,19 @@ export const docsPages: DocPage[] = [
         bullets: [
           "Audit and compare workflows are public for recommender, search, and agents.",
           "Generated scenario/population coverage and run-swarm workflows are currently strongest for recommenders.",
-          "Search and agents should be presented as public domain products without claiming generated swarm parity yet."
+          "Search and agents should be presented as public system type products without claiming generated swarm parity yet."
         ]
       }
     ]
   },
   {
-    slug: "recommender-domain",
-    title: "Recommender Domain",
+    slug: "recommender-system-type",
+    title: "Recommender System Type",
     navTitle: "Recommenders",
     description:
       "Use Determina for Recommenders to test recommendation slates, simulated users, trust collapse, repetition, novelty, cold start, and abandonment before release.",
     icon: Boxes,
-    next: "search-domain",
+    next: "search-system-type",
     sections: [
       {
         title: "What It Tests",
@@ -339,9 +339,9 @@ export const docsPages: DocPage[] = [
       {
         title: "Useful Commands",
         code:
-          "determina check-target --domain recommender \\\n  --target-url http://127.0.0.1:8051\n\n" +
-          "determina audit --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario returning-user-home-feed \\\n  --seed 7\n\n" +
-          "determina run-swarm --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --brief \"test trust collapse and weak first-slate behavior\""
+          "determina check-system --system-type recommender \\\n  --system-url http://127.0.0.1:8051\n\n" +
+          "determina audit --system-type recommender \\\n  --system-url http://127.0.0.1:8051 \\\n  --scenario returning-user-home-feed \\\n  --seed 7\n\n" +
+          "determina run-swarm --system-type recommender \\\n  --system-url http://127.0.0.1:8051 \\\n  --brief \"test trust collapse and weak first-slate behavior\""
       },
       {
         title: "Source Links",
@@ -355,13 +355,13 @@ export const docsPages: DocPage[] = [
     ]
   },
   {
-    slug: "search-domain",
-    title: "Search Domain",
+    slug: "search-system-type",
+    title: "Search System Type",
     navTitle: "Search",
     description:
       "Use Determina for Search to test rankers across relevance, freshness, ambiguity, typo tolerance, zero-result behavior, and personalization.",
     icon: Search,
-    next: "agent-domain",
+    next: "agent-system-type",
     sections: [
       {
         title: "What It Tests",
@@ -380,16 +380,16 @@ export const docsPages: DocPage[] = [
           rows: [
             ["GET /health", "Confirm the search service is alive before a run."],
             ["GET /metadata", "Return stable document, model, backend, and artifact metadata."],
-            ["POST /search", "Return ranked results for a domain-built search request."]
+            ["POST /search", "Return ranked results for a system type-built search request."]
           ]
         }
       },
       {
         title: "Useful Commands",
         code:
-          "determina check-target --domain search \\\n  --target-url http://127.0.0.1:8051\n\n" +
-          "determina audit --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --seed 7\n\n" +
-          "determina compare --domain search \\\n  --baseline-url http://127.0.0.1:8051 \\\n  --candidate-url http://127.0.0.1:8052 \\\n  --rerun-count 2"
+          "determina check-system --system-type search \\\n  --system-url http://127.0.0.1:8051\n\n" +
+          "determina audit --system-type search \\\n  --system-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --seed 7\n\n" +
+          "determina compare --system-type search \\\n  --baseline-url http://127.0.0.1:8051 \\\n  --candidate-url http://127.0.0.1:8052 \\\n  --rerun-count 2"
       },
       {
         title: "Source Links",
@@ -402,8 +402,8 @@ export const docsPages: DocPage[] = [
     ]
   },
   {
-    slug: "agent-domain",
-    title: "Agent Trajectory Domain",
+    slug: "agent-system-type",
+    title: "Agent Trajectory System Type",
     navTitle: "Agents",
     description:
       "Use Determina for Agents to evaluate task trajectories, tool use, grounding, refusal, multi-turn state, unsafe requests, and latency.",
@@ -436,8 +436,8 @@ export const docsPages: DocPage[] = [
       {
         title: "Useful Commands",
         code:
-          "determina audit --domain agents \\\n  --scenario current-info-tool-use \\\n  --driver-config-path ./driver_config.json \\\n  --seed 7\n\n" +
-          "determina compare --domain agents \\\n  --baseline-driver-config-path ./baseline.json \\\n  --candidate-driver-config-path ./candidate.json \\\n  --scenario multi-turn-support-follow-up \\\n  --rerun-count 2"
+          "determina audit --system-type agents \\\n  --scenario current-info-tool-use \\\n  --driver-config-path ./driver_config.json \\\n  --seed 7\n\n" +
+          "determina compare --system-type agents \\\n  --baseline-driver-config-path ./baseline.json \\\n  --candidate-driver-config-path ./candidate.json \\\n  --scenario multi-turn-support-follow-up \\\n  --rerun-count 2"
       },
       {
         title: "Source Links",
@@ -465,7 +465,7 @@ export const docsPages: DocPage[] = [
         table: {
           headings: ["Path", "Best for", "Domains"],
           rows: [
-            ["Native HTTP", "Services that can speak Determina's domain contract directly.", "recommender, search"],
+            ["Native HTTP", "Services that can speak Determina's system type contract directly.", "recommender, search"],
             ["Schema-mapped HTTP", "Existing HTTP services whose request or response shape differs from the native contract.", "recommender, search"],
             ["Python callable", "Local functions, classes, model wrappers, rankers, or agents.", "recommender, search, agents"],
             ["Agent protocol drivers", "Agent services exposed through model APIs, MCP stdio, LangGraph-style objects, or HTTP sessions.", "agents"]
@@ -475,9 +475,9 @@ export const docsPages: DocPage[] = [
       {
         title: "Driver Config",
         body:
-          "Use `--driver-config-path` when a target cannot be represented by a simple native target URL. This is the main path for schema-mapped HTTP and agent protocol drivers.",
+          "Use `--driver-config-path` when a system cannot be represented by a simple native system URL. This is the main path for schema-mapped HTTP and agent protocol drivers.",
         code:
-          "determina audit --domain agents \\\n  --driver-config-path ./driver_config.json \\\n  --scenario current-info-tool-use"
+          "determina audit --system-type agents \\\n  --driver-config-path ./driver_config.json \\\n  --scenario current-info-tool-use"
       },
       {
         title: "Source Links",
@@ -497,7 +497,7 @@ export const docsPages: DocPage[] = [
     navTitle: "Quickstart",
     kind: "quickstart",
     description:
-      "Install Determina, run an audit against a target, and inspect the results bundle — in under five minutes.",
+      "Install Determina, run an audit against a system, and inspect the results bundle — in under five minutes.",
     icon: Terminal,
     next: "swarm-model",
     steps: [
@@ -512,30 +512,30 @@ export const docsPages: DocPage[] = [
         verify: "determina --version → prints the installed version."
       },
       {
-        title: "Check a target",
-        body: "Confirm your target service speaks the domain contract before a full run.",
+        title: "Check a system",
+        body: "Confirm your system service speaks the system type contract before a full run.",
         code:
-          "determina check-target --domain recommender \\\n  --target-url http://127.0.0.1:8051",
+          "determina check-system --system-type recommender \\\n  --system-url http://127.0.0.1:8051",
         verify: "Exit code 0 and a check report listing reachable endpoints."
       },
       {
         title: "Run your first audit",
-        body: "Pick a scenario for the domain you ship — recommender, search, or agents.",
+        body: "Pick a scenario for the system type you ship — recommender, search, or agents.",
         commands: [
           {
             label: "Recommender",
             command:
-              "determina audit --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario returning-user-home-feed \\\n  --seed 7"
+              "determina audit --system-type recommender \\\n  --system-url http://127.0.0.1:8051 \\\n  --scenario returning-user-home-feed \\\n  --seed 7"
           },
           {
             label: "Search",
             command:
-              "determina audit --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --seed 7"
+              "determina audit --system-type search \\\n  --system-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --seed 7"
           },
           {
             label: "Agents",
             command:
-              "determina audit --domain agents \\\n  --scenario current-info-tool-use \\\n  --driver-config-path ./driver_config.json \\\n  --seed 7"
+              "determina audit --system-type agents \\\n  --scenario current-info-tool-use \\\n  --driver-config-path ./driver_config.json \\\n  --seed 7"
           }
         ],
         verify: "determina-output/ contains report.md, results.json, traces.jsonl, and run_manifest.json."
@@ -551,16 +551,16 @@ export const docsPages: DocPage[] = [
       },
       {
         title: "Compare for a release decision",
-        body: "When a candidate target needs review against a baseline, use compare to run both under matched coverage.",
+        body: "When a candidate system needs review against a baseline, use compare to run both under matched coverage.",
         code:
-          "determina compare --domain recommender \\\n  --baseline-url http://127.0.0.1:8051 \\\n  --candidate-url http://127.0.0.1:8052 \\\n  --baseline-label current-prod \\\n  --candidate-label next-build \\\n  --rerun-count 2",
+          "determina compare --system-type recommender \\\n  --baseline-url http://127.0.0.1:8051 \\\n  --candidate-url http://127.0.0.1:8052 \\\n  --baseline-label current-prod \\\n  --candidate-label next-build \\\n  --rerun-count 2",
         verify: "regression_report.md prints a baseline-vs-candidate verdict (pass / warn / fail)."
       },
       {
         title: "Wire it into CI",
         body: "Run the same command in your pipeline. The bundle becomes a release artifact.",
         code:
-          "# .github/workflows/determina.yml\n- run: |\n    pip install determina\n    determina audit --domain recommender \\\n      --target-url ${{ env.TARGET_URL }} \\\n      --scenario returning-user-home-feed \\\n      --output-dir ./determina-output\n- uses: actions/upload-artifact@v4\n  with:\n    name: determina-bundle\n    path: ./determina-output",
+          "# .github/workflows/determina.yml\n- run: |\n    pip install determina\n    determina audit --system-type recommender \\\n      --system-url ${{ env.TARGET_URL }} \\\n      --scenario returning-user-home-feed \\\n      --output-dir ./determina-output\n- uses: actions/upload-artifact@v4\n  with:\n    name: determina-bundle\n    path: ./determina-output",
         language: "yaml",
         callout: {
           variant: "note",
@@ -582,8 +582,8 @@ export const docsPages: DocPage[] = [
     next: "integration-paths",
     subnav: [
       { id: "commands", label: "Commands" },
-      { id: "domain", label: "Domain" },
-      { id: "targets", label: "Targets" },
+      { id: "system-type", label: "System type" },
+      { id: "targets", label: "Systems" },
       { id: "examples", label: "Examples" }
     ],
     sections: [
@@ -593,36 +593,36 @@ export const docsPages: DocPage[] = [
         table: {
           headings: ["Command", "Use it for"],
           rows: [
-            ["check-target", "Validate a native external HTTP target before a full run. Supported for domains with native target checks."],
-            ["audit", "Run one domain audit and write the standard artifact bundle."],
-            ["compare", "Compare baseline and candidate targets across reruns."],
+            ["check-system", "Validate a native external HTTP system before a full run. Supported for system types with native system checks."],
+            ["audit", "Run one system type audit and write the standard artifact bundle."],
+            ["compare", "Compare baseline and candidate systems across reruns."],
             ["run-swarm", "Generate coverage from one brief and run an audit where generation hooks exist today."],
             ["plan-run", "Create a run_plan.json without executing the workflow."],
             ["execute-plan", "Execute a saved run plan deterministically."],
-            ["generate-scenarios / generate-population", "Generate and save coverage packs for domains that support generated coverage."],
-            ["serve-reference", "Start the local product-owned reference service for supported domains."]
+            ["generate-scenarios / generate-personas", "Generate and save test case packs for system types that support generated test cases."],
+            ["serve-reference", "Start the local product-owned reference service for supported system types."]
           ]
         }
       },
       {
-        title: "Domain",
-        body: "Every command takes --domain. It selects the contract, scenario grammar, and judge.",
+        title: "System Type",
+        body: "Every command takes --system-type. It selects the contract, scenario grammar, and judge.",
         table: {
           headings: ["Option", "Meaning"],
           rows: [
-            ["--domain recommender", "Recommendation slate audits, compare, generated coverage, and run-swarm."],
-            ["--domain search", "Search ranker audits and compare workflows."],
-            ["--domain agents", "Agent trajectory audits and compare workflows."]
+            ["--system-type recommender", "Recommendation slate audits, compare, generated test cases, and run-swarm."],
+            ["--system-type search", "Search ranker audits and compare workflows."],
+            ["--system-type agents", "Agent trajectory audits and compare workflows."]
           ]
         }
       },
       {
-        title: "Targets",
+        title: "Systems",
         body: "How the CLI reaches the system under test. Pick the smallest option that fits.",
         table: {
           headings: ["Option", "Use it when"],
           rows: [
-            ["--target-url", "Running against a native external HTTP service."],
+            ["--system-url", "Running against a native external HTTP service."],
             ["--driver-config-path", "Running schema-mapped HTTP, in-process imports, or agent protocol drivers."],
             ["--reference-artifact-dir", "Running the local product-owned reference path where supported."],
             ["--use-mock", "Internal recommender debug/testing only."]
@@ -633,7 +633,7 @@ export const docsPages: DocPage[] = [
         title: "Examples",
         body: "Three patterns you'll actually run, copy-paste ready.",
         code:
-          "# Smallest useful audit\ndetermina audit --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario returning-user-home-feed\n\n# Compare for a release decision\ndetermina compare --domain agents \\\n  --baseline-driver-config-path ./baseline.json \\\n  --candidate-driver-config-path ./candidate.json \\\n  --scenario current-info-tool-use \\\n  --rerun-count 2\n\n# Plan-first review packet\ndetermina plan-run --workflow audit \\\n  --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --output-dir ./planned-search-audit"
+          "# Smallest useful audit\ndetermina audit --system-type recommender \\\n  --system-url http://127.0.0.1:8051 \\\n  --scenario returning-user-home-feed\n\n# Compare for a release decision\ndetermina compare --system-type agents \\\n  --baseline-driver-config-path ./baseline.json \\\n  --candidate-driver-config-path ./candidate.json \\\n  --scenario current-info-tool-use \\\n  --rerun-count 2\n\n# Plan-first review packet\ndetermina plan-run --workflow audit \\\n  --system-type search \\\n  --system-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --output-dir ./planned-search-audit"
       }
     ]
   },
@@ -642,32 +642,32 @@ export const docsPages: DocPage[] = [
     title: "Common Workflows",
     navTitle: "Workflows",
     description:
-      "Pick the smallest workflow that answers the release question: check, audit, compare, plan, or generated coverage where supported.",
+      "Pick the smallest workflow that answers the release question: check, audit, compare, plan, or generated test cases where supported.",
     icon: Workflow,
     next: "outputs",
     sections: [
       {
-        title: "Check A Native HTTP Target",
+        title: "Check A Native HTTP System",
         code:
-          "determina check-target --domain recommender \\\n  --target-url http://127.0.0.1:8051\n\n" +
-          "determina check-target --domain search \\\n  --target-url http://127.0.0.1:8051"
+          "determina check-system --system-type recommender \\\n  --system-url http://127.0.0.1:8051\n\n" +
+          "determina check-system --system-type search \\\n  --system-url http://127.0.0.1:8051"
       },
       {
         title: "Inspect One Concrete Run",
         code:
-          "determina audit --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario ambiguous-query \\\n  --output-dir ./search-audit"
+          "determina audit --system-type search \\\n  --system-url http://127.0.0.1:8051 \\\n  --scenario ambiguous-query \\\n  --output-dir ./search-audit"
       },
       {
         title: "Decide Whether A Candidate Is Safer",
         code:
-          "determina compare --domain agents \\\n  --baseline-driver-config-path ./baseline.json \\\n  --candidate-driver-config-path ./candidate.json \\\n  --scenario current-info-tool-use \\\n  --rerun-count 2 \\\n  --output-dir ./agent-compare"
+          "determina compare --system-type agents \\\n  --baseline-driver-config-path ./baseline.json \\\n  --candidate-driver-config-path ./candidate.json \\\n  --scenario current-info-tool-use \\\n  --rerun-count 2 \\\n  --output-dir ./agent-compare"
       },
       {
         title: "Generate A Recommender Swarm",
         body:
           "Use run-swarm after the basic workflow is clear. This generated-coverage path is currently strongest for recommender testing.",
         code:
-          "determina run-swarm --domain recommender \\\n  --target-url http://127.0.0.1:8051 \\\n  --brief \"test trust collapse and weak first-slate behavior\""
+          "determina run-swarm --system-type recommender \\\n  --system-url http://127.0.0.1:8051 \\\n  --brief \"test trust collapse and weak first-slate behavior\""
       }
     ]
   },
@@ -711,10 +711,10 @@ export const docsPages: DocPage[] = [
   },
   {
     slug: "generation",
-    title: "Generated Coverage",
+    title: "Generated Test Cases",
     navTitle: "Generation",
     description:
-      "Generated coverage expands swarms from testing briefs. It is currently most mature for the recommender domain and remains optional beside deterministic results.",
+      "Generated test cases expands swarms from testing briefs. It is currently most mature for the recommender system type and remains optional beside deterministic results.",
     icon: Sparkles,
     next: "plan-first",
     sections: [
@@ -722,20 +722,20 @@ export const docsPages: DocPage[] = [
         title: "Current Scope",
         bullets: [
           "Recommender supports generated scenarios, generated populations, and run-swarm workflows.",
-          "Search and agents are public for audit/compare but should not be presented as generated-coverage parity domains yet.",
+          "Search and agents are public for audit/compare but should not be presented as generated-test-case parity system types yet.",
           "Provider-backed generation and semantic interpretation require provider credentials.",
-          "Normal check-target, audit, and compare runs do not require an API key."
+          "Normal check-system, audit, and compare runs do not require an API key."
         ]
       },
       {
         title: "Generate Recommender Scenarios",
         code:
-          "determina generate-scenarios --domain recommender \\\n  --brief \"test trust collapse for exploratory users\" \\\n  --mode provider \\\n  --scenario-count 3"
+          "determina generate-scenarios --system-type recommender \\\n  --brief \"test trust collapse for exploratory users\" \\\n  --mode provider \\\n  --scenario-count 3"
       },
       {
         title: "Generate A Recommender Population",
         code:
-          "determina generate-population --domain recommender \\\n  --brief \"impatient users, explorers, niche users, and trust-sensitive mainstream users\" \\\n  --mode provider \\\n  --population-size 4"
+          "determina generate-personas --system-type recommender \\\n  --brief \"impatient users, explorers, niche users, and trust-sensitive mainstream users\" \\\n  --mode provider \\\n  --population-size 4"
       }
     ]
   },
@@ -751,7 +751,7 @@ export const docsPages: DocPage[] = [
       {
         title: "Plan An Audit",
         code:
-          "determina plan-run --workflow audit \\\n  --domain search \\\n  --target-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --output-dir ./planned-search-audit"
+          "determina plan-run --workflow audit \\\n  --system-type search \\\n  --system-url http://127.0.0.1:8051 \\\n  --scenario time-sensitive-query \\\n  --output-dir ./planned-search-audit"
       },
       {
         title: "Execute The Plan",
@@ -777,7 +777,7 @@ export const docsPages: DocPage[] = [
     icon: Bug,
     sections: [
       {
-        title: "Target Or Driver Fails",
+        title: "System Or Driver Fails",
         bullets: [
           "Confirm the service process is running and reachable from the terminal.",
           "For recommender native HTTP, confirm GET /health, GET /metadata, and POST /recommendations exist.",
@@ -787,10 +787,10 @@ export const docsPages: DocPage[] = [
         ]
       },
       {
-        title: "Generated Coverage Is Rejected",
+        title: "Generated Test Cases Is Rejected",
         bullets: [
-          "Generated coverage commands only accept domains with generation hooks.",
-          "If run-swarm rejects agents or search, use audit or compare for those domains.",
+          "Generated test case commands only accept system types with generation hooks.",
+          "If run-swarm rejects agents or search, use audit or compare for those system types.",
           "For recommender generation, confirm provider credentials when using --mode provider."
         ]
       },
@@ -813,11 +813,11 @@ export const docsPages: DocPage[] = [
     ]
   },
   {
-    slug: "target-contract",
-    title: "Target Contracts",
-    navTitle: "Targets",
+    slug: "system-contract",
+    title: "System Contracts",
+    navTitle: "Systems",
     description:
-      "Legacy entry point for target contracts. Use integration paths and domain guides for the current multi-domain structure.",
+      "Legacy entry point for system contracts. Use integration paths and system type guides for the current multi-system type structure.",
     icon: Plug,
     next: "integration-paths",
     sections: [
@@ -832,11 +832,11 @@ export const docsPages: DocPage[] = [
     ]
   },
   {
-    slug: "domain-model",
-    title: "Domain Model",
-    navTitle: "Domain model",
+    slug: "system-type-model",
+    title: "System Type Model",
+    navTitle: "System Type model",
     description:
-      "Legacy entry point for the domain model. The current docs split the model into swarm model and domain products.",
+      "Legacy entry point for the system type model. The current docs split the model into swarm model and system type products.",
     icon: Boxes,
     next: "swarm-model",
     sections: [
@@ -844,7 +844,7 @@ export const docsPages: DocPage[] = [
         title: "Read These Instead",
         bullets: [
           "Swarm model: /docs/swarm-model",
-          "Domain products: /docs/domain-products",
+          "System Type products: /docs/system-type-products",
           "Integration paths: /docs/integration-paths"
         ]
       }
@@ -855,16 +855,16 @@ export const docsPages: DocPage[] = [
     title: "Platform Roadmap",
     navTitle: "Roadmap",
     description:
-      "Legacy entry point for roadmap framing. The current site describes public domains plus maturity notes in the domain product guide.",
+      "Legacy entry point for roadmap framing. The current site describes public system types plus maturity notes in the system type product guide.",
     icon: Route,
-    next: "domain-products",
+    next: "system-type-products",
     sections: [
       {
         title: "Current Framing",
         bullets: [
-          "Recommender, search, and agents are public domain products.",
+          "Recommender, search, and agents are public system type products.",
           "Generated swarm planning is currently most mature for recommenders.",
-          "The platform layer provides repeatable runs, traces, reports, manifests, and compare workflows across domains."
+          "The platform layer provides repeatable runs, traces, reports, manifests, and compare workflows across system types."
         ]
       }
     ]
@@ -883,27 +883,27 @@ export const docHomeCards = [
     icon: Workflow
   },
   {
-    title: "Choose a domain product",
+    title: "Choose a system type product",
     description: "Compare recommender, search, and agent trajectory testing surfaces.",
-    href: "/docs/domain-products",
+    href: "/docs/system-type-products",
     icon: Boxes
   },
   {
     title: "Test recommenders",
     description: "Review slates, novelty, repetition, trust collapse, cold start, and abandonment.",
-    href: "/docs/recommender-domain",
+    href: "/docs/recommender-system-type",
     icon: Boxes
   },
   {
     title: "Test search rankers",
     description: "Review relevance, freshness, ambiguity, typo recovery, and zero-result behavior.",
-    href: "/docs/search-domain",
+    href: "/docs/search-system-type",
     icon: Search
   },
   {
     title: "Test agents",
     description: "Review tool use, grounding, refusal, multi-turn state, unsafe requests, and latency.",
-    href: "/docs/agent-domain",
+    href: "/docs/agent-system-type",
     icon: Bot
   },
   {
@@ -914,7 +914,7 @@ export const docHomeCards = [
   },
   {
     title: "Run the CLI",
-    description: "See audit, compare, generated coverage, and plan-first workflow boundaries.",
+    description: "See audit, compare, generated test cases, and plan-first workflow boundaries.",
     href: "/docs/cli-reference",
     icon: ListChecks
   },

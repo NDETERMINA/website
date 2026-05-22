@@ -47,7 +47,7 @@ export function CommandRunner() {
           <Play size={16} aria-hidden="true" />
           Command surface
         </div>
-        <span className="status-chip">public domains: recommender, search, agents</span>
+        <span className="status-chip">public system types: recommender, search, agents</span>
       </div>
 
       <div className="workbench-body grid min-w-0 gap-4">

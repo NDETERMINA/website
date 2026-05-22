@@ -128,13 +128,13 @@ export default function Home() {
         <div className="container">
           <div className="mb-8 grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
             <div>
-              <p className="section-kicker">Domain products</p>
+              <p className="section-kicker">System Type products</p>
               <h2 className="section-title max-w-3xl">
                 Choose the behavior trial for the system you ship.
               </h2>
             </div>
             <p className="section-copy mt-0">
-              Determina is the shared results engine. The domain product gives
+              Determina is the shared results engine. The system type product gives
               it the contract, scenario language, judge, and report vocabulary
               for a specific AI system.
             </p>
@@ -173,7 +173,7 @@ export default function Home() {
                   href={product.href}
                   className="mt-6 inline-flex h-11 items-center justify-center gap-2 rounded-md border px-4 text-sm font-semibold theme-button-secondary"
                 >
-                  Open domain guide
+                  Open system type guide
                   <ArrowRight size={16} aria-hidden="true" />
                 </Link>
               </article>
@@ -189,7 +189,7 @@ export default function Home() {
             <h2 className="section-title">Turn a release question into a controlled behavior trial.</h2>
             <p className="section-copy">
               Determina does not stop at a manual spot check. It builds a
-              domain-shaped run, calls the target through the right integration
+              system type-shaped run, calls the system through the right integration
               path, judges completed traces, then writes artifacts a team can
               inspect and rerun.
             </p>
@@ -204,14 +204,14 @@ export default function Home() {
             <div>
               <p className="section-kicker">Coverage model</p>
               <h2 className="section-title">
-                Swarms are the repeatable coverage beneath each domain.
+                Swarms are the repeatable coverage beneath each system type.
               </h2>
             </div>
             <p className="section-copy mt-0">
               A swarm is coverage with memory: seeded actors, scenarios,
-              journeys, tasks, and saved plans that can be rerun when a target
-              changes. Generated coverage is currently strongest for the
-              recommender domain.
+              journeys, tasks, and saved plans that can be rerun when a system
+              changes. Generated test cases is currently strongest for the
+              recommender system type.
             </p>
           </div>
           <SwarmCoverageVisual />
@@ -226,7 +226,7 @@ export default function Home() {
               The output is a release packet, not a slogan.
             </h2>
             <p className="section-copy">
-              Reports should name the domain, the run, the trace, the concern,
+              Reports should name the system type, the run, the trace, the concern,
               and the files behind the conclusion. That is the difference
               between “we tried it” and repeatable launch review.
             </p>
@@ -247,11 +247,11 @@ export default function Home() {
           <div>
             <p className="section-kicker">Platform shape</p>
             <h2 className="section-title">
-              One results engine. Multiple domain products.
+              One results engine. Multiple system type products.
             </h2>
             <p className="section-copy">
-              The platform gives every domain the same repeatable run engine,
-              trace ledger, regression workflow, and artifact model. The domain
+              The platform gives every system type the same repeatable run engine,
+              trace ledger, regression workflow, and artifact model. The system type
               product gives each customer the scenarios, contract, judge, and
               failure language that match the system they ship.
             </p>
@@ -259,16 +259,16 @@ export default function Home() {
               <div className="data-card p-4" data-spirit-frame="">
                 <div className="mb-3 flex items-center gap-2 text-sm font-semibold theme-accent-strong">
                   <Plug size={18} aria-hidden="true" />
-                  Current domain products
+                  Current system type products
                 </div>
                 <div className="grid gap-2">
-                  {firstDomainRoutes.map(([domain, detail]) => (
+                  {firstDomainRoutes.map(([systemType, detail]) => (
                     <Link
-                      key={domain}
-                      href="/docs/domain-products"
+                      key={systemType}
+                      href="/docs/system-type-products"
                       className="grid gap-2 rounded-md border px-3 py-2 text-sm theme-line hover:border-[var(--accent)] sm:grid-cols-[7rem_1fr] sm:items-center"
                     >
-                      <span className="font-semibold theme-accent">{domain}</span>
+                      <span className="font-semibold theme-accent">{systemType}</span>
                       <span className="text-[var(--text)]">{detail}</span>
                     </Link>
                   ))}
@@ -343,7 +343,7 @@ export default function Home() {
             <h2 className="section-title">Docs organized by the jobs teams need.</h2>
             <p className="section-copy">
               The docs explain the swarm model after the buyer story is clear:
-              choose a domain product, pick an integration path, run workflows,
+              choose a system type product, pick an integration path, run workflows,
               and read the run outputs.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -358,7 +358,7 @@ export default function Home() {
                 href="/docs/quickstart"
                 className="inline-flex h-11 items-center justify-center gap-2 rounded-md border px-4 text-sm font-semibold theme-button-secondary"
               >
-                Multi-domain quickstart
+                Multi-system type quickstart
               </Link>
             </div>
           </div>
@@ -368,7 +368,7 @@ export default function Home() {
                 <BookOpen size={18} aria-hidden="true" />
                 Start here
               </div>
-              <span className="status-chip">domain product docs</span>
+              <span className="status-chip">system type product docs</span>
             </div>
             <div className="workbench-body grid gap-3 md:grid-cols-2">
               {docTiles.map(([title, text, href]) => (
@@ -403,13 +403,13 @@ export default function Home() {
               <div>
                 <p className="flex items-center gap-2 text-sm font-semibold uppercase theme-accent-strong">
                   <Sparkles size={18} aria-hidden="true" />
-                  Domain pilot
+                  System Type pilot
                 </p>
                 <h2 className="mt-3 text-3xl font-semibold tracking-normal md:text-4xl">
                   Have an AI system with behavior risk before launch?
                 </h2>
                 <p className="mt-3 max-w-2xl text-base leading-7 theme-muted">
-                  Bring the target. We will help choose the domain product,
+                  Bring the system. We will help choose the system type product,
                   implementation path, and first release question to turn into
                   trace-backed results.
                 </p>

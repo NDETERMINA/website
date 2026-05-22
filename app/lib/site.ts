@@ -1,7 +1,7 @@
 export const siteLinks = {
   waitlist:
     process.env.NEXT_PUBLIC_WAITLIST_URL ||
-    "mailto:alankrit386@gmail.com?subject=Determina%20domain%20pilot",
+    "mailto:alankrit386@gmail.com?subject=Determina%20system%20type%20pilot",
   githubProduct:
     "https://github.com/NDETERMINA/determina/tree/main/packages/python/public/determina",
   githubSource: "https://github.com/NDETERMINA/determina",
@@ -9,11 +9,11 @@ export const siteLinks = {
   releases: "https://github.com/NDETERMINA/determina/releases",
   issues: "https://github.com/NDETERMINA/determina/issues",
   externalContract:
-    "https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/EXTERNAL_TARGET_CONTRACT.md",
+    "https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/EXTERNAL_SYSTEM_CONTRACT.md",
   searchContract:
-    "https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/EXTERNAL_TARGET_CONTRACT_SEARCH.md",
+    "https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/EXTERNAL_SYSTEM_CONTRACT_SEARCH.md",
   agentContract:
-    "https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/EXTERNAL_TARGET_CONTRACT_AGENTS.md",
+    "https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/EXTERNAL_SYSTEM_CONTRACT_AGENTS.md",
   demoGuide:
     "https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/DEMO.md",
   exampleService:
@@ -43,23 +43,23 @@ export const workflowSteps = [
     command:
       "determina projects create --name \"Release checks\"",
     label: "Create a project",
-    body: "Create the hosted workspace that owns targets, runs, artifacts, and release results."
+    body: "Create the hosted workspace that owns systems, runs, artifacts, and release results."
   },
   {
     command:
-      "determina targets create --project-id prj_123 --name \"Search API\" --domain search --kind http --config-json '{\"base_url\":\"https://candidate.example.com\"}'",
-    label: "Register a target",
-    body: "Register the system under test and create a platform target version."
+      "determina systems create --project-id prj_123 --name \"Search API\" --system-type search --kind http --config-json '{\"base_url\":\"https://candidate.example.com\"}'",
+    label: "Register a system",
+    body: "Register the system under test and create a platform system version."
   },
   {
     command:
-      "determina audit --project-id prj_123 --target-version-id tv_123",
+      "determina audit --project-id prj_123 --system-version-id tv_123",
     label: "Run hosted results",
     body: "Queue a hosted audit and let the platform/private core produce artifacts and status."
   },
   {
     command:
-      "determina compare --project-id prj_123 --baseline-id base_123 --candidate-target-version-id tv_456",
+      "determina compare --project-id prj_123 --baseline-id base_123 --candidate-system-version-id tv_456",
     label: "Gate a release",
     body: "Run a hosted compare against an approved baseline before launch."
   }

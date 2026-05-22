@@ -12,11 +12,11 @@ import {
 export const heroCopy = {
   eyebrow: "Behavioral results for AI products",
   label: "Public package",
-  qualifier: "Domain products: recommenders, search, agents",
+  qualifier: "System Type products: recommenders, search, agents",
   headline: "Find the AI behavior your tests miss.",
   subtitle:
-    "Determina runs controlled domain trials before launch, then writes judged traces and results your team can review, rerun, and compare.",
-  cta: "Request a domain pilot"
+    "Determina runs controlled system type trials before launch, then writes judged traces and results your team can review, rerun, and compare.",
+  cta: "Request a system type pilot"
 };
 
 export const heroProofPoints = [
@@ -36,7 +36,7 @@ export const clientBenefits = [
     icon: Workflow,
     title: "Replace vibe checks",
     text:
-      "Turn release concerns into repeatable domain runs with saved traces, judges, and rerunnable results."
+      "Turn release concerns into repeatable system type runs with saved traces, judges, and rerunnable results."
   },
   {
     icon: GitCompareArrows,
@@ -48,7 +48,7 @@ export const clientBenefits = [
     icon: FileJson2,
     title: "Leave a launch packet",
     text:
-      "Give reviewers reports, JSON, trace ledgers, manifests, and domain-specific failure language."
+      "Give reviewers reports, JSON, trace ledgers, manifests, and system type-specific failure language."
   }
 ];
 
@@ -57,7 +57,7 @@ export const liveCommands = [
     id: "recommender",
     label: "recommender",
     command:
-      "determina audit --domain recommender --target-url http://127.0.0.1:8051 --scenario returning-user-home-feed",
+      "determina audit --system-type recommender --system-url http://127.0.0.1:8051 --scenario returning-user-home-feed",
     state: "slate behavior judged",
     artifact: "trust_collapse + repetition risk",
     trace: "User trial -> Recommender -> Results"
@@ -66,7 +66,7 @@ export const liveCommands = [
     id: "search",
     label: "search",
     command:
-      "determina audit --domain search --target-url http://127.0.0.1:8051 --scenario time-sensitive-query",
+      "determina audit --system-type search --system-url http://127.0.0.1:8051 --scenario time-sensitive-query",
     state: "ranked results judged",
     artifact: "freshness + relevance signals",
     trace: "Query trial -> Search -> Results"
@@ -75,7 +75,7 @@ export const liveCommands = [
     id: "agents",
     label: "agents",
     command:
-      "determina audit --domain agents --scenario current-info-tool-use --driver-config-path ./driver_config.json",
+      "determina audit --system-type agents --scenario current-info-tool-use --driver-config-path ./driver_config.json",
     state: "trajectory judged",
     artifact: "tool_use + grounding + refusal",
     trace: "Task trial -> Agent -> Results"
@@ -84,7 +84,7 @@ export const liveCommands = [
     id: "compare",
     label: "compare",
     command:
-      "determina compare --domain recommender --baseline-url http://127.0.0.1:8051 --candidate-url http://127.0.0.1:8052 --rerun-count 2",
+      "determina compare --system-type recommender --baseline-url http://127.0.0.1:8051 --candidate-url http://127.0.0.1:8052 --rerun-count 2",
     state: "baseline/candidate stable",
     artifact: "regression_summary.json",
     trace: "Baseline -> Candidate -> Release"
@@ -93,7 +93,7 @@ export const liveCommands = [
     id: "run-swarm",
     label: "run-swarm",
     command:
-      'determina run-swarm --domain recommender --target-url http://127.0.0.1:8051 --brief "test trust collapse"',
+      'determina run-swarm --system-type recommender --system-url http://127.0.0.1:8051 --brief "test trust collapse"',
     state: "generated recommender coverage saved",
     artifact: "run_plan.json + run_manifest.json",
     trace: "Brief -> Recommender swarm -> Results"
@@ -102,8 +102,8 @@ export const liveCommands = [
 
 export const pipelineSteps = [
   "Release question",
-  "Domain swarm",
-  "Target run",
+  "System Type swarm",
+  "System run",
   "Trace ledger",
   "Judge",
   "Results"
@@ -117,12 +117,12 @@ export const platformLayers = [
   },
   {
     icon: Plug,
-    title: "Domain product packs",
-    text: "Each domain owns target shape, scenario grammar, judge, metrics, and failure language."
+    title: "System Type product packs",
+    text: "Each system type owns system shape, scenario grammar, judge, metrics, and failure language."
   },
   {
     icon: Sparkles,
-    title: "Generated coverage where mature",
+    title: "Generated test cases where mature",
     text: "Recommender briefs can become structured scenarios, populations, swarms, and reusable run plans."
   },
   {
@@ -139,15 +139,15 @@ export const platformLayers = [
 
 export const domainNodes = [
   ["Results engine", "Seeds, planning, execution"],
-  ["Domain product", "Contract, scenarios, judge"],
-  ["Target run", "HTTP, Python, protocol driver"],
+  ["System Type product", "Contract, scenarios, judge"],
+  ["System run", "HTTP, Python, protocol driver"],
   ["Results", "Traces, reports, manifests"],
   ["Release", "Compare, policy, review"]
 ];
 
 export const resultsCards = [
   ["Executive summary", "release question answered with trace-backed results"],
-  ["Domain finding", "trust collapse, freshness gap, or tool-use regression"],
+  ["System Type finding", "trust collapse, freshness gap, or tool-use regression"],
   ["Trace ledger", "seeded user/task interactions preserved step by step"],
   ["Semantic advisory", "optional explanation sidecar, non-gating"],
   ["Regression summary", "baseline -> candidate with pass, warn, or fail"],
@@ -165,7 +165,7 @@ export const artifactList = [
 
 export const docTiles = [
   ["Swarm model", "How release questions become seeded behavior swarms.", "/docs/swarm-model"],
-  ["Domain products", "Choose recommender, search, or agent trajectory testing.", "/docs/domain-products"],
+  ["System Type products", "Choose recommender, search, or agent trajectory testing.", "/docs/system-type-products"],
   ["Integration paths", "Native HTTP, schema-mapped HTTP, Python, and agent drivers.", "/docs/integration-paths"],
   ["Results artifacts", "Reports, traces, JSON, manifests, and regression packets.", "/docs/outputs"]
 ];
@@ -190,7 +190,7 @@ export const sectionLabels = {
   domains: "Platform stack",
   results: "Results dossier",
   business: "Platform advantages",
-  firstDomain: "Domain products",
+  firstDomain: "System Type products",
   docs: "Docs first"
 };
 
@@ -200,8 +200,8 @@ export const futureDirection =
 export const platformStackIcon = Route;
 
 export const ctaLabels = {
-  primary: "Request a domain pilot",
-  secondary: "Choose a domain"
+  primary: "Request a system type pilot",
+  secondary: "Choose a system type"
 };
 
 export const domainProducts = [
@@ -213,42 +213,42 @@ export const domainProducts = [
       "Run repeatable user coverage against recommendation slates before release changes reach real users.",
     failures: ["slate repetition", "novelty drift", "cold start", "trust collapse", "abandonment"],
     integrations: ["native HTTP", "schema-mapped HTTP", "Python callable", "Hugging Face adapter"],
-    href: "/docs/recommender-domain"
+    href: "/docs/recommender-system-type"
   },
   {
     slug: "search",
     title: "Determina for Search",
-    eyebrow: "Public audit and compare domain",
+    eyebrow: "Public audit and compare system type",
     summary:
       "Run repeatable query coverage against rankers to surface relevance, freshness, ambiguity, and zero-result risks.",
     failures: ["relevance loss", "freshness gaps", "ambiguous intent", "typo recovery", "personalization drift"],
     integrations: ["native HTTP", "schema-mapped HTTP", "Python callable"],
-    href: "/docs/search-domain"
+    href: "/docs/search-system-type"
   },
   {
     slug: "agents",
     title: "Determina for Agents",
-    eyebrow: "Public trajectory domain",
+    eyebrow: "Public trajectory system type",
     summary:
       "Run repeatable task coverage against agents to evaluate tool use, grounding, refusal behavior, state, and latency.",
     failures: ["tool misuse", "ungrounded answer", "refusal failure", "state loss", "latency cliff"],
     integrations: ["Python/LangGraph", "OpenAI-compatible", "Anthropic", "MCP stdio", "HTTP session"],
-    href: "/docs/agent-domain"
+    href: "/docs/agent-system-type"
   }
 ];
 
 export const platformFlow = [
   ["Release question", "What behavior could break before launch?"],
-  ["Domain coverage", "Users, queries, or tasks shaped for the product line."],
-  ["Target interaction", "HTTP, Python, or protocol drivers call the system."],
-  ["Judged traces", "Domain judges score behavior and surface risks."],
+  ["System Type coverage", "Users, queries, or tasks shaped for the product line."],
+  ["System interaction", "HTTP, Python, or protocol drivers call the system."],
+  ["Judged traces", "System Type judges score behavior and surface risks."],
   ["Launch results", "Reports, JSON, traces, manifests, and compare decisions."]
 ];
 
 export const sharedPlatformCapabilities = [
   "seeded runs",
   "trace capture",
-  "domain judging",
+  "system type judging",
   "artifact manifests",
   "baseline/candidate compare",
   "CI-ready results"

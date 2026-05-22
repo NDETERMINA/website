@@ -16,10 +16,10 @@ import { useEffect, useState } from "react";
 const runStages = [
   {
     icon: Radar,
-    label: "Domain",
+    label: "System type",
     state: "product pack selected",
     detail: "recs / search / agents",
-    insight: "Each domain gives the run its target shape, scenario grammar, judge, and report language."
+    insight: "Each system type gives the run its system shape, scenario grammar, judge, and report language."
   },
   {
     icon: UsersRound,
@@ -31,9 +31,9 @@ const runStages = [
   {
     icon: TriangleAlert,
     label: "Judge",
-    state: "domain risks surfaced",
+    state: "system type risks surfaced",
     detail: "specific failure language",
-    insight: "Judged traces name the actual domain concern: trust collapse, freshness loss, or tool-use regression."
+    insight: "Judged traces name the actual system type concern: trust collapse, freshness loss, or tool-use regression."
   },
   {
     icon: FileJson2,
@@ -73,7 +73,7 @@ export function LiveRunConsole() {
         </div>
         <div className="status-chip">
           <LockKeyhole size={14} aria-hidden="true" />
-          DOMAIN PILOT
+          SYSTEM PILOT
         </div>
       </div>
 
@@ -81,7 +81,7 @@ export function LiveRunConsole() {
         <div className="hero-command-line">
           <span className="mono text-[var(--accent)]">$</span>
           <code className="mono min-w-0 break-words">
-            determina audit --domain agents --scenario current-info-tool-use --driver-config-path ./driver_config.json
+            determina audit --system-type agents --scenario current-info-tool-use --driver-config-path ./driver_config.json
           </code>
         </div>
 
@@ -90,7 +90,7 @@ export function LiveRunConsole() {
             <div>
               <p className="tiny-label">Run path</p>
               <p className="mt-1 text-sm font-semibold text-[var(--text)]">
-                Domain {"->"} Coverage {"->"} Judge {"->"} Results
+                System type {"->"} Coverage {"->"} Judge {"->"} Results
               </p>
             </div>
             <span className="status-chip">run-28a8a5cb16eb</span>

@@ -23,7 +23,7 @@ export function Footer() {
             GitHub
           </a>
           <a href={siteLinks.waitlist} className="hover:text-[var(--text)]">
-            Domain pilot
+            System pilot
           </a>
         </div>
       </div>

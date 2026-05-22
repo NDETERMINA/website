@@ -2,7 +2,7 @@ import { Boxes, FileJson2, Sparkles, Workflow } from "lucide-react";
 
 const coverageSteps = [
   ["Question", "what could fail before launch?"],
-  ["Domain", "recommender, search, or agents"],
+  ["System type", "recommender, search, or agents"],
   ["Swarm", "users, queries, or tasks"],
   ["Run plan", "seeded and replayable"]
 ];
@@ -22,7 +22,7 @@ export function SwarmCoverageVisual() {
           <Workflow size={18} aria-hidden="true" />
           Swarm coverage builder
         </div>
-        <span className="status-chip">seeded, replayable, domain-aware</span>
+        <span className="status-chip">seeded, replayable, system-aware</span>
       </div>
 
       <div className="workbench-body grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
@@ -77,7 +77,7 @@ export function SwarmCoverageVisual() {
           <div className="mt-4 grid gap-2 sm:grid-cols-2">
             <div className="rounded-md border p-3 theme-line bg-[var(--panel)]">
             <Boxes size={16} className="theme-accent" aria-hidden="true" />
-              <p className="mt-2 text-sm font-semibold">domain-shaped</p>
+              <p className="mt-2 text-sm font-semibold">system-shaped</p>
             </div>
             <div className="rounded-md border p-3 theme-line bg-[var(--panel)]">
               <FileJson2 size={16} className="theme-accent" aria-hidden="true" />

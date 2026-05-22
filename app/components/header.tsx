@@ -11,7 +11,7 @@ export function Header() {
           <span className="text-lg font-semibold tracking-normal text-[var(--text)]">Determina</span>
           <span className="hidden text-sm theme-muted sm:inline">by NDETERMINA</span>
           <span className="hidden rounded-md border px-2 py-1 text-xs font-semibold theme-line theme-soft md:inline">
-            Domain pilots
+            System pilots
           </span>
         </Link>
         <nav className="flex items-center gap-1 sm:gap-2">

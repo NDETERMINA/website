@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 
-const steps = ["Question", "Domain", "Swarm", "Trace", "Judge", "Results"];
+const steps = ["Question", "System type", "Swarm", "Trace", "Judge", "Results"];
 
 export function DomainFlowVisual({ compact = false }: { compact?: boolean }) {
   const reduceMotion = useReducedMotion();
