@@ -3,9 +3,9 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { FileJson2, SearchCheck } from "lucide-react";
 
-import { artifactList, evidenceCards } from "@/app/lib/home";
+import { artifactList, resultsCards } from "@/app/lib/home";
 
-export function EvidenceDossier() {
+export function ResultsDossier() {
   const reduceMotion = useReducedMotion();
 
   return (
@@ -13,14 +13,14 @@ export function EvidenceDossier() {
       <div className="workbench-header">
         <div className="workbench-title">
           <SearchCheck size={18} aria-hidden="true" />
-          Launch evidence dossier
+          Launch results
         </div>
         <span className="status-chip">run_id run-28a8a5cb16eb</span>
       </div>
 
       <div className="workbench-body">
         <div className="grid gap-3 sm:grid-cols-2">
-          {evidenceCards.map(([title, text], index) => (
+          {resultsCards.map(([title, text], index) => (
             <motion.div
               key={title}
               initial={reduceMotion ? false : { opacity: 1, y: 8 }}

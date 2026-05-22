@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Determina by NDETERMINA",
     description:
-      "Behavioral evidence and trace-backed launch decisions for recommender, search, and agent systems."
+      "Behavioral results and trace-backed launch decisions for recommender, search, and agent systems."
   }
 };
 

@@ -37,7 +37,7 @@ const runStages = [
   },
   {
     icon: FileJson2,
-    label: "Evidence",
+    label: "Results",
     state: "release packet written",
     detail: "report + manifest",
     insight: "The run writes report.md, results.json, traces.jsonl, and a manifest for review."
@@ -69,7 +69,7 @@ export function LiveRunConsole() {
       <div className="hero-console-header">
         <div className="workbench-title">
           <Terminal size={18} aria-hidden="true" />
-          Determina evidence run
+          Determina results run
         </div>
         <div className="status-chip">
           <LockKeyhole size={14} aria-hidden="true" />
@@ -90,7 +90,7 @@ export function LiveRunConsole() {
             <div>
               <p className="tiny-label">Run path</p>
               <p className="mt-1 text-sm font-semibold text-[var(--text)]">
-                Domain {"->"} Coverage {"->"} Judge {"->"} Evidence
+                Domain {"->"} Coverage {"->"} Judge {"->"} Results
               </p>
             </div>
             <span className="status-chip">run-28a8a5cb16eb</span>

@@ -9,17 +9,17 @@ import { artifactList, liveCommands } from "@/app/lib/home";
 const outputs = [
   {
     id: "recommender",
-    title: "Recommender evidence",
+    title: "Recommender results",
     rows: ["slate repetition high", "low-patience cohort risk", "trust_delta -0.31"]
   },
   {
     id: "search",
-    title: "Search evidence",
+    title: "Search results",
     rows: ["freshness percentile low", "ambiguous intent preserved", "top bucket relevance 0.82"]
   },
   {
     id: "agents",
-    title: "Agent evidence",
+    title: "Agent results",
     rows: ["tool sequence matched", "grounding checked", "refusal calibrated"]
   },
   {

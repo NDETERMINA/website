@@ -125,7 +125,7 @@ function OverviewBody({ page }: { page: DocPage }) {
           <h2 id="mental-model">The mental model</h2>
           <p>
             Every Determina workflow walks the same six nouns. They map one-to-one to entities in
-            the dashboard, the SDK, and the on-disk Evidence Bundle.
+            the dashboard, the SDK, and the on-disk Results Bundle.
           </p>
           <MentalModelDiagram steps={page.mentalModel.steps} />
           <div className="docs-table-wrap">

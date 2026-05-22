@@ -4,7 +4,7 @@ import { ArrowRight, BookOpen, Mail, Plug, Route, Sparkles } from "lucide-react"
 import { AnimatedSection } from "@/app/components/home/animated-section";
 import { CommandRunner } from "@/app/components/home/command-runner";
 import { DomainArchitecture } from "@/app/components/home/domain-architecture";
-import { EvidenceDossier } from "@/app/components/home/evidence-dossier";
+import { ResultsDossier } from "@/app/components/home/results-dossier";
 import { HomepageBorderSpirit } from "@/app/components/home/homepage-border-spirit";
 import { LiveRunConsole } from "@/app/components/home/live-run-console";
 import { SwarmCoverageVisual } from "@/app/components/home/swarm-coverage-visual";
@@ -134,7 +134,7 @@ export default function Home() {
               </h2>
             </div>
             <p className="section-copy mt-0">
-              Determina is the shared evidence engine. The domain product gives
+              Determina is the shared results engine. The domain product gives
               it the contract, scenario language, judge, and report vocabulary
               for a specific AI system.
             </p>
@@ -218,10 +218,10 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="theme-section section-shell" id="evidence">
+      <AnimatedSection className="theme-section section-shell" id="results">
         <div className="container section-grid">
           <div>
-            <p className="section-kicker">Launch evidence</p>
+            <p className="section-kicker">Launch results</p>
             <h2 className="section-title">
               The output is a release packet, not a slogan.
             </h2>
@@ -238,7 +238,7 @@ export default function Home() {
               <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </div>
-          <EvidenceDossier />
+          <ResultsDossier />
         </div>
       </AnimatedSection>
 
@@ -247,7 +247,7 @@ export default function Home() {
           <div>
             <p className="section-kicker">Platform shape</p>
             <h2 className="section-title">
-              One evidence engine. Multiple domain products.
+              One results engine. Multiple domain products.
             </h2>
             <p className="section-copy">
               The platform gives every domain the same repeatable run engine,
@@ -344,7 +344,7 @@ export default function Home() {
             <p className="section-copy">
               The docs explain the swarm model after the buyer story is clear:
               choose a domain product, pick an integration path, run workflows,
-              and read the evidence packet.
+              and read the run outputs.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link
@@ -411,7 +411,7 @@ export default function Home() {
                 <p className="mt-3 max-w-2xl text-base leading-7 theme-muted">
                   Bring the target. We will help choose the domain product,
                   implementation path, and first release question to turn into
-                  trace-backed evidence.
+                  trace-backed results.
                 </p>
               </div>
               <a

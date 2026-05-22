@@ -9,7 +9,7 @@ export function Footer() {
         <div>
           <p className="text-base font-semibold">Determina by NDETERMINA</p>
           <p className="mt-2 max-w-xl text-sm leading-6 theme-muted">
-            Behavioral evidence and launch packets for recommender, search, and agent systems.
+            Behavioral results and launch packets for recommender, search, and agent systems.
           </p>
         </div>
         <div className="flex flex-wrap gap-4 text-sm theme-muted">

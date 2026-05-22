@@ -43,7 +43,7 @@ export const workflowSteps = [
     command:
       "determina projects create --name \"Release checks\"",
     label: "Create a project",
-    body: "Create the hosted workspace that owns targets, runs, artifacts, and release evidence."
+    body: "Create the hosted workspace that owns targets, runs, artifacts, and release results."
   },
   {
     command:
@@ -54,7 +54,7 @@ export const workflowSteps = [
   {
     command:
       "determina audit --project-id prj_123 --target-version-id tv_123",
-    label: "Run hosted evidence",
+    label: "Run hosted results",
     body: "Queue a hosted audit and let the platform/private core produce artifacts and status."
   },
   {

@@ -16,7 +16,7 @@ export function DocsFooter() {
             </span>
           </div>
           <p className="docs-footer-tagline">
-            Repeatable Specs, durable Evidence Bundles, and Reports your team can audit before
+            Repeatable Specs, durable Results Bundles, and Reports your team can audit before
             every release.
           </p>
         </div>

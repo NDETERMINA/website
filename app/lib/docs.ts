@@ -88,7 +88,7 @@ export const docSidebarIA: Array<{ group: string; pages: Array<{ slug: string; n
       { slug: "swarm-model", navTitle: "Mental model" },
       { slug: "target-contract", navTitle: "Targets" },
       { slug: "domain-products", navTitle: "Specs & Domains" },
-      { slug: "outputs", navTitle: "Evidence Bundles" }
+      { slug: "outputs", navTitle: "Results Bundles" }
     ]
   },
   {
@@ -185,19 +185,19 @@ export const docsPages: DocPage[] = [
     navTitle: "Overview",
     kind: "overview",
     description:
-      "Run repeatable Specs against your Target, write an Evidence Bundle every time, and ship the Report your team can audit before each release.",
+      "Run repeatable Specs against your Target, write an Results Bundle every time, and ship the Report your team can audit before each release.",
     icon: BookOpen,
     next: "quickstart",
     cards: [
       {
         title: "Quickstart",
-        description: "Install the CLI, run an audit, inspect the Evidence Bundle — under five minutes.",
+        description: "Install the CLI, run an audit, inspect the Results Bundle — under five minutes.",
         href: "/docs/quickstart",
         cta: "Start"
       },
       {
         title: "Mental model",
-        description: "Project → Target → Spec → Run → Evidence Bundle → Report. The six nouns in depth.",
+        description: "Project → Target → Spec → Run → Results Bundle → Report. The six nouns in depth.",
         href: "/docs/swarm-model",
         cta: "Read"
       },
@@ -208,21 +208,21 @@ export const docsPages: DocPage[] = [
         cta: "Read"
       },
       {
-        title: "Evidence Bundles",
+        title: "Results Bundles",
         description: "Every file every Run writes, and how Reports are derived from them.",
         href: "/docs/outputs",
         cta: "Read"
       }
     ],
     mentalModel: {
-      steps: ["project", "target", "spec", "run", "evidence bundle", "report"],
+      steps: ["project", "target", "spec", "run", "results bundle", "report"],
       rows: [
         { noun: "Project", desc: "The container you configure once: default Target, scorers, retention, integrations.", href: "/docs/swarm-model" },
         { noun: "Target", desc: "The system under test — an HTTP service, Python callable, or agent endpoint.", href: "/docs/target-contract" },
         { noun: "Spec", desc: "A reusable description of what 'correct' looks like for the Target: inputs, expectations, scorers.", href: "/docs/domain-products" },
         { noun: "Run", desc: "One deterministic execution of a Spec against a Target with a fixed seed.", href: "/docs/workflows" },
-        { noun: "Evidence Bundle", desc: "The full set of artifacts the Run produces: traces, manifest, scorer outputs, sidecars.", href: "/docs/outputs" },
-        { noun: "Report", desc: "Human-readable summary derived from one or two Evidence Bundles, with a pass / warn / fail decision.", href: "/docs/outputs" }
+        { noun: "Results Bundle", desc: "The full set of artifacts the Run produces: traces, manifest, scorer outputs, sidecars.", href: "/docs/outputs" },
+        { noun: "Report", desc: "Human-readable summary derived from one or two Results Bundles, with a pass / warn / fail decision.", href: "/docs/outputs" }
       ]
     },
     sections: []
@@ -232,14 +232,14 @@ export const docsPages: DocPage[] = [
     title: "Mental Model",
     navTitle: "Mental model",
     description:
-      "The core Determina model: release questions become seeded behavior swarms, target interactions, judged traces, and launch evidence.",
+      "The core Determina model: release questions become seeded behavior swarms, target interactions, judged traces, and launch results.",
     icon: Workflow,
     next: "domain-products",
     sections: [
       {
         title: "Framework Flow",
         body:
-          "A run moves from release question to domain selection, target integration, seeded behavior coverage, trace judging, and evidence. The flow stays stable while each domain changes the behavior language.",
+          "A run moves from release question to domain selection, target integration, seeded behavior coverage, trace judging, and results. The flow stays stable while each domain changes the behavior language.",
         visual: "domain-flow"
       },
       {
@@ -247,12 +247,12 @@ export const docsPages: DocPage[] = [
         table: {
           headings: ["Term", "Meaning"],
           rows: [
-            ["Release question", "The behavior risk the team wants evidence for before launch."],
+            ["Release question", "The behavior risk the team wants results for before launch."],
             ["Swarm", "A repeatable set of users, queries, tasks, journeys, or scenarios used to exercise the target."],
             ["Target", "The AI system under test: a service, callable, agent graph, or protocol endpoint."],
             ["Trace", "The recorded interaction between a seeded actor/task and the target."],
             ["Judge", "The domain-owned scorer that interprets completed traces."],
-            ["Evidence", "Human-readable and machine-readable artifacts used for release review."]
+            ["Results", "Human-readable and machine-readable artifacts used for release review."]
           ]
         }
       },
@@ -260,7 +260,7 @@ export const docsPages: DocPage[] = [
         title: "What Makes It Different",
         bullets: [
           "The run is replayable enough to compare releases, not a one-off prompt review.",
-          "The judge is domain-shaped, so the evidence uses the right failure language.",
+          "The judge is domain-shaped, so the results uses the right failure language.",
           "The artifacts preserve inputs, outputs, traces, manifests, and compare decisions.",
           "Generation is an optional coverage layer, not the source of truth for scoring."
         ]
@@ -413,7 +413,7 @@ export const docsPages: DocPage[] = [
       {
         title: "What It Tests",
         bullets: [
-          "Current-information tasks that should use a search tool and cite grounded evidence.",
+          "Current-information tasks that should use a search tool and cite grounding details.",
           "Support tasks that should call a knowledge-base tool with useful arguments.",
           "Multi-turn follow-ups where state needs to survive across conversation context.",
           "Unsafe account-access tasks where refusal calibration matters.",
@@ -497,7 +497,7 @@ export const docsPages: DocPage[] = [
     navTitle: "Quickstart",
     kind: "quickstart",
     description:
-      "Install Determina, run an audit against a target, and inspect the evidence bundle — in under five minutes.",
+      "Install Determina, run an audit against a target, and inspect the results bundle — in under five minutes.",
     icon: Terminal,
     next: "swarm-model",
     steps: [
@@ -541,7 +541,7 @@ export const docsPages: DocPage[] = [
         verify: "determina-output/ contains report.md, results.json, traces.jsonl, and run_manifest.json."
       },
       {
-        title: "Inspect the evidence bundle",
+        title: "Inspect the results bundle",
         body:
           "The bundle is the durable artifact for a release decision. Read report.md first, then dig into traces.jsonl for representative interactions.",
         callout: {
@@ -673,10 +673,10 @@ export const docsPages: DocPage[] = [
   },
   {
     slug: "outputs",
-    title: "Evidence Bundles & Reports",
-    navTitle: "Evidence Bundles",
+    title: "Results Bundles & Reports",
+    navTitle: "Results Bundles",
     description:
-      "Determina writes readable and machine-readable evidence: reports, JSON, traces, manifests, semantic sidecars, and regression packets.",
+      "Determina writes readable and machine-readable results: reports, JSON, traces, manifests, semantic sidecars, and regression packets.",
     icon: FileJson2,
     next: "generation",
     sections: [
@@ -714,7 +714,7 @@ export const docsPages: DocPage[] = [
     title: "Generated Coverage",
     navTitle: "Generation",
     description:
-      "Generated coverage expands swarms from testing briefs. It is currently most mature for the recommender domain and remains optional beside deterministic evidence.",
+      "Generated coverage expands swarms from testing briefs. It is currently most mature for the recommender domain and remains optional beside deterministic results.",
     icon: Sparkles,
     next: "plan-first",
     sections: [
@@ -878,7 +878,7 @@ export function getDocPage(slug: string) {
 export const docHomeCards = [
   {
     title: "Understand swarm testing",
-    description: "Learn how release questions become seeded behavior swarms and trace-backed evidence.",
+    description: "Learn how release questions become seeded behavior swarms and trace-backed results.",
     href: "/docs/swarm-model",
     icon: Workflow
   },
@@ -919,7 +919,7 @@ export const docHomeCards = [
     icon: ListChecks
   },
   {
-    title: "Read the evidence packet",
+    title: "Read the run outputs",
     description: "Understand reports, JSON, traces, manifests, semantic sidecars, and regression outputs.",
     href: "/docs/outputs",
     icon: FileJson2

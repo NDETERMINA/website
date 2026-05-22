@@ -10,18 +10,18 @@ import {
 } from "lucide-react";
 
 export const heroCopy = {
-  eyebrow: "Behavioral evidence for AI products",
+  eyebrow: "Behavioral results for AI products",
   label: "Public package",
   qualifier: "Domain products: recommenders, search, agents",
   headline: "Find the AI behavior your tests miss.",
   subtitle:
-    "Determina runs controlled domain trials before launch, then writes judged traces and evidence your team can review, rerun, and compare.",
+    "Determina runs controlled domain trials before launch, then writes judged traces and results your team can review, rerun, and compare.",
   cta: "Request a domain pilot"
 };
 
 export const heroProofPoints = [
   ["Hidden failures", "trust collapse, freshness gaps, tool misuse"],
-  ["Rerunnable evidence", "fixed seeds, traces, reports, manifests"],
+  ["Rerunnable results", "fixed seeds, traces, reports, manifests"],
   ["Launch decisions", "baseline vs candidate before release"]
 ];
 
@@ -36,7 +36,7 @@ export const clientBenefits = [
     icon: Workflow,
     title: "Replace vibe checks",
     text:
-      "Turn release concerns into repeatable domain runs with saved traces, judges, and rerunnable evidence."
+      "Turn release concerns into repeatable domain runs with saved traces, judges, and rerunnable results."
   },
   {
     icon: GitCompareArrows,
@@ -60,7 +60,7 @@ export const liveCommands = [
       "determina audit --domain recommender --target-url http://127.0.0.1:8051 --scenario returning-user-home-feed",
     state: "slate behavior judged",
     artifact: "trust_collapse + repetition risk",
-    trace: "User trial -> Recommender -> Evidence"
+    trace: "User trial -> Recommender -> Results"
   },
   {
     id: "search",
@@ -69,7 +69,7 @@ export const liveCommands = [
       "determina audit --domain search --target-url http://127.0.0.1:8051 --scenario time-sensitive-query",
     state: "ranked results judged",
     artifact: "freshness + relevance signals",
-    trace: "Query trial -> Search -> Evidence"
+    trace: "Query trial -> Search -> Results"
   },
   {
     id: "agents",
@@ -78,7 +78,7 @@ export const liveCommands = [
       "determina audit --domain agents --scenario current-info-tool-use --driver-config-path ./driver_config.json",
     state: "trajectory judged",
     artifact: "tool_use + grounding + refusal",
-    trace: "Task trial -> Agent -> Evidence"
+    trace: "Task trial -> Agent -> Results"
   },
   {
     id: "compare",
@@ -96,7 +96,7 @@ export const liveCommands = [
       'determina run-swarm --domain recommender --target-url http://127.0.0.1:8051 --brief "test trust collapse"',
     state: "generated recommender coverage saved",
     artifact: "run_plan.json + run_manifest.json",
-    trace: "Brief -> Recommender swarm -> Evidence"
+    trace: "Brief -> Recommender swarm -> Results"
   }
 ];
 
@@ -106,7 +106,7 @@ export const pipelineSteps = [
   "Target run",
   "Trace ledger",
   "Judge",
-  "Evidence"
+  "Results"
 ];
 
 export const platformLayers = [
@@ -132,21 +132,21 @@ export const platformLayers = [
   },
   {
     icon: Workflow,
-    title: "Behavior evidence",
+    title: "Behavior results",
     text: "Trace ledgers, failure slices, semantic sidecars, and manifests preserve how each conclusion was reached."
   }
 ];
 
 export const domainNodes = [
-  ["Evidence engine", "Seeds, planning, execution"],
+  ["Results engine", "Seeds, planning, execution"],
   ["Domain product", "Contract, scenarios, judge"],
   ["Target run", "HTTP, Python, protocol driver"],
-  ["Evidence", "Traces, reports, manifests"],
+  ["Results", "Traces, reports, manifests"],
   ["Release", "Compare, policy, review"]
 ];
 
-export const evidenceCards = [
-  ["Executive summary", "release question answered with trace-backed evidence"],
+export const resultsCards = [
+  ["Executive summary", "release question answered with trace-backed results"],
   ["Domain finding", "trust collapse, freshness gap, or tool-use regression"],
   ["Trace ledger", "seeded user/task interactions preserved step by step"],
   ["Semantic advisory", "optional explanation sidecar, non-gating"],
@@ -167,13 +167,13 @@ export const docTiles = [
   ["Swarm model", "How release questions become seeded behavior swarms.", "/docs/swarm-model"],
   ["Domain products", "Choose recommender, search, or agent trajectory testing.", "/docs/domain-products"],
   ["Integration paths", "Native HTTP, schema-mapped HTTP, Python, and agent drivers.", "/docs/integration-paths"],
-  ["Evidence artifacts", "Reports, traces, JSON, manifests, and regression packets.", "/docs/outputs"]
+  ["Results artifacts", "Reports, traces, JSON, manifests, and regression packets.", "/docs/outputs"]
 ];
 
 export const heroStats = [
   ["Problem", "behavior risk"],
   ["Coverage", "repeatable"],
-  ["Evidence", "trace-backed"],
+  ["Results", "trace-backed"],
   ["Decision", "launch packet"]
 ];
 
@@ -188,7 +188,7 @@ export const docsCtaCards = docTiles;
 export const sectionLabels = {
   workflow: "Live workflow",
   domains: "Platform stack",
-  evidence: "Evidence dossier",
+  results: "Results dossier",
   business: "Platform advantages",
   firstDomain: "Domain products",
   docs: "Docs first"
@@ -242,7 +242,7 @@ export const platformFlow = [
   ["Domain coverage", "Users, queries, or tasks shaped for the product line."],
   ["Target interaction", "HTTP, Python, or protocol drivers call the system."],
   ["Judged traces", "Domain judges score behavior and surface risks."],
-  ["Launch evidence", "Reports, JSON, traces, manifests, and compare decisions."]
+  ["Launch results", "Reports, JSON, traces, manifests, and compare decisions."]
 ];
 
 export const sharedPlatformCapabilities = [
@@ -251,5 +251,5 @@ export const sharedPlatformCapabilities = [
   "domain judging",
   "artifact manifests",
   "baseline/candidate compare",
-  "CI-ready evidence"
+  "CI-ready results"
 ];
