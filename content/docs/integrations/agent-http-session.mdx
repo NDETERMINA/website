@@ -1,0 +1,30 @@
+## Session lifecycle
+
+Agent HTTP-session integrations expose a session-aware service that Determina can call during agent Behavior Trials. The contract covers metadata, session start, task execution, and close behavior.
+
+This path is for deployed-style agents. Use the native URL shortcut when your service follows the default contract. Use a driver config when paths, headers, or lifecycle details differ.
+
+## Default URL shortcut
+
+For local setup against a default HTTP-session service:
+
+<CodeBlock language="shell" code={`determina check-system \
+  --system-type agents \
+  --system-url http://127.0.0.1:8065`} />
+
+## Custom driver configs
+
+<CodeBlock language="shell" code={`determina init \
+  --system-type agents \
+  --driver-kind http_session \
+  --base-url http://127.0.0.1:8065 \
+  --output-path ./agent-driver-config.json \
+  --non-interactive
+
+determina check-system \
+  --system-type agents \
+  --driver-config-path ./agent-driver-config.json`} />
+
+<Callout variant="warning" title="Observe mode boundary">
+Agent HTTP-session output can record visible HTTP interactions and external call summaries. It does not imply hidden tool interception or managed production side-effect blocking.
+</Callout>

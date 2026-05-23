@@ -1,0 +1,28 @@
+## Risks Determina tests
+
+Recommender Behavior Trials focus on release risks that aggregate metrics often hide:
+
+- slate repetition
+- novelty drift
+- cold start weakness
+- trust collapse
+- abandonment by impatient or exploratory users
+- candidate behavior changes relative to a baseline
+
+## Supported workflows
+
+Recommender is the deepest public System Type today. It supports native HTTP and schema-mapped HTTP setup, hosted audit and compare workflows, and platform/core-owned generated scenario, generated persona, and `run-swarm` coverage.
+
+<CodeBlock language="shell" code={`determina run-swarm \
+  --project-id <project-id> \
+  --system-version-id <system-version-id> \
+  --system-type recommender \
+  --brief "test trust collapse and weak first-slate behavior"`} />
+
+<Callout variant="note" title="Hosted lane">
+Hosted `run-swarm` uses `--project-id` and `--system-version-id`. Generated coverage workflows belong in Advanced docs.
+</Callout>
+
+## Results language
+
+Recommender Results Packets should describe cohorts, slates, click/skip/abandon behavior, repetition, novelty, cold start, and trust risks in the language release teams use to decide whether a candidate is safer than the baseline.

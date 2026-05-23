@@ -1,0 +1,45 @@
+## Current support
+
+Generated Test Cases expand a testing brief into reusable coverage artifacts. They are an advanced workflow, not the default first-run path.
+
+In the public CLI, generated coverage command shapes are present but generation is platform/core-owned. If an installed package reports the command as hosted-only, use the platform workflow rather than treating generation as a local smoke test.
+
+<DataTable
+  headings={["System Type", "Current generated support"]}
+  rows={[
+    ["Recommender", "Strongest path: generated scenarios, generated personas, and run-swarm workflows through the platform/core workflow."],
+    ["Search", "Generated scenarios and personas feed audit or compare coverage. Search run-swarm parity is not claimed here."],
+    ["Agents", "Generated task/environment packs and sidecars are review artifacts, not generated customer agents."]
+  ]}
+/>
+
+## Recommender and search packs
+
+The command shapes are:
+
+<CodeBlock language="shell" code={`determina generate-scenarios \
+  --system-type search \
+  --mode fixture \
+  --brief "fresh typo and ambiguous query behavior" \
+  --output-dir ./search-generated
+
+determina generate-personas \
+  --system-type search \
+  --mode fixture \
+  --brief "freshness-sensitive and research-heavy users" \
+  --population-size 4 \
+  --output-dir ./search-generated`} />
+
+Generated packs write sidecars such as `generated_coverage_plan.json` and `generated_coverage_manifest.json`. These explain provenance, selected cases, validation status, hashes, and deferred cases when generation is available in the configured workflow.
+
+## Agent packs
+
+Agents use generated local task/environment packs instead of generic scenario/persona packs.
+
+<CodeBlock language="shell" code={`determina generate-agent-pack \
+  --brief "support agent current-info and refusal coverage" \
+  --output-dir ./agent-generated`} />
+
+<Callout variant="warning" title="Agent boundary">
+Generated agent packs do not generate customer agent brains, hosted sandboxes, managed secrets, managed egress, production effectors, or release approvals.
+</Callout>

@@ -1,0 +1,23 @@
+## MCP stdio
+
+Use the MCP stdio driver when a local MCP server exposes the tool or agent task boundary you want Determina to exercise.
+
+<CodeBlock language="shell" code={`determina init \
+  --system-type agents \
+  --driver-kind mcp_stdio \
+  --command python \
+  --arg ./server.py \
+  --output-path ./agent-mcp-config.json \
+  --non-interactive`} />
+
+## LangGraph-style objects
+
+LangGraph-style Python objects use the in-process lane. Keep the driver config explicit so the Results Packet records what was invoked.
+
+<CodeBlock language="shell" code={`determina check-system \
+  --system-type agents \
+  --driver-config-path ./agent-langgraph-config.json`} />
+
+## What is not claimed
+
+These lanes are local integration setup paths. They do not claim hosted sandbox isolation, managed secrets, production effector control, browser automation, or automatic release approval.

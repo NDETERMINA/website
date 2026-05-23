@@ -1,0 +1,23 @@
+## What CI should do
+
+CI should run or fetch Determina evidence, attach Results Packet artifacts, and make the behavior review visible. It should not silently approve a production change without your existing process.
+
+## GitHub Actions example
+
+Use placeholders for platform IDs and tokens. Store API tokens in CI secrets.
+
+<CodeBlock language="yaml" code={`- name: Run Determina compare
+  run: |
+    determina compare \
+      --project-id <project-id> \
+      --baseline-id <baseline-id> \
+      --candidate-system-version-id <candidate-system-version-id> \
+      --system-type recommender \
+      --output-dir ./determina-output
+  env:
+    DETERMINA_API_BASE_URL: https://api.ndetermina.com
+    DETERMINA_API_TOKEN: <ci-secret-token>`} />
+
+## Review the output
+
+Upload the Results Packet or selected artifacts as CI artifacts and link them from the pull request. Treat `pass`, `warn`, and `fail` as review signals for humans and policy, not as automatic deployment authority.

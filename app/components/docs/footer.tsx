@@ -16,8 +16,8 @@ export function DocsFooter() {
             </span>
           </div>
           <p className="docs-footer-tagline">
-            Repeatable Specs, durable Results Bundles, and Reports your team can audit before
-            every release.
+            Repeatable Behavior Trials, durable Results Packets, and behavior evidence your
+            team can audit before launches, rollouts, and regressions.
           </p>
         </div>
 
@@ -25,8 +25,8 @@ export function DocsFooter() {
           title="Docs"
           links={[
             { label: "Overview", href: "/docs" },
-            { label: "Quickstart", href: "/docs/quickstart" },
-            { label: "Mental model", href: "/docs/swarm-model" },
+            { label: "Hosted quickstart", href: "/docs/quickstart" },
+            { label: "Results Packets", href: "/docs/results-packets" },
             { label: "CLI reference", href: "/docs/cli-reference" }
           ]}
         />

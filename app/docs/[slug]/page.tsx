@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import { DocsArticle } from "@/app/components/docs/article";
-import { docsPages, getDocPage } from "@/app/lib/docs";
+import { getDocPage, getDocPageOrAlias, getStaticDocParams, hrefForDoc } from "@/app/lib/docs";
 
 export function generateStaticParams() {
-  return docsPages
-    .filter((p) => p.slug !== "overview")
-    .map((p) => ({ slug: p.slug }));
+  return getStaticDocParams();
 }
 
 export async function generateMetadata({
@@ -30,7 +28,8 @@ export default async function DocPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const page = getDocPage(slug);
+  const { page, alias } = getDocPageOrAlias(slug);
+  if (alias) redirect(hrefForDoc(alias.to));
   if (!page) notFound();
   return <DocsArticle page={page} />;
 }

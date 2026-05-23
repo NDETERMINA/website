@@ -1,0 +1,40 @@
+## API and platform ID errors
+
+Check API configuration first:
+
+<CodeBlock language="shell" code={`echo "$DETERMINA_API_BASE_URL"
+test -n "$DETERMINA_API_TOKEN"
+determina api-health`} />
+
+Authenticated hosted commands require valid project, system, version, run, baseline, or artifact IDs. Placeholder values such as `<project-id>` must be replaced before running.
+
+## System or driver errors
+
+For native local HTTP setup, confirm the service is running and use `check-system`.
+
+<CodeBlock language="shell" code={`determina check-system \
+  --system-type recommender \
+  --system-url http://127.0.0.1:8051`} />
+
+For schema-mapped HTTP, provider drivers, MCP, in-process Python, or custom agent sessions, validate the driver config path and required fields.
+
+## Missing output
+
+Pass `--output-dir` when you need a predictable local folder. For hosted runs, download artifacts by artifact ID when the platform returns them.
+
+<CodeBlock language="shell" code={`determina artifacts download \
+  --project-id <project-id> \
+  --artifact-id <artifact-id> \
+  --output-dir ./determina-output`} />
+
+## Capability mismatch
+
+Most confusing failures come from using a command in the wrong lane:
+
+- Hosted production commands use platform IDs.
+- Local no-key setup commands can validate direct URLs, driver configs, source specs, upload previews, or existing artifact files.
+- Installed-package execution commands such as local `audit`, local `compare`, local `run-swarm`, plan execution, generation, runs, and corpus workflows can fail closed unless your environment has the corresponding platform/core capability.
+- Search supports generated coverage through advanced workflows, but search `run-swarm` parity is not claimed here.
+- Agent generated packs are task/environment review artifacts, not generated customer agents.
+
+<CTA title="Check the CLI reference" description="Use command groups to confirm whether the command belongs to hosted production, local setup, artifacts, or advanced workflows." href="/docs/cli-reference" action="CLI Reference" />

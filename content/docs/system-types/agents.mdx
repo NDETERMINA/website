@@ -1,0 +1,29 @@
+## Risks Determina tests
+
+Agent Behavior Trials review trajectories where final-output checks can miss the failure:
+
+- tool misuse
+- grounding gaps
+- refusal failure
+- multi-turn state loss
+- unsafe effects
+- external call pressure
+- latency cliffs
+
+## Supported drivers
+
+Supported agent setup lanes include default HTTP session services, custom HTTP-session driver configs, in-process Python or LangGraph-style objects, OpenAI-compatible Chat Completions, Anthropic Messages, and MCP stdio.
+
+<CodeBlock language="shell" code={`determina audit \
+  --project-id <project-id> \
+  --system-version-id <system-version-id> \
+  --scenario current-info-tool-use \
+  --output-dir ./agent-audit`} />
+
+## Local and hosted boundaries
+
+Agent docs must be explicit about lane and maturity. Local task/environment packs, generated agent packs, stress-swarm planning, external call variants, and corpus review are advanced/gated workflows, not default installed-package execution paths. They do not imply generated customer agents, hosted sandboxed side effects, managed production effectors, hidden tool interception, or automatic release approval.
+
+<Callout variant="warning" title="Side effects">
+Determina records and checks configured interactions. It does not perform real emails, purchases, deletes, deploys, refunds, production database mutations, or browser/computer-use automation unless a supported, explicit, safe test path says so.
+</Callout>

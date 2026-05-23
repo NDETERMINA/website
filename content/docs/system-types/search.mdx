@@ -1,0 +1,27 @@
+## Risks Determina tests
+
+Search Behavior Trials focus on:
+
+- relevance loss
+- freshness gaps
+- ambiguous intent
+- typo recovery
+- zero-result behavior
+- personalization drift
+- baseline-vs-candidate ranking changes
+
+## Supported workflows
+
+Search supports native HTTP and schema-mapped HTTP setup, hosted audit and compare workflows, and generated scenario/persona coverage through advanced platform-owned paths.
+
+<CodeBlock language="shell" code={`determina audit \
+  --project-id <project-id> \
+  --system-version-id <system-version-id> \
+  --scenario time-sensitive-query \
+  --output-dir ./search-audit`} />
+
+## Generated test case boundary
+
+Search supports generated scenario and persona coverage for audit or compare workflows. Do not present search as having full `run-swarm` parity with recommender; current public docs keep search generation under advanced/platform-owned workflows.
+
+<CTA title="Generate reusable search packs" description="Use generated packs as an advanced workflow after the basic search audit path works." href="/docs/generated-test-cases" action="Generated Test Cases" />

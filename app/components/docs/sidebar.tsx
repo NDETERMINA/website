@@ -7,7 +7,7 @@ import type { ReactNode } from "react";
 export type DocsSidebarItem = {
   slug: string;
   navTitle: string;
-  badge?: "new" | "beta" | "soon";
+  badge?: "new" | "beta" | "soon" | "local" | "advanced";
 };
 
 export type DocsSidebarGroupData = {

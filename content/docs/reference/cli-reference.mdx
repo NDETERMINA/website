@@ -1,0 +1,59 @@
+## Hosted production commands
+
+<DataTable
+  headings={["Command", "Use it for"]}
+  rows={[
+    ["api-health", "Check API connectivity."],
+    ["projects list/create", "Manage hosted Projects."],
+    ["systems list/create", "Register hosted Systems and initial setup config."],
+    ["system-versions list/create", "Register concrete baseline or candidate versions."],
+    ["audit --project-id --system-version-id", "Queue and poll a hosted Behavior Trial."],
+    ["run-swarm --project-id --system-version-id", "Queue a platform-backed intent-driven workflow for enabled System Types."],
+    ["compare --project-id --baseline-id --candidate-system-version-id", "Compare a candidate against a baseline."],
+    ["runs status/cancel", "Inspect or cancel hosted runs."],
+    ["artifacts download", "Download platform artifacts."]
+  ]}
+/>
+
+## Local no-key setup commands
+
+<DataTable
+  headings={["Command", "Use it for"]}
+  rows={[
+    ["init", "Generate starter driver configs."],
+    ["check-system", "Validate a local external endpoint or driver config."],
+    ["artifacts inspect", "Inspect a local artifact file or directory."],
+    ["validate-spec", "Validate a source spec envelope without executing."],
+    ["preview-upload", "Preview a hosted request shape from a source spec."]
+  ]}
+/>
+
+## Gated platform/core command surfaces
+
+<DataTable
+  headings={["Command", "Use it for"]}
+  rows={[
+    ["audit --system-url", "Legacy/local execution shape; public CLI asks for hosted platform IDs."],
+    ["compare --baseline-url --candidate-url", "Legacy/local compare shape; public CLI asks for hosted platform IDs."],
+    ["runs index/list/show/promote-baseline/open", "Run history workflows that require platform/core capability."],
+    ["corpus index/import/reconcile/health/list/show/open", "Corpus review workflows that require platform/core capability."],
+    ["serve-reference", "Reference service workflow gated outside the installed public package."]
+  ]}
+/>
+
+## Advanced commands
+
+<DataTable
+  headings={["Command", "Use it for"]}
+  rows={[
+    ["plan-from-spec", "Compile a source spec into a run plan."],
+    ["plan-run", "Create a run plan through platform/core-owned planning."],
+    ["execute-plan", "Execute a saved run plan through platform/core-owned execution."],
+    ["generate-scenarios / generate-personas", "Generate recommender or search packs through platform/core workflows."],
+    ["generate-agent-pack", "Generate agent task/environment packs through platform/core workflows."]
+  ]}
+/>
+
+<Callout variant="warning" title="Mode matters">
+Hosted `audit`, `run-swarm`, and `compare` reject local-only system options such as direct URLs or driver config paths. Create platform Systems and System Versions first.
+</Callout>

@@ -1,0 +1,23 @@
+## What provider drivers cover
+
+Provider drivers let local agent audits use model API boundaries such as OpenAI-compatible Chat Completions or Anthropic Messages. Use this when the provider API is the explicit integration surface being reviewed.
+
+## Safe configuration
+
+Generate a starter config and keep API keys in environment variables:
+
+<CodeBlock language="shell" code={`determina init \
+  --system-type agents \
+  --driver-kind openai_chat_completions \
+  --model <model-name> \
+  --api-key-env OPENAI_API_KEY \
+  --output-path ./agent-provider-config.json \
+  --non-interactive`} />
+
+<CodeBlock language="shell" code={`determina check-system \
+  --system-type agents \
+  --driver-config-path ./agent-provider-config.json`} />
+
+## Boundaries
+
+Provider drivers do not make Determina an agent runtime, do not observe hidden provider internals, and do not capture unmanaged external side effects. In the public CLI, local setup checks validate the config shape; hosted Behavior Trials own execution.

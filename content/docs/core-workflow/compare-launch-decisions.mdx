@@ -1,0 +1,32 @@
+## Compare baseline and candidate
+
+Compare runs put a candidate System Version next to a baseline so reviewers can see whether behavior improved, regressed, or needs more investigation.
+
+<CodeBlock language="shell" code={`determina compare \
+  --project-id <project-id> \
+  --baseline-id <baseline-id> \
+  --candidate-system-version-id <candidate-system-version-id> \
+  --system-type search \
+  --brief "freshness and ambiguous intent behavior review" \
+  --output-dir ./determina-output`} />
+
+## Interpret the decision
+
+Launch Decisions summarize whether the Results Packet supports pass, warn, or fail for the configured coverage. Treat the decision as release-review evidence, not an automatic deployment command.
+
+<DataTable
+  headings={["Decision", "Meaning"]}
+  rows={[
+    ["Pass", "No blocking behavior risk was found under the configured compare coverage."],
+    ["Warn", "The packet has findings or uncertainty that needs human review."],
+    ["Fail", "The packet contains behavior evidence that should block the next change until resolved."]
+  ]}
+/>
+
+## What compare does not do
+
+Compare does not deploy code, approve a change by itself, or prove all possible inputs are safe. It gives the review team trace-backed evidence under the configured behavior coverage.
+
+<Callout variant="warning" title="Human gate">
+Wire compare output into CI as evidence. Keep final release approval in your existing review process.
+</Callout>

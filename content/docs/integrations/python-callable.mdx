@@ -1,0 +1,34 @@
+## Where Python callables fit
+
+Use Python callable integration when the System under review is still local to Python: a function, class, class instance, model wrapper, ranker, or agent object.
+
+This is a local setup and development lane. It is useful for creating a driver config before a hosted System Version exists.
+
+## Local driver configs
+
+Generate a starter config for a Python import path:
+
+<CodeBlock language="shell" code={`determina init \
+  --system-type recommender \
+  --driver-kind in_process \
+  --import-path my_package.recommender:predict \
+  --output-path ./determina-driver-config.json \
+  --non-interactive`} />
+
+Validate the generated config locally before moving it into hosted setup:
+
+<CodeBlock language="shell" code={`determina check-system \
+  --system-type recommender \
+  --driver-config-path ./determina-driver-config.json`} />
+
+<Callout variant="warning" title="Execution boundary">
+The public CLI does not execute local Python audits directly. Use this page to prepare and validate config, then register the System for hosted Behavior Trials.
+</Callout>
+
+## Examples
+
+Start from the source examples when exact wrapper shape matters:
+
+- [Recommender Python API example](https://github.com/NDETERMINA/determina/tree/main/examples/determina/recommender_in_process_python_api)
+- [Agent Python API example](https://github.com/NDETERMINA/determina/tree/main/examples/determina/agent_in_process_python_api)
+- [Agent LangGraph-style example](https://github.com/NDETERMINA/determina/tree/main/examples/determina/agent_langgraph_in_process)

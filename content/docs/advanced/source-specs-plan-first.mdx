@@ -1,0 +1,36 @@
+## When to use this
+
+Use source specs and plan-first workflows when release review, reproducible handoff, or generated coverage selection needs to happen before execution.
+
+This is an advanced lane. Most readers should start with hosted quickstart, local smoke test, or a direct integration guide first.
+
+## Validate and plan
+
+The installed public package can validate the public source spec envelope and preview the platform upload shape without an API call:
+
+<CodeBlock language="shell" code={`determina validate-spec \
+  --spec-path ./determina-spec.json
+
+determina preview-upload \
+  --spec-path ./determina-spec.json \
+  --project-id <project-id>`} />
+
+Full plan compilation is platform/core-owned in the current public CLI. The command shape is:
+
+<CodeBlock language="shell" code={`determina plan-run \
+  --workflow audit \
+  --system-type search \
+  --system-url http://127.0.0.1:8052 \
+  --scenario time-sensitive-query \
+  --output-dir ./planned-search-audit`} />
+
+## Execute a saved plan
+
+Saved plan execution is also platform/core-owned in the public CLI:
+
+<CodeBlock language="shell" code={`determina execute-plan \
+  --run-plan-path ./planned-search-audit/run_plan.json`} />
+
+<Callout variant="note" title="Review artifact">
+The run plan is useful when a human or another system needs to inspect exactly what will run before execution.
+</Callout>

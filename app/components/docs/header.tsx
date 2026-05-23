@@ -21,7 +21,7 @@ export function DocsHeader({ searchEntries }: { searchEntries: SearchEntry[] }) 
             color: "var(--docs-text)",
             fontSize: 15,
             fontWeight: 600,
-            letterSpacing: "-0.01em"
+            letterSpacing: 0
           }}
         >
           <span>Determina</span>
@@ -42,6 +42,7 @@ export function DocsHeader({ searchEntries }: { searchEntries: SearchEntry[] }) 
           href="https://ndetermina.com"
           target="_blank"
           rel="noreferrer"
+          className="docs-header-by"
           style={{
             display: "inline-flex",
             alignItems: "center",
@@ -57,14 +58,14 @@ export function DocsHeader({ searchEntries }: { searchEntries: SearchEntry[] }) 
             style={{
               color: "var(--docs-text-muted)",
               fontWeight: 600,
-              letterSpacing: "0.1em"
+              letterSpacing: 0
             }}
           >
             NDETERMINA
           </span>
         </a>
 
-        <nav style={{ display: "flex", gap: 4, marginLeft: 16 }}>
+        <nav className="docs-header-main-nav" style={{ display: "flex", gap: 4, marginLeft: 16 }}>
           <Link href="/docs" className="docs-header-nav-link" style={navLink}>
             Docs
           </Link>
@@ -76,11 +77,11 @@ export function DocsHeader({ searchEntries }: { searchEntries: SearchEntry[] }) 
           </a>
         </nav>
 
-        <div style={{ flex: 1, display: "flex", justifyContent: "center", minWidth: 0 }}>
+        <div className="docs-header-search-wrap" style={{ flex: 1, display: "flex", justifyContent: "center", minWidth: 0 }}>
           <DocsSearch entries={searchEntries} />
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <div className="docs-header-actions" style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <a
             href={siteLinks.githubProduct}
             target="_blank"
@@ -113,7 +114,7 @@ export function DocsHeader({ searchEntries }: { searchEntries: SearchEntry[] }) 
               fontWeight: 600
             }}
           >
-            Request access
+            Request Pilot
           </a>
         </div>
       </div>

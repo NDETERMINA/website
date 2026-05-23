@@ -1,0 +1,36 @@
+## System vs System Version
+
+A System is the AI product surface under review. A System Version is a concrete baseline or candidate configuration for that System.
+
+<DataTable
+  headings={["Object", "Example"]}
+  rows={[
+    ["System", "Search API, Home feed recommender, Support agent"],
+    ["System Version", "prod-2026-05-20, candidate-ranker-v42, agent-policy-fix-3"]
+  ]}
+/>
+
+## Create a System
+
+<CodeBlock language="shell" code={`determina systems create \
+  --project-id <project-id> \
+  --name "Home feed recommender" \
+  --system-type recommender \
+  --kind url \
+  --config-json '{"base_url":"https://candidate.example.com"}'`} />
+
+## Create a Version
+
+<CodeBlock language="shell" code={`determina system-versions create \
+  --project-id <project-id> \
+  --system-id <system-id> \
+  --label "candidate-ranker-v42" \
+  --metadata-json '{"git_sha":"<sha>","release":"2026-05-23"}'`} />
+
+## Configuration shape
+
+The configuration shape depends on how Determina reaches the System. Use [Native HTTP](/docs/native-http) for services that speak Determina contracts directly, [Schema-Mapped HTTP](/docs/schema-mapped-http) for existing HTTP shapes, and agent integration pages for agent drivers.
+
+<Callout variant="warning" title="Do not mix lanes">
+Hosted execution commands use registered System Versions. Local no-key setup commands can use `--system-url` or `--driver-config-path` to validate shape before registration.
+</Callout>

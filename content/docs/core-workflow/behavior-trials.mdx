@@ -1,0 +1,29 @@
+## What a Behavior Trial does
+
+A Behavior Trial exercises one System Version with a system-type-specific scenario, records traces, runs deterministic checks, and writes artifacts that humans can review before a launch, rollout, or regression review.
+
+Behavior Trials are not agent runtimes and do not approve changes automatically. They produce evidence for behavior review.
+
+## Run hosted
+
+<CodeBlock language="shell" code={`determina audit \
+  --project-id <project-id> \
+  --system-version-id <system-version-id> \
+  --scenario time-sensitive-query \
+  --seed 7 \
+  --output-dir ./determina-output`} />
+
+## Scenarios and seeds
+
+Scenarios name the behavior risk being exercised. Seeds make supported trial paths repeatable enough to compare runs and investigate findings.
+
+<DataTable
+  headings={["System Type", "Example scenario"]}
+  rows={[
+    ["Recommender", "returning-user-home-feed"],
+    ["Search", "time-sensitive-query"],
+    ["Agents", "current-info-tool-use"]
+  ]}
+/>
+
+<CTA title="Read the Results Packet" description="The run is only useful if the team can inspect the traces, findings, manifests, and compare output." href="/docs/results-packets" action="Results Packets" />

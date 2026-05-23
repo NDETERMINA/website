@@ -1,0 +1,26 @@
+## When to use schema-mapped HTTP
+
+Use schema-mapped HTTP when an existing service has a stable HTTP shape but does not match Determina's native contract. A driver config maps request and response fields without forcing the service to be rewritten first.
+
+## Generate a starter config
+
+<CodeBlock language="shell" code={`determina init \
+  --system-type search \
+  --driver-kind http_schema_mapped \
+  --base-url http://127.0.0.1:8072 \
+  --endpoint-path /search \
+  --results-path results \
+  --result-id-field id \
+  --non-interactive`} />
+
+Then use the generated config in local setup and smoke tests:
+
+<CodeBlock language="shell" code={`determina check-system \
+  --system-type search \
+  --driver-config-path ./determina-driver-config.json`} />
+
+## Lane boundaries
+
+Schema-mapped HTTP is primarily a local setup and integration lane in the public CLI. For hosted production review, register the equivalent System configuration through the platform system setup path, then run hosted Behavior Trials against the created System Version.
+
+<CTA title="Register the System after setup works" description="Once the mapping is stable, move from local checks to a hosted System and System Version." href="/docs/systems-and-versions" action="Systems and Versions" />

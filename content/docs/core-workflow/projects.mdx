@@ -1,0 +1,21 @@
+## What a Project owns
+
+A Project is the hosted container for behavior review. It owns Systems, System Versions, runs, artifacts, baselines, and review history.
+
+Use one Project for a product surface or review stream that shares owners, integration settings, and behavior review expectations.
+
+## Create and list projects
+
+<CodeBlock language="shell" code={`determina projects create \
+  --name "Search behavior checks" \
+  --description "Behavior Trials for search ranker changes"
+
+determina projects list --limit 20`} />
+
+## Naming and boundaries
+
+Use names that map to the product being reviewed, not the internal model package. Good Project names are things like `Search behavior checks`, `Support agent behavior review`, or `Home feed recommender`.
+
+<Callout variant="tip" title="Boundary">
+A Project is not a local folder. Local Results Packets can be inspected and indexed, but hosted Projects live in the platform API.
+</Callout>

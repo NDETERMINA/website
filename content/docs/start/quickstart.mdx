@@ -1,0 +1,70 @@
+## Before you start
+
+You need a Determina platform API base URL, an API token, and a System configuration that can be registered as a System Version. The examples below use placeholder IDs and tokens. Replace them with values from your workspace.
+
+<Callout variant="warning" title="Access note">
+Hosted workflows require platform access. If you are only checking the package locally, use the Local Package Smoke Test instead.
+</Callout>
+
+## Configure the CLI
+
+<CodeBlock language="shell" code={`export DETERMINA_API_BASE_URL=https://api.ndetermina.com
+export DETERMINA_API_TOKEN=<token>
+
+determina api-health`} />
+
+<Verify>The health command should return successfully. Authenticated commands fail before making requests when no token is configured.</Verify>
+
+## Create a Project
+
+Projects group Systems, System Versions, runs, artifacts, baselines, and behavior review.
+
+<CodeBlock language="shell" code={`determina projects create \
+  --name "Behavior checks"
+
+determina projects list`} />
+
+## Register a System
+
+A System is the AI surface under review. The `--kind` and config shape depend on the integration path.
+
+<CodeBlock language="shell" code={`determina systems create \
+  --project-id <project-id> \
+  --name "Search API" \
+  --system-type search \
+  --kind url \
+  --config-json '{"base_url":"https://candidate.example.com"}'`} />
+
+## Create a System Version
+
+Use a System Version for the concrete baseline or candidate you want to review.
+
+<CodeBlock language="shell" code={`determina system-versions create \
+  --project-id <project-id> \
+  --system-id <system-id> \
+  --label "candidate-2026-05-23"`} />
+
+## Run a Behavior Trial
+
+The primary hosted audit command queues work through the platform API, polls for a terminal state, and can download selected artifacts.
+
+<CodeBlock language="shell" code={`determina audit \
+  --project-id <project-id> \
+  --system-version-id <system-version-id> \
+  --scenario returning-user-home-feed \
+  --output-dir ./determina-output`} />
+
+<Callout variant="info" title="System type names">
+Use `recommender`, `search`, or `agents` when a command requires `--system-type`.
+</Callout>
+
+## Download Results Packet artifacts
+
+When a hosted run returns artifact IDs, download the files you need for review.
+
+<CodeBlock language="shell" code={`determina artifacts download \
+  --project-id <project-id> \
+  --artifact-id <artifact-id> \
+  --output-dir ./determina-output`} />
+
+<CTA title="Compare a candidate next" description="After one run works, compare a candidate System Version against a baseline and interpret the Launch Decision." href="/docs/compare-launch-decisions" action="Compare and launch" />

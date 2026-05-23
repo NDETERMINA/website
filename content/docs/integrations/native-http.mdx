@@ -1,0 +1,29 @@
+## When to use native HTTP
+
+Use native HTTP when your service can expose Determina's contract directly. This is the simplest local setup path for recommender and search systems. For agents, the analogous native path is the default HTTP-session contract.
+
+Native HTTP is an integration shape. In hosted production docs, register the System and System Version first, then run hosted commands against platform IDs.
+
+## Local contract checks
+
+For local setup, use `check-system` before a full audit.
+
+<CodeBlock language="shell" code={`determina check-system \
+  --system-type recommender \
+  --system-url http://127.0.0.1:8051
+
+determina check-system \
+  --system-type search \
+  --system-url http://127.0.0.1:8052`} />
+
+<Callout variant="note" title="Hosted lane">
+Hosted production commands use registered System Versions. Do not add `--system-url` to hosted `audit`, `run-swarm`, or `compare` commands.
+</Callout>
+
+## Source contracts
+
+Use source contracts for exact request and response shapes:
+
+- [Recommender native HTTP contract](https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/EXTERNAL_SYSTEM_CONTRACT.md)
+- [Search native HTTP contract](https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/EXTERNAL_SYSTEM_CONTRACT_SEARCH.md)
+- [Agent HTTP session contract](https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/EXTERNAL_SYSTEM_CONTRACT_AGENTS.md)

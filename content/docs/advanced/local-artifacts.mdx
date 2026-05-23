@@ -1,0 +1,27 @@
+## What this lane is for
+
+Local artifact utilities help inspect existing Results Packet files without platform credentials. Run history, corpus indexing, and review workbench commands are platform/core-owned in the current public CLI and fail closed from the installed package.
+
+## Inspect artifacts
+
+<CodeBlock language="shell" code={`determina artifacts inspect ./determina-output
+determina artifacts inspect ./determina-output/report.md`} />
+
+## Corpus review
+
+Corpus command shapes exist for teams wiring platform/core-backed review workflows. They are not active no-key package smoke commands.
+
+<DataTable
+  headings={["Command surface", "Current public CLI boundary"]}
+  rows={[
+    ["runs index/list/show/open", "Run history and artifact viewing require platform/core capability."],
+    ["corpus index/list/show/open", "Corpus indexing and review workbenches require platform/core capability."],
+    ["corpus review-decision/review-state", "Review workflow state is fail-closed until the platform exposes it."]
+  ]}
+/>
+
+Some corpus promotion commands intentionally fail closed in the public CLI until platform APIs expose the corresponding capability.
+
+<Callout variant="warning" title="Local review lane">
+Use `artifacts inspect` for no-key local review. Treat run and corpus commands as gated unless your environment has the corresponding platform/core capability.
+</Callout>

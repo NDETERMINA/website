@@ -1,0 +1,47 @@
+## What this lane is for
+
+Use the local lane to verify the installed package, generate or check integration config, validate source specs, preview platform payloads, or inspect existing artifact files. Do not treat this page as the hosted production workflow.
+
+<Lane title="Local package lane" variant="note">
+No-key local commands do setup and validation only. Hosted execution commands use platform IDs and API credentials.
+</Lane>
+
+## Install
+
+<CodeBlock language="shell" code={`python -m pip install determina
+determina --help`} />
+
+## Check a local integration shape
+
+For a direct local service, use `check-system` to confirm the URL and system type shape before you register a hosted System.
+
+<CodeBlock language="shell" code={`determina check-system \
+  --system-type recommender \
+  --system-url http://127.0.0.1:8051`} />
+
+For a service that needs mapping, generate a config and validate the file:
+
+<CodeBlock language="shell" code={`determina init \
+  --system-type recommender \
+  --driver-kind http_schema_mapped \
+  --base-url http://127.0.0.1:8051 \
+  --non-interactive
+
+determina check-system \
+  --system-type recommender \
+  --driver-config-path ./determina-driver-config.json`} />
+
+<Callout variant="warning" title="Execution boundary">
+Installed-package `audit`, `compare`, and `run-swarm` execution paths now run through the Determina platform API. If you pass local-only execution flags to those commands, the public CLI asks you to use platform IDs or run the platform API locally against editable core code.
+</Callout>
+
+## Inspect local output
+
+When you already have a Results Packet or artifact directory, inspect it without platform credentials.
+
+<CodeBlock language="shell" code={`ls ./determina-output
+determina artifacts inspect ./determina-output`} />
+
+<Verify>Use this for existing artifacts. It does not run a new Behavior Trial.</Verify>
+
+<CTA title="Move to hosted when behavior review matters" description="After local setup works, register the System in a Project and run hosted Behavior Trials against System Versions." href="/docs/quickstart" action="Hosted quickstart" />

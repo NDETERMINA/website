@@ -55,10 +55,27 @@ export function DocsSearch({ entries }: { entries: Entry[] }) {
     return entries
       .filter(
         (e) =>
+          e.slug.toLowerCase().includes(needle) ||
           e.title.toLowerCase().includes(needle) ||
           e.description.toLowerCase().includes(needle) ||
           e.group.toLowerCase().includes(needle)
       )
+      .map((e, index) => {
+        const title = e.title.toLowerCase();
+        const slug = e.slug.toLowerCase();
+        const group = e.group.toLowerCase();
+        const score =
+          title === needle || slug === needle
+            ? 0
+            : title.includes(needle) || slug.includes(needle)
+              ? 1
+              : group.includes(needle)
+                ? 2
+                : 3;
+        return { entry: e, score, index };
+      })
+      .sort((a, b) => a.score - b.score || a.index - b.index)
+      .map(({ entry }) => entry)
       .slice(0, 12);
   }, [q, entries]);
 
