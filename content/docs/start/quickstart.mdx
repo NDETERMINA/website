@@ -1,6 +1,7 @@
 ## Before you start
 
-You need a Determina platform API base URL, an API token, and a System configuration that can be registered as a System Version. The examples below use placeholder IDs and tokens. Replace them with values from your workspace.
+You need a Determina platform API base URL and API token. The quickstart assumes
+you are inside the repository for the app or agent you want to review.
 
 <Callout variant="warning" title="Access note">
 Hosted workflows require platform access. If you are only checking the package locally, use the Local Package Smoke Test instead.
@@ -9,62 +10,49 @@ Hosted workflows require platform access. If you are only checking the package l
 ## Configure the CLI
 
 <CodeBlock language="shell" code={`export DETERMINA_API_BASE_URL=https://api.ndetermina.com
-export DETERMINA_API_TOKEN=<token>
+export DETERMINA_API_TOKEN=<token>`} />
 
-determina api-health`} />
+<Verify>Authenticated review commands fail before making requests when no token is configured.</Verify>
 
-<Verify>The health command should return successfully. Authenticated commands fail before making requests when no token is configured.</Verify>
+## Set up this repo
 
-## Create a Project
+Run setup once from your app or agent repository. Determina detects the repo
+shape, writes local defaults, creates a starter review recipe, checks the setup,
+and prints one next command.
 
-Projects group Systems, System Versions, runs, artifacts, baselines, and behavior review.
+<CodeBlock language="shell" code={`determina setup`} />
 
-<CodeBlock language="shell" code={`determina projects create \
-  --name "Behavior checks"
+<Verify>Setup should create or reuse `.determina/config.yaml` and a starter recipe under `determina/reviews/`.</Verify>
 
-determina projects list`} />
+## Run your first review
 
-## Register a System
+Run the starter review recipe. After setup, you can usually omit the recipe path
+and run `determina review run`; the explicit path below shows what will run.
 
-A System is the AI surface under review. The `--kind` and config shape depend on the integration path.
+<CodeBlock language="shell" code={`determina review run determina/reviews/starter.yaml`} />
 
-<CodeBlock language="shell" code={`determina systems create \
-  --project-id <project-id> \
-  --name "Search API" \
-  --system-type search \
-  --kind url \
-  --config-json '{"base_url":"https://candidate.example.com"}'`} />
+Determina attaches review metadata automatically when it is available,
+including git commit, branch, timestamp, package version, and deployment target.
+The platform uses that metadata to group reviews by commit, branch, and release.
 
-## Create a System Version
-
-Use a System Version for the concrete baseline or candidate you want to review.
-
-<CodeBlock language="shell" code={`determina system-versions create \
-  --project-id <project-id> \
-  --system-id <system-id> \
-  --label "candidate-2026-05-23"`} />
-
-## Run a Behavior Trial
-
-The primary hosted audit command queues work through the platform API, polls for a terminal state, and can download selected artifacts.
-
-<CodeBlock language="shell" code={`determina audit \
-  --project-id <project-id> \
-  --system-version-id <system-version-id> \
-  --scenario returning-user-home-feed \
-  --output-dir ./determina-output`} />
-
-<Callout variant="info" title="System type names">
-Use `recommender`, `search`, or `agents` when a command requires `--system-type`.
+<Callout variant="info" title="What setup handles">
+You do not need to create hosted records by hand before the first review. Setup and review run handle the platform bookkeeping for the quickstart path.
 </Callout>
 
-## Download Results Packet artifacts
+## Inspect results
 
-When a hosted run returns artifact IDs, download the files you need for review.
+The review command queues hosted work, polls for a terminal state by default,
+and prints the run id, decision, and platform URL when the API returns them.
 
-<CodeBlock language="shell" code={`determina artifacts download \
-  --project-id <project-id> \
-  --artifact-id <artifact-id> \
-  --output-dir ./determina-output`} />
+<CodeBlock language="shell" code={`determina runs list --root .determina/runs
+determina runs show <run-id-or-path>`} />
 
-<CTA title="Compare a candidate next" description="After one run works, compare a candidate System Version against a baseline and interpret the Launch Decision." href="/docs/compare-launch-decisions" action="Compare and launch" />
+You can also use the review-facing aliases:
+
+<CodeBlock language="shell" code={`determina review list --root .determina/runs
+determina review show <run-id-or-path>`} />
+
+Use the CLI reference when you need advanced status polling, artifact download,
+explicit platform objects, generated coverage, or direct audit/compare commands.
+
+<CTA title="Need explicit platform setup?" description="Advanced compare, CI, and deployed-system workflows can still use Systems and Versions when you need direct control." href="/docs/systems-and-versions" action="Advanced setup" />

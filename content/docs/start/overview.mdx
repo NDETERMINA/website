@@ -3,14 +3,14 @@
 Determina docs are organized by the job you are trying to finish. Start with the hosted workflow when you are reviewing a real behavior change. Use the local lane when you need to verify the package, test an integration shape, or inspect artifacts without platform setup.
 
 <CardGrid cols={2}>
-  <Card title="Hosted quickstart" description="Create a Project, register a System Version, run a Behavior Trial, and download artifacts." href="/docs/quickstart" cta="Start" />
+  <Card title="Hosted quickstart" description="Run setup, start your first hosted review, and inspect the results." href="/docs/quickstart" cta="Start" />
   <Card title="Local smoke test" description="Verify the package, config shape, source specs, and existing artifacts without platform setup." href="/docs/local-smoke-test" cta="Run locally" />
   <Card title="Integrations" description="Choose native HTTP, schema-mapped HTTP, Python, agent HTTP session, provider, MCP, or LangGraph-style paths." href="/docs/native-http" cta="Integrate" />
   <Card title="Results Packets" description="Understand reports, traces, manifests, generated coverage sidecars, compare output, and agent artifacts." href="/docs/results-packets" cta="Read results" />
 </CardGrid>
 
 <Lane title="Hosted production lane" variant="tip">
-Use platform identifiers and API credentials. Commands create or inspect Projects, Systems, System Versions, hosted runs, and downloaded artifacts.
+Use API credentials with `determina setup` and `determina review run`. Determina groups hosted reviews by commit, branch, release, and deployment metadata when available.
 </Lane>
 
 <Lane title="Local package lane" variant="note">
@@ -26,8 +26,8 @@ Every behavior review follows the same nouns:
   rows={[
     ["Project", "The hosted container for Systems, runs, artifacts, baselines, and behavior review."],
     ["System", "The AI product surface under review, such as a recommender, search ranker, or agent."],
-    ["System Version", "A concrete baseline or candidate configuration for that System."],
-    ["Behavior Trial", "A repeatable check that exercises a System Version and records what happened."],
+    ["Review", "A repeatable hosted check that runs a recipe and records what happened."],
+    ["Commit / release", "The source metadata Determina uses to group reviews over time when available."],
     ["Trace", "The observed path through inputs, outputs, tool calls, state, timing, and artifacts."],
     ["Finding", "A named behavior risk backed by trace and verifier evidence."],
     ["Results Packet", "The durable artifact set from an audit, compare, generated coverage run, or local review."],
@@ -37,6 +37,6 @@ Every behavior review follows the same nouns:
 
 ## Where to go next
 
-If you are integrating a service, start with [Native HTTP](/docs/native-http) or [Schema-Mapped HTTP](/docs/schema-mapped-http). If you are testing agents, read [Agent HTTP Session](/docs/agent-http-session) and [Agent System Type](/docs/agents). If you need command details, use the [CLI Reference](/docs/cli-reference).
+If you are integrating a service, start with [Native HTTP](/docs/native-http) or [Schema-Mapped HTTP](/docs/schema-mapped-http). If you are testing agents, read [Agent HTTP Session](/docs/agent-http-session) and [Agent System Type](/docs/agents). If you need explicit platform records for compare or CI, read [Systems and Versions](/docs/systems-and-versions). If you need command details, use the [CLI Reference](/docs/cli-reference).
 
-<CTA title="Run the hosted path first" description="The primary docs path uses platform Projects, Systems, System Versions, Behavior Trials, and Results Packet artifacts." href="/docs/quickstart" action="Hosted quickstart" />
+<CTA title="Run the hosted path first" description="The primary docs path is setup, review run, and results inspection." href="/docs/quickstart" action="Hosted quickstart" />

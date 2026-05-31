@@ -1,47 +1,66 @@
-## Hosted production commands
+## Primary public commands
+
+Start here for a repo you want Determina to review.
+
+<DataTable
+  headings={["Command", "Use it for"]}
+  rows={[
+    ["setup", "Configure the current repo, create starter review files, run checks, and print one next command."],
+    ["review run", "Run the configured starter review. After setup, the recipe path is usually optional."],
+    ["review compare", "Compare two hosted snapshots with a review recipe."],
+    ["runs list", "List saved review result bundles from a local artifact root."],
+    ["runs show", "Inspect one saved review result by id, hash, path, or bundle directory."],
+    ["doctor", "Check local Determina setup, capture paths, recipe paths, auth state, and instrumentation hints."]
+  ]}
+/>
+
+Review-facing aliases are available for result inspection:
+
+<CodeBlock language="shell" code={`determina review list --root .determina/runs
+determina review show <run-id-or-path>`} />
+
+## Advanced hosted commands
+
+Use these when you need explicit platform objects, platform status polling, or
+artifact retrieval outside the setup-first review path.
 
 <DataTable
   headings={["Command", "Use it for"]}
   rows={[
     ["api-health", "Check API connectivity."],
-    ["projects list/create", "Manage hosted Projects."],
-    ["systems list/create", "Register hosted Systems and initial setup config."],
-    ["system-versions list/create", "Register concrete baseline or candidate versions."],
-    ["audit --project-id --system-version-id", "Queue and poll a hosted Behavior Trial."],
+    ["projects list/create", "Advanced hosted Project management."],
+    ["systems list/create", "Advanced hosted System setup."],
+    ["system-versions list/create", "Advanced explicit baseline or candidate version management."],
+    ["audit --project-id --system-version-id", "Advanced hosted audit by explicit version id."],
     ["run-swarm --project-id --system-version-id", "Queue a platform-backed intent-driven workflow for enabled System Types."],
-    ["compare --project-id --baseline-id --candidate-system-version-id", "Compare a candidate against a baseline."],
-    ["runs status/cancel", "Inspect or cancel hosted runs."],
+    ["compare --project-id --baseline-id --candidate-system-version-id", "Advanced direct compare by explicit platform ids. Prefer `review compare` for code-native reviews."],
+    ["runs status/cancel", "Inspect or cancel hosted worker-backed runs."],
     ["artifacts download", "Download platform artifacts."]
   ]}
 />
 
-## Local no-key setup commands
+## Advanced local/reference commands
+
+These commands are still available, but they are not part of first-run
+onboarding.
 
 <DataTable
   headings={["Command", "Use it for"]}
   rows={[
+    ["connect", "Compatibility command for setup-first repo configuration."],
     ["init", "Generate starter driver configs."],
     ["check-system", "Validate a local external endpoint or driver config."],
     ["artifacts inspect", "Inspect a local artifact file or directory."],
     ["validate-spec", "Validate a source spec envelope without executing."],
-    ["preview-upload", "Preview a hosted request shape from a source spec."]
+    ["preview-upload", "Preview a hosted request shape from a source spec."],
+    ["snapshot create", "Package a code-native agent snapshot for hosted review."]
   ]}
 />
 
-## Gated platform/core command surfaces
+## Advanced generated and plan-first workflows
 
-<DataTable
-  headings={["Command", "Use it for"]}
-  rows={[
-    ["audit --system-url", "Legacy/local execution shape; public CLI asks for hosted platform IDs."],
-    ["compare --baseline-url --candidate-url", "Legacy/local compare shape; public CLI asks for hosted platform IDs."],
-    ["runs index/list/show/promote-baseline/open", "Run history workflows that require platform/core capability."],
-    ["corpus index/import/reconcile/health/list/show/open", "Corpus review workflows that require platform/core capability."],
-    ["serve-reference", "Reference service workflow gated outside the installed public package."]
-  ]}
-/>
-
-## Advanced commands
+These surfaces are reference workflows for generated coverage, corpus review,
+and explicit plan handoff.
 
 <DataTable
   headings={["Command", "Use it for"]}
@@ -50,10 +69,13 @@
     ["plan-run", "Create a run plan through platform/core-owned planning."],
     ["execute-plan", "Execute a saved run plan through platform/core-owned execution."],
     ["generate-scenarios / generate-personas", "Generate recommender or search packs through platform/core workflows."],
-    ["generate-agent-pack", "Generate agent task/environment packs through platform/core workflows."]
+    ["generate-agent-pack", "Generate agent task/environment packs through platform/core workflows."],
+    ["import-traces", "Import normalized traces into review artifacts."],
+    ["corpus index/import/reconcile/health/list/show/open", "Review local artifact corpora and generated coverage sidecars."],
+    ["serve-reference", "Reference service workflow gated outside the installed public package."]
   ]}
 />
 
 <Callout variant="warning" title="Mode matters">
-Hosted `audit`, `run-swarm`, and `compare` reject local-only system options such as direct URLs or driver config paths. Create platform Systems and System Versions first.
+The quickstart path uses `determina setup`, `determina review run`, and result inspection. Hosted `audit`, `run-swarm`, direct `compare`, explicit Systems, and explicit Versions are advanced workflows.
 </Callout>
