@@ -2,13 +2,13 @@
 
 Generated Test Cases expand a testing brief into reusable coverage artifacts. They are an advanced workflow, not the default first-run path.
 
-In the public CLI, generated coverage command shapes are present but generation is platform/core-owned. If an installed package reports the command as hosted-only, use the platform workflow rather than treating generation as a local smoke test.
+In the public CLI, older generation command shapes are still present for compatibility, but the product model is Test Cases. If an installed package reports the command as hosted-only, use the platform workflow rather than treating generation as a local smoke test.
 
 <DataTable
   headings={["System Type", "Current generated support"]}
   rows={[
-    ["Recommender", "Strongest path: generated scenarios, generated personas, and run-swarm workflows through the platform/core workflow."],
-    ["Search", "Generated scenarios and personas feed audit or compare coverage. Search run-swarm parity is not claimed here."],
+    ["Recommender", "Strongest path: generated scenarios, generated personas, and test case execution through the platform/core workflow."],
+    ["Search", "Generated scenarios and personas feed audit or compare coverage. Search test case execution parity is not claimed here."],
     ["Agents", "Generated task/environment packs and sidecars are review artifacts, not generated customer agents."]
   ]}
 />
@@ -30,7 +30,7 @@ determina generate-personas \
   --population-size 4 \
   --output-dir ./search-generated`} />
 
-Generated packs write sidecars such as `generated_coverage_plan.json` and `generated_coverage_manifest.json`. These explain provenance, selected cases, validation status, hashes, and deferred cases when generation is available in the configured workflow.
+Generated packs write sidecars such as `generated_coverage_plan.json` and `generated_coverage_manifest.json`. These are compatibility file names; they explain test case provenance, selected cases, validation status, hashes, and deferred cases when generation is available in the configured workflow.
 
 ## Agent packs
 

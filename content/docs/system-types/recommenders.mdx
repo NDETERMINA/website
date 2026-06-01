@@ -11,7 +11,7 @@ Recommender Behavior Trials focus on release risks that aggregate metrics often 
 
 ## Supported workflows
 
-Recommender is the deepest public System Type today. It supports native HTTP and schema-mapped HTTP setup, hosted audit and compare workflows, and platform/core-owned generated scenario, generated persona, and `run-swarm` coverage.
+Recommender is the deepest public System Type today. It supports native HTTP and schema-mapped HTTP setup, hosted audit and compare workflows, and platform/core-owned generated test case workflows.
 
 <CodeBlock language="shell" code={`determina run-swarm \
   --project-id <project-id> \
@@ -20,9 +20,9 @@ Recommender is the deepest public System Type today. It supports native HTTP and
   --brief "test trust collapse and weak first-slate behavior"`} />
 
 <Callout variant="note" title="Hosted lane">
-Hosted `run-swarm` uses `--project-id` and `--system-version-id`. Generated coverage workflows belong in Advanced docs.
+Hosted test case execution uses `--project-id` and `--system-version-id`. The legacy CLI command is still `run-swarm`; test case workflows belong in Advanced docs.
 </Callout>
 
-## Results language
+## Evidence language
 
-Recommender Results Packets should describe cohorts, slates, click/skip/abandon behavior, repetition, novelty, cold start, and trust risks in the language release teams use to decide whether a candidate is safer than the baseline.
+Recommender evidence should describe cohorts, slates, click/skip/abandon behavior, repetition, novelty, cold start, and trust risks in the language release teams use to decide whether a candidate is safer than the baseline.

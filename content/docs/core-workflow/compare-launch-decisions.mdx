@@ -12,14 +12,14 @@ Compare runs put a candidate System Version next to a baseline so reviewers can 
 
 ## Interpret the decision
 
-Launch Decisions summarize whether the Results Packet supports pass, warn, or fail for the configured coverage. Treat the decision as release-review evidence, not an automatic deployment command.
+Decisions summarize whether the evidence supports pass, warn, or fail for the configured coverage. Treat the decision as release-review evidence, not an automatic deployment command.
 
 <DataTable
   headings={["Decision", "Meaning"]}
   rows={[
     ["Pass", "No blocking behavior risk was found under the configured compare coverage."],
-    ["Warn", "The packet has findings or uncertainty that needs human review."],
-    ["Fail", "The packet contains behavior evidence that should block the next change until resolved."]
+    ["Warn", "The evidence has findings or uncertainty that needs human review."],
+    ["Fail", "The evidence contains behavior signals that should block the next change until resolved."]
   ]}
 />
 
