@@ -5,18 +5,13 @@ export function WorldSection() {
   return (
     <section className="home-section world-section" id="how-it-works" aria-labelledby="world-title">
       <div className="home-section-copy">
-        <p className="home-label">02 / World Inputs</p>
-        <h2 id="world-title">
-          Build a production-
-          <br />
-          like world around
-          <br />
-          your system.
+        <p className="home-label section-eyebrow">02 / World Inputs</p>
+        <h2 id="world-title" className="section-title-serif">
+          Model the world your release will face.
         </h2>
-        <p>
-          Determina recreates the conditions
-          <br />
-          that make behavior change in production.
+        <p className="section-copy">
+          Bring cohorts, source state, policies, tools, and events into one
+          rehearsal world before the change touches users.
         </p>
         <a className="home-section-link" href="#observe">
           See world inputs in action

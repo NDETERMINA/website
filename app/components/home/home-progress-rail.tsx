@@ -23,8 +23,33 @@ function getCurrentStage(): RouteStageNumber {
   return current;
 }
 
+function isFooterRouteVisible(): boolean {
+  const footer = document.getElementById("site-footer");
+
+  if (!footer) {
+    return false;
+  }
+
+  const rect = footer.getBoundingClientRect();
+
+  return rect.top < window.innerHeight * 0.68 && rect.bottom > window.innerHeight * 0.18;
+}
+
+function getSectionExitProgress(targetId: string, exitStart: number, exitDistance: number): number {
+  const section = document.getElementById(targetId);
+
+  if (!section) {
+    return 0;
+  }
+
+  const rect = section.getBoundingClientRect();
+
+  return Math.min(1, Math.max(0, (-rect.top + exitStart) / exitDistance));
+}
+
 export function HomeProgressRail() {
   const [activeStage, setActiveStage] = useState<RouteStageNumber>(routeStages[0].number);
+  const [footerVisible, setFooterVisible] = useState(false);
   const activeIndex = Math.max(
     0,
     routeStages.findIndex((stage) => stage.number === activeStage)
@@ -35,7 +60,24 @@ export function HomeProgressRail() {
 
   useEffect(() => {
     const updateActiveStage = () => {
-      setActiveStage(getCurrentStage());
+      const footerIsVisible = isFooterRouteVisible();
+      const currentStage = getCurrentStage();
+      const worldExitProgress = getSectionExitProgress("how-it-works", -240, 300);
+      const decisionExitProgress = getSectionExitProgress("decision", -20, 150);
+
+      setActiveStage(currentStage);
+      setFooterVisible(footerIsVisible);
+      document.documentElement.dataset.homeActiveStage = currentStage;
+      document.documentElement.toggleAttribute("data-home-footer-visible", footerIsVisible);
+      document.documentElement.style.setProperty(
+        "--home-decision-exit",
+        decisionExitProgress.toFixed(3)
+      );
+      document.documentElement.style.setProperty("--home-world-exit", worldExitProgress.toFixed(3));
+      document.documentElement.toggleAttribute(
+        "data-home-decision-exiting",
+        decisionExitProgress > 0.02
+      );
     };
 
     updateActiveStage();
@@ -46,11 +88,22 @@ export function HomeProgressRail() {
     return () => {
       window.removeEventListener("scroll", updateActiveStage);
       window.removeEventListener("resize", updateActiveStage);
+      delete document.documentElement.dataset.homeActiveStage;
+      document.documentElement.removeAttribute("data-home-footer-visible");
+      document.documentElement.removeAttribute("data-home-decision-exiting");
+      document.documentElement.style.removeProperty("--home-decision-exit");
+      document.documentElement.style.removeProperty("--home-world-exit");
     };
   }, []);
 
   return (
-    <nav className="home-progress-shell" aria-label="Homepage release route" style={railStyle}>
+    <nav
+      className="home-progress-shell"
+      aria-label="Homepage release route"
+      data-active-stage={activeStage}
+      data-footer-visible={footerVisible ? "true" : undefined}
+      style={railStyle}
+    >
       <ol className="home-section-route home-progress-rail">
         {routeStages.map((stage, index) => {
           const isActive = stage.number === activeStage;

@@ -6,15 +6,13 @@ export function EvidenceSection() {
   return (
     <section className="home-section evidence-section" id="evidence" aria-labelledby="evidence-title">
       <div className="home-section-copy evidence-copy">
-        <p className="home-label">04 / Evidence Assembly</p>
-        <h2 id="evidence-title">
-          Evidence,{" "}
-          <br />
-          not vibes.
+        <p className="home-label section-eyebrow">04 / Evidence Assembly</p>
+        <h2 id="evidence-title" className="section-title-serif">
+          Return proof your team can inspect.
         </h2>
-        <p>
-          Every finding links to artifacts&mdash;traces, lenses, diffs, and verifier
-          results&mdash;so your team can inspect, explain, and rerun with confidence.
+        <p className="section-copy">
+          Every finding links to artifacts: traces, lenses, diffs, verifier
+          results, and the memory needed to rerun the case.
         </p>
         <div className="home-actions evidence-actions" aria-label="Evidence actions">
           <a className="home-button home-button-primary" href={siteLinks.pilot}>

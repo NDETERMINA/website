@@ -4,7 +4,7 @@ const spineX = 400;
 const numberX = 426;
 const rowTextX = 454;
 const laneStartX = 520;
-const enginePortX = 932;
+const enginePortX = 850;
 const enginePortY = 278;
 const laneOffsets = [-14, -5, 5, 14];
 
@@ -41,8 +41,49 @@ export function WorldRowPaths() {
     <g className="world-row-paths">
       <path className="world-spine" d={`M${spineX} 42 V518`} />
       {incomingLines}
-      <rect className="world-label-shield" x="418" y="44" width="202" height="482" rx="16" />
-      {worldInputRows.map((row, rowIndex) => (
+      <g className="world-lane-layer">
+        {worldInputRows.map((row, rowIndex) => (
+          <g key={`${row.number}-lanes`}>
+            {laneOffsets.map((offset, laneIndex) => {
+              const laneY = row.y + offset;
+              const laneX = laneStart(rowIndex, laneIndex);
+              const endX = 758 + ((rowIndex * 23 + laneIndex * 19) % 112);
+              const mergeY = enginePortY + (row.y - enginePortY) * 0.2 + (laneIndex - 1.5) * 6;
+              const portY = enginePortY + (row.y - enginePortY) * 0.055 + (laneIndex - 1.5) * 2.6;
+              const portX = enginePortX + (laneIndex % 2) * 5;
+
+              return (
+                <g key={`${row.number}-lane-${laneIndex}`}>
+                  <path className="world-data-lane" d={`M${laneX} ${laneY} C${laneX + 74} ${laneY + (laneIndex - 1.5) * 0.9} ${endX - 84} ${laneY} ${endX} ${laneY}`} />
+                  <path
+                    className="world-output-line"
+                    d={`M${endX} ${laneY} C${endX + 70} ${laneY} ${enginePortX - 88} ${mergeY} ${portX} ${portY}`}
+                  />
+                  {Array.from({ length: 5 }, (_, markerIndex) => {
+                    const size = (rowIndex + laneIndex + markerIndex) % 4 === 0 ? 4.4 : 2.8;
+                    const x = markerX(rowIndex, laneIndex, markerIndex);
+                    const y = laneY - size / 2 + (((rowIndex + markerIndex) % 3) - 1) * 0.8;
+
+                    return (
+                      <rect
+                        className="world-lane-marker"
+                        key={`${row.number}-${laneIndex}-${markerIndex}`}
+                        x={x}
+                        y={y}
+                        width={size}
+                        height={size}
+                        style={{ opacity: markerOpacity(rowIndex, laneIndex, markerIndex) }}
+                      />
+                    );
+                  })}
+                </g>
+              );
+            })}
+          </g>
+        ))}
+      </g>
+      <rect className="world-label-shield" x="418" y="44" width="230" height="482" rx="16" />
+      {worldInputRows.map((row) => (
         <g className="world-input-row" key={row.number}>
           <path
             className="world-node-lead"
@@ -58,41 +99,6 @@ export function WorldRowPaths() {
               {line}
             </text>
           ))}
-          {laneOffsets.map((offset, laneIndex) => {
-            const laneY = row.y + offset;
-            const laneX = laneStart(rowIndex, laneIndex);
-            const endX = 758 + ((rowIndex * 23 + laneIndex * 19) % 112);
-            const mergeY = enginePortY + (row.y - enginePortY) * 0.2 + (laneIndex - 1.5) * 6;
-            const portY = enginePortY + (row.y - enginePortY) * 0.055 + (laneIndex - 1.5) * 2.6;
-            const portX = enginePortX + (laneIndex % 2) * 5;
-
-            return (
-              <g key={`${row.number}-lane-${laneIndex}`}>
-                <path className="world-data-lane" d={`M${laneX} ${laneY} C${laneX + 74} ${laneY + (laneIndex - 1.5) * 0.9} ${endX - 84} ${laneY} ${endX} ${laneY}`} />
-                <path
-                  className="world-output-line"
-                  d={`M${endX} ${laneY} C${endX + 70} ${laneY} ${enginePortX - 88} ${mergeY} ${portX} ${portY}`}
-                />
-                {Array.from({ length: 5 }, (_, markerIndex) => {
-                  const size = (rowIndex + laneIndex + markerIndex) % 4 === 0 ? 4.4 : 2.8;
-                  const x = markerX(rowIndex, laneIndex, markerIndex);
-                  const y = laneY - size / 2 + (((rowIndex + markerIndex) % 3) - 1) * 0.8;
-
-                  return (
-                    <rect
-                      className="world-lane-marker"
-                      key={`${row.number}-${laneIndex}-${markerIndex}`}
-                      x={x}
-                      y={y}
-                      width={size}
-                      height={size}
-                      style={{ opacity: markerOpacity(rowIndex, laneIndex, markerIndex) }}
-                    />
-                  );
-                })}
-              </g>
-            );
-          })}
         </g>
       ))}
     </g>

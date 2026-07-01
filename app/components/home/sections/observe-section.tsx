@@ -7,21 +7,15 @@ export function ObserveSection() {
   return (
     <section className="home-section observe-section observe-parity-section" id="observe" aria-labelledby="observe-title">
       <div className="observe-parity-copy">
-        <p className="home-label">03 / Observe Behavior</p>
-        <h2 id="observe-title">
-          <span>Observe what</span>
-          <span>the system</span>
-          <span>actually does.</span>
+        <p className="home-label section-eyebrow">03 / Observe Behavior</p>
+        <h2 id="observe-title" className="section-title-serif">
+          <span>Watch behavior</span>
+          <span>change in the</span>
+          <span>rehearsal.</span>
         </h2>
-        <p>
-          We watch ranking shifts, source paths,
-          <br />
-          and tool effects as behavior unfolds
-          <br />
-          in a rehearsal world.
-          <br />
-          <br />
-          Final answers aren&rsquo;t enough.
+        <p className="section-copy">
+          Final answers are not enough. Determina records rank movement,
+          retrieval paths, and tool effects while the release runs.
         </p>
         <div className="observe-observed-note" aria-label="Behavior observed">
           <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -35,9 +29,9 @@ export function ObserveSection() {
           <div>
             <span>Behavior observed</span>
             <p>
-              Live traces from rehearsal
+              Live traces from rank,
               <br />
-              world conditions.
+              retrieve, and act runs.
             </p>
           </div>
         </div>
@@ -48,9 +42,12 @@ export function ObserveSection() {
       <ObserveFeatureStrip />
       <div className="observe-product-routes" id="product-systems" aria-labelledby="observe-product-systems-title">
         <div className="observe-product-routes-copy">
-          <p className="home-label">Product Systems</p>
-          <h3 id="observe-product-systems-title">Rank, retrieve, or act.</h3>
-          <p>The same observation layer adapts to the behavior your release can change.</p>
+          <p className="home-label section-eyebrow">Product routes</p>
+          <h3 id="observe-product-systems-title" className="card-title">Choose the system behavior to inspect.</h3>
+          <p className="section-copy">
+            Each product route opens the evidence pattern for recommender,
+            search, or agent releases.
+          </p>
         </div>
         <div className="home-product-routes" aria-label="Determina product routes">
           {productRoutes.map((route) => (

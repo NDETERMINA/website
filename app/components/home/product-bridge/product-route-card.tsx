@@ -20,7 +20,10 @@ export function ProductRouteCard({ route }: { route: ProductRoute }) {
         <small>{route.incident}</small>
         <small>{route.returns}</small>
       </span>
-      <ArrowMark />
+      <span className="home-product-route-action">
+        View product
+        <ArrowMark />
+      </span>
     </Link>
   );
 }

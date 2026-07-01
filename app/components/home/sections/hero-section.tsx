@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { HeroCopy } from "../hero/hero-copy";
-import { HeroInstrument } from "../hero/hero-instrument";
+import { HeroWorld } from "../hero/hero-world";
 import { ProofStrip } from "../hero/proof-strip";
 import { HeroSignal } from "../hero/hero-diagram/types";
 
@@ -12,7 +12,7 @@ export function HeroSection() {
   return (
     <section className="home-hero" id="system" aria-labelledby="home-hero-title">
       <HeroCopy />
-      <HeroInstrument activeSignal={activeSignal} onSignal={setActiveSignal} />
+      <HeroWorld activeSignal={activeSignal} />
       <ProofStrip activeSignal={activeSignal} onSignal={setActiveSignal} />
     </section>
   );

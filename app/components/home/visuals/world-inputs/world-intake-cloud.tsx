@@ -13,16 +13,18 @@ const intakeMarkers = Array.from({ length: 238 }, (_, index) => {
 export function WorldIntakeCloud() {
   return (
     <g className="world-intake-cloud">
-      {intakeMarkers.map(({ opacity, size, x, y }, index) => (
-        <rect
-          key={`${x}-${y}-${index}`}
-          x={x}
-          y={y}
-          width={size}
-          height={size}
-          style={{ opacity }}
-        />
-      ))}
+      <g className="world-intake-points">
+        {intakeMarkers.map(({ opacity, size, x, y }, index) => (
+          <rect
+            key={`${x}-${y}-${index}`}
+            x={x}
+            y={y}
+            width={size}
+            height={size}
+            style={{ opacity }}
+          />
+        ))}
+      </g>
       <path className="world-intake-rule" d="M-28 378 H300" />
       <rect className="world-intake-label-shield" x="6" y="486" width="190" height="64" rx="10" />
       <text x="14" y="502">Incoming behavior streams ▸</text>

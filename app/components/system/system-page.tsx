@@ -54,12 +54,12 @@ const publicNavLinks: Array<["product" | "how" | "docs" | "company", string, str
 ];
 
 const routeStages = [
-  ["01", "system"],
-  ["02", "world inputs"],
-  ["03", "observe"],
-  ["04", "evidence"],
-  ["05", "decide"],
-  ["06", "remember"]
+  ["01", "SYSTEM"],
+  ["02", "WORLD INPUTS"],
+  ["03", "OBSERVE"],
+  ["04", "EVIDENCE"],
+  ["05", "DECIDE"],
+  ["06", "REMEMBER"]
 ];
 
 export const systemPages = {
@@ -481,7 +481,7 @@ export function PublicFooter({ active }: { active?: RouteKey }) {
         </div>
         <ol className="home-footer-route" aria-label="Determina release rehearsal route">
           {routeStages.map(([number, label], index) => (
-            <li key={number} className={index === 4 ? "is-decision" : undefined}>
+            <li key={number} className={index === 5 ? "is-active-route" : undefined}>
               <span>{number}</span>
               {label}
             </li>
