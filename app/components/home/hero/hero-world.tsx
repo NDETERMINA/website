@@ -28,31 +28,31 @@ export function HeroWorld({ activeSignal }: { activeSignal?: HeroSignal | null }
           unoptimized
         />
       </div>
-      <figcaption className="home-hero-world-caption">
+      <figcaption className="home-hero-world-caption" aria-label="Release rehearsal world">
         <span>Release rehearsal world</span>
-        <p>Production-like conditions before production users.</p>
       </figcaption>
       <div
         className="home-world-callout home-world-callout-engine"
+        aria-label="World: conditions modeled"
         data-active={isActive("world", activeSignal) ? "true" : "false"}
       >
         <span>world</span>
-        <strong>Conditions modeled</strong>
-        <p>Population, tools, policies, source state, events.</p>
+        <strong>Conditions</strong>
       </div>
       <div
         className="home-world-callout home-world-callout-evidence"
+        aria-label="Evidence: trace packet"
         data-active={isActive("evidence", activeSignal) ? "true" : "false"}
       >
-        <span>evidence packet</span>
-        <strong>Traceable proof</strong>
-        <p>Diffs, verifier results, and run memory.</p>
+        <span>evidence</span>
+        <strong>Trace packet</strong>
       </div>
       <div
         className="home-world-callout home-world-callout-decision"
+        aria-label="Decision: ship, review, or block"
         data-active={isActive("decide", activeSignal) ? "true" : "false"}
       >
-        <span>decision gate</span>
+        <span>decision</span>
         <strong>Ship / review / block</strong>
       </div>
       <div
@@ -66,9 +66,10 @@ export function HeroWorld({ activeSignal }: { activeSignal?: HeroSignal | null }
       </div>
       <div
         className="home-world-memory"
+        aria-label="Memory saved"
         data-active={isActive("memory", activeSignal) ? "true" : "false"}
       >
-        Reusable memory saved
+        Memory saved
       </div>
     </figure>
   );

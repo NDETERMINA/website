@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { HeaderScrollState } from "@/app/components/system/header-scroll-state";
 import { siteLinks } from "@/app/lib/site";
 
 type Outcome = "SHIP" | "REVIEW" | "BLOCK";
@@ -422,21 +423,27 @@ export function PublicHeader({ active }: { active?: PublicHeaderActive }) {
 
   return (
     <header className="home-header">
-      <Link href="/" className="home-brand" aria-label="Determina home">
-        <span className="home-brand-mark">D</span>
-        <span>Determina</span>
-      </Link>
-      <nav className="home-nav" aria-label="Main navigation">
-        {publicNavLinks.map(([key, label, href]) => (
-          <Link key={key} href={href} aria-current={activeNav === key ? "page" : undefined}>
-            {label}
-          </Link>
-        ))}
-      </nav>
-      <a className="home-header-cta" href={siteLinks.pilot}>
-        Request pilot
-        <ArrowMark />
-      </a>
+      <HeaderScrollState />
+      <div className="home-header-inner">
+        <Link href="/" className="home-brand" aria-label="Determina home">
+          <span className="home-brand-mark">D</span>
+          <span>Determina</span>
+        </Link>
+        <nav className="home-nav" aria-label="Main navigation">
+          {publicNavLinks.map(([key, label, href]) => (
+            <Link key={key} href={href} aria-current={activeNav === key ? "page" : undefined}>
+              {label}
+            </Link>
+          ))}
+        </nav>
+        <a className="home-header-cta" href={siteLinks.pilot} aria-label="Request pilot">
+          <span className="home-cta-full">Request pilot</span>
+          <span className="home-cta-compact" aria-hidden="true">
+            Pilot
+          </span>
+          <ArrowMark />
+        </a>
+      </div>
     </header>
   );
 }

@@ -26,10 +26,11 @@ export function WorldIntakeCloud() {
         ))}
       </g>
       <path className="world-intake-rule" d="M-28 378 H300" />
-      <rect className="world-intake-label-shield" x="6" y="486" width="190" height="64" rx="10" />
-      <text x="14" y="502">Incoming behavior streams ▸</text>
-      <text className="world-small" x="14" y="527">Traces from production</text>
-      <text className="world-small" x="14" y="544">and prior rehearsals.</text>
+      <g className="world-intake-legend" transform="translate(18 456)">
+        <path d="M0 -14 H44 M0 -14 V34 M0 34 H44" />
+        <text className="world-intake-heading" x="16" y="0">Production traces</text>
+        <text className="world-small" x="16" y="24">Live behavior and prior rehearsals</text>
+      </g>
     </g>
   );
 }

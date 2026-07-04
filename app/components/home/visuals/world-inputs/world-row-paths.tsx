@@ -3,17 +3,17 @@ import { worldInputRows } from "./world-input-rows";
 const spineX = 400;
 const numberX = 426;
 const rowTextX = 454;
-const laneStartX = 520;
-const enginePortX = 850;
+const laneStartX = 636;
+const enginePortX = 820;
 const enginePortY = 278;
-const laneOffsets = [-14, -5, 5, 14];
+const laneOffsets = [0];
 
 function laneStart(rowIndex: number, laneIndex: number) {
   return laneStartX + ((rowIndex * 11 + laneIndex * 17) % 24);
 }
 
 function markerX(rowIndex: number, laneIndex: number, markerIndex: number) {
-  return laneStart(rowIndex, laneIndex) + 12 + ((rowIndex * 37 + laneIndex * 61 + markerIndex * 43) % 214);
+  return laneStart(rowIndex, laneIndex) + 8 + ((rowIndex * 31 + markerIndex * 35) % 116);
 }
 
 function markerOpacity(rowIndex: number, laneIndex: number, markerIndex: number) {
@@ -47,19 +47,20 @@ export function WorldRowPaths() {
             {laneOffsets.map((offset, laneIndex) => {
               const laneY = row.y + offset;
               const laneX = laneStart(rowIndex, laneIndex);
-              const endX = 758 + ((rowIndex * 23 + laneIndex * 19) % 112);
-              const mergeY = enginePortY + (row.y - enginePortY) * 0.2 + (laneIndex - 1.5) * 6;
-              const portY = enginePortY + (row.y - enginePortY) * 0.055 + (laneIndex - 1.5) * 2.6;
-              const portX = enginePortX + (laneIndex % 2) * 5;
+              const portY = enginePortY + (row.y - enginePortY) * 0.16;
+              const portX = enginePortX;
+              const controlStartX = laneX + 44;
+              const controlEndX = enginePortX - 44;
+              const controlStartY = laneY + (portY - laneY) * 0.24;
+              const controlEndY = portY - (portY - laneY) * 0.18;
 
               return (
                 <g key={`${row.number}-lane-${laneIndex}`}>
-                  <path className="world-data-lane" d={`M${laneX} ${laneY} C${laneX + 74} ${laneY + (laneIndex - 1.5) * 0.9} ${endX - 84} ${laneY} ${endX} ${laneY}`} />
                   <path
                     className="world-output-line"
-                    d={`M${endX} ${laneY} C${endX + 70} ${laneY} ${enginePortX - 88} ${mergeY} ${portX} ${portY}`}
+                    d={`M${laneX} ${laneY} C${controlStartX} ${controlStartY} ${controlEndX} ${controlEndY} ${portX} ${portY}`}
                   />
-                  {Array.from({ length: 5 }, (_, markerIndex) => {
+                  {Array.from({ length: 3 }, (_, markerIndex) => {
                     const size = (rowIndex + laneIndex + markerIndex) % 4 === 0 ? 4.4 : 2.8;
                     const x = markerX(rowIndex, laneIndex, markerIndex);
                     const y = laneY - size / 2 + (((rowIndex + markerIndex) % 3) - 1) * 0.8;
@@ -82,7 +83,20 @@ export function WorldRowPaths() {
           </g>
         ))}
       </g>
-      <rect className="world-label-shield" x="418" y="44" width="230" height="482" rx="16" />
+      <g className="world-input-ledger">
+        <path className="world-input-ledger-edge" d="M374 42 V526" />
+        {worldInputRows.map((row) => (
+          <rect
+            className="world-input-row-band"
+            key={`${row.number}-band`}
+            x="444"
+            y={row.y - 24}
+            width="204"
+            height="47"
+            rx="23.5"
+          />
+        ))}
+      </g>
       {worldInputRows.map((row) => (
         <g className="world-input-row" key={row.number}>
           <path
