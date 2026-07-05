@@ -18078,3 +18078,171 @@ html[data-home-active-stage="06"] .home-header .home-header-inner {
       linear-gradient(180deg, #f7f2e8 0, #f7f2e8 82px, #fbf7ee 190px, #f7f2e8 100%);
   }
 }
+
+/* Product route tray finish: warmer intro, softer dividers, instrument-like cards. */
+.observe-product-routes {
+  border: 1px solid color-mix(in srgb, var(--home-ink) 9%, var(--home-line));
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 18% 18%, rgb(255 255 255 / 0.64), transparent 20rem),
+    linear-gradient(90deg, rgb(255 252 244 / 0.58), rgb(255 252 244 / 0.2)),
+    rgb(255 250 240 / 0.54);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.78) inset,
+    0 26px 58px rgb(32 58 69 / 0.09);
+}
+
+.observe-product-routes::before,
+.observe-product-routes::after {
+  display: none;
+}
+
+.observe-product-routes-copy {
+  position: relative;
+  overflow: hidden;
+  border-right: 0;
+  background:
+    linear-gradient(180deg, rgb(255 253 247 / 0.82), rgb(243 247 236 / 0.6)),
+    linear-gradient(90deg, rgb(95 104 64 / 0.045) 1px, transparent 1px);
+  background-size: auto, 48px 48px;
+}
+
+.observe-product-routes-copy::before {
+  content: "";
+  position: absolute;
+  top: 34px;
+  right: 0;
+  bottom: 34px;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgb(95 104 64 / 0.28) 18%, rgb(95 104 64 / 0.16) 78%, transparent);
+}
+
+.observe-product-routes-copy::after {
+  content: "";
+  position: absolute;
+  right: 28px;
+  bottom: 30px;
+  left: 0;
+  height: 74px;
+  background:
+    radial-gradient(circle at 20px 52px, rgb(95 104 64 / 0.22) 0 2px, transparent 2.5px),
+    linear-gradient(12deg, transparent 0 42%, rgb(95 104 64 / 0.08) 42.2% 42.6%, transparent 43%),
+    linear-gradient(-9deg, transparent 0 55%, rgb(95 104 64 / 0.07) 55.2% 55.6%, transparent 56%);
+  opacity: 0.74;
+  pointer-events: none;
+}
+
+.observe-product-routes-copy .home-label,
+.observe-product-routes-copy h3,
+.observe-product-routes-copy p {
+  position: relative;
+  z-index: 1;
+}
+
+.observe-product-routes .home-product-route {
+  border-right: 0;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.58), rgb(255 255 255 / 0.16) 56%, rgb(255 250 240 / 0.18)),
+    linear-gradient(90deg, transparent 0, rgb(84 88 62 / 0.035) 50%, transparent 51%);
+  box-shadow:
+    -1px 0 0 rgb(95 104 64 / 0.13) inset,
+    1px 0 0 rgb(255 255 255 / 0.46) inset;
+  transition:
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.observe-product-routes .home-product-route:last-child {
+  box-shadow: 1px 0 0 rgb(255 255 255 / 0.46) inset;
+}
+
+.observe-product-routes .home-product-route:hover,
+.observe-product-routes .home-product-route:focus-visible {
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.78), rgb(255 255 255 / 0.26) 58%, rgb(255 250 240 / 0.24)),
+    linear-gradient(90deg, transparent 0, rgb(84 88 62 / 0.05) 50%, transparent 51%);
+  box-shadow:
+    -1px 0 0 rgb(95 104 64 / 0.16) inset,
+    1px 0 0 rgb(255 255 255 / 0.58) inset;
+  transform: translateY(-1px);
+}
+
+.observe-product-routes .home-product-route-main::after {
+  height: 1px;
+  background: linear-gradient(90deg, rgb(95 104 64 / 0.24), rgb(95 104 64 / 0.09), transparent);
+}
+
+.observe-product-routes .home-product-route-glyph {
+  width: 100%;
+  height: auto;
+  padding: 14px 12px 10px;
+  border: 1px solid rgb(95 104 64 / 0.12);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgb(255 253 247 / 0.72), rgb(241 238 224 / 0.22)),
+    linear-gradient(90deg, rgb(95 104 64 / 0.055) 1px, transparent 1px);
+  background-size: auto, 42px 42px;
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.74) inset,
+    0 10px 18px rgb(43 36 24 / 0.045);
+}
+
+.observe-product-routes .home-product-route-proof {
+  border-top-color: rgb(95 104 64 / 0.16);
+}
+
+.observe-product-routes .home-product-route-action {
+  min-height: 36px;
+  padding-right: 11px;
+  border-color: rgb(95 104 64 / 0.22);
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.78), rgb(255 250 240 / 0.62)),
+    rgb(255 250 240 / 0.72);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.82) inset,
+    0 8px 18px rgb(43 36 24 / 0.055);
+}
+
+.observe-product-routes .home-product-route-action .home-arrow {
+  width: 16px;
+  transform: translateX(1px);
+}
+
+.observe-product-routes .home-product-route:hover .home-product-route-action,
+.observe-product-routes .home-product-route:focus-visible .home-product-route-action {
+  border-color: var(--home-ink);
+  background: var(--home-ink);
+  color: var(--home-white);
+}
+
+@media (max-width: 720px) {
+  .observe-product-routes-copy::before,
+  .observe-product-routes-copy::after {
+    display: none;
+  }
+
+  .observe-product-routes .home-product-route {
+    box-shadow:
+      0 -1px 0 rgb(95 104 64 / 0.12) inset,
+      0 1px 0 rgb(255 255 255 / 0.5) inset;
+  }
+
+  .observe-product-routes .home-product-route-glyph {
+    max-width: 238px;
+    padding: 10px 10px 8px;
+    border-radius: 12px;
+  }
+
+  .observe-product-routes .home-product-route-action {
+    grid-column: 2;
+    width: min(100%, 156px);
+    white-space: nowrap;
+  }
+
+  .observe-product-routes .home-product-route-action .home-arrow {
+    grid-column: auto;
+    grid-row: auto;
+    width: 16px;
+  }
+}
