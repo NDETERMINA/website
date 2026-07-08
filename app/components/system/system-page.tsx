@@ -121,7 +121,7 @@ export const systemPages = {
     docsHref: "/docs/recommenders",
     visual: "rank",
     caseFile: {
-      id: "R-047",
+      id: "det-9183",
       title: "Enterprise cohort rank drift",
       question: "Will the profile merge change what enterprise users see?",
       observation: "A regulated candidate moved from rank #7 to rank #1 after the sparse-profile merge.",
@@ -374,6 +374,7 @@ export function SystemPage({ page }: { page: SystemPageData }) {
           <HeroEvidenceRail page={page} />
         </div>
         <SystemInstrument page={page} />
+        <SystemHeroMobileCase page={page} />
       </section>
 
       <section className="system-proof" aria-label="System rehearsal proof points">
@@ -520,6 +521,7 @@ export function PublicFooter({ active }: { active?: RouteKey }) {
             Company
           </Link>
           <Link href="/docs">Docs</Link>
+          <Link href="/engine-standard">The engine</Link>
           <a href={siteLinks.pilot}>Request pilot</a>
         </nav>
       </div>
@@ -545,6 +547,23 @@ function SystemInstrument({ page }: { page: SystemPageData }) {
         <p>{page.decisionReason}</p>
       </div>
     </div>
+  );
+}
+
+function SystemHeroMobileCase({ page }: { page: SystemPageData }) {
+  if (page.visual === "company") return null;
+
+  return (
+    <aside className="system-hero-mobile-case" aria-label="Example rehearsal finding">
+      <div className="system-hero-mobile-top">
+        <span className="tech-label">{page.behavior}</span>
+        <span className={`system-hero-mobile-outcome outcome-${page.outcome.toLowerCase()}`}>
+          {page.outcome}
+        </span>
+      </div>
+      <p className="system-hero-mobile-incident">{page.incident}</p>
+      <p className="system-hero-mobile-reason">{page.decisionReason}</p>
+    </aside>
   );
 }
 
@@ -632,11 +651,11 @@ function RankHeroInstrument({ outcome }: { outcome: Outcome }) {
         <text x="380" y="263">lens</text>
       </g>
       <g className="hero-rank-path">
-        <path d="M160 354 C268 324 304 260 380 244 C472 226 502 156 602 132" />
+        <path d="M170 372 C268 324 304 260 380 244 C472 226 502 156 602 132" />
         <path d="M158 156 C280 164 350 204 432 252 C506 294 560 318 642 338" />
-        <circle cx="160" cy="354" r="12" />
+        <circle cx="170" cy="372" r="12" />
         <circle cx="602" cy="132" r="18" />
-        <text x="138" y="388">#7 before</text>
+        <text x="72" y="402">#7 before</text>
         <text x="604" y="110">#1 after merge</text>
       </g>
       <g className="hero-finding-stamp" transform="rotate(-5 584 308)">
@@ -675,7 +694,12 @@ function SearchHeroInstrument({ outcome }: { outcome: Outcome }) {
         ].map(([x, y, label]) => (
           <g key={label}>
             <circle cx={Number(x)} cy={Number(y)} r={label === "archive" ? 14 : 10} />
-            <text x={Number(x) + 18} y={Number(y) + 4}>{label}</text>
+            <text
+              x={label === "policy v6" ? 548 : label === "archive" ? 470 : Number(x) + 18}
+              y={label === "policy v6" ? Number(y) + 4 : label === "archive" ? 262 : Number(y) + 4}
+            >
+              {label}
+            </text>
           </g>
         ))}
         <path className="hero-fracture" d="M514 252 l18 -24 l16 24 l20 -34" />
@@ -717,19 +741,19 @@ function AgentHeroInstrument({ outcome }: { outcome: Outcome }) {
         <text x="370" y="264">membrane</text>
       </g>
       <g className="hero-tool-ports">
-        <text x="588" y="126">tool boundary</text>
+        <text x="563" y="126">tool boundary</text>
         {[
-          [554, 188, "refund"],
-          [592, 252, "message"],
-          [548, 316, "record"]
+          [520, 188, "refund"],
+          [520, 252, "message"],
+          [520, 316, "record"]
         ].map(([x, y, label]) => (
           <g key={label}>
             <rect x={Number(x)} y={Number(y)} width="86" height="44" />
             <text x={Number(x) + 43} y={Number(y) + 27}>{label}</text>
           </g>
         ))}
-        <path d="M454 248 C506 210 522 210 554 210" />
-        <path className="is-contained" d="M454 248 C520 284 548 304 548 338" />
+        <path d="M454 248 C486 210 502 210 520 210" />
+        <path className="is-contained" d="M454 248 C500 284 520 304 520 338" />
       </g>
       <g className="hero-resource-diff">
         <rect x="290" y="366" width="184" height="50" />

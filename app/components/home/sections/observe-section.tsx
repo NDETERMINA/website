@@ -2,6 +2,7 @@ import { productRoutes } from "../content";
 import { HeroDiagram as ObserveParityDiagram } from "../hero/hero-diagram/observe-parity-diagram";
 import { ProductRouteCard } from "../product-bridge/product-route-card";
 import { ObserveFeatureStrip } from "../visuals/observe/observe-feature-strip";
+import { ObserveMobile } from "../visuals/observe/observe-mobile";
 
 export function ObserveSection() {
   return (
@@ -38,6 +39,7 @@ export function ObserveSection() {
       </div>
       <div className="observe-parity-layout">
         <ObserveParityDiagram />
+        <ObserveMobile />
       </div>
       <ObserveFeatureStrip />
       <div className="observe-product-routes" id="product-systems" aria-labelledby="observe-product-systems-title">

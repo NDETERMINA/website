@@ -1,6 +1,30 @@
 import type { Metadata, Viewport } from "next";
+import { Fraunces, IBM_Plex_Mono, Inter } from "next/font/google";
 
 import "./globals.css";
+import "./revamp.css";
+import "./revamp-pages.css";
+import "./revamp-craft.css";
+
+const displaySerif = Fraunces({
+  subsets: ["latin"],
+  axes: ["opsz", "SOFT", "WONK"],
+  variable: "--font-display",
+  display: "swap"
+});
+
+const bodySans = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap"
+});
+
+const labelMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-mono",
+  display: "swap"
+});
 
 export const metadata: Metadata = {
   applicationName: "Determina",
@@ -43,7 +67,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${displaySerif.variable} ${bodySans.variable} ${labelMono.variable}`}
+    >
       <body className="antialiased">
         {children}
       </body>

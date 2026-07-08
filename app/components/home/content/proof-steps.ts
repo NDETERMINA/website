@@ -2,26 +2,26 @@ export const proofSteps = [
   {
     icon: "simulate",
     title: "World",
-    body: "Model production-like conditions around the release."
+    body: "Nine inputs, one rehearsal world."
   },
   {
     icon: "observe",
     title: "Observe",
-    body: "Capture rank, retrieve, and act behavior as it unfolds."
+    body: "Rank, retrieve, act — traced live."
   },
   {
     icon: "evidence",
     title: "Evidence",
-    body: "Return artifacts, diffs, verifier results, and traces."
+    body: "Artifacts, diffs, verifier proof."
   },
   {
     icon: "decide",
     title: "Decide",
-    body: "Choose ship, review, or block with bounded proof."
+    body: "Ship, review, or block — bounded."
   },
   {
     icon: "memory",
     title: "Memory",
-    body: "Promote lessons into reusable release coverage."
+    body: "Every lesson becomes coverage."
   }
 ] as const;

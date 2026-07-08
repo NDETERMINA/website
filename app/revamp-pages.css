@@ -1,0 +1,298 @@
+/* ===========================================================================
+   2026-07 REVAMP — SYSTEM + COMPANY PAGES
+   Loaded AFTER globals.css (and after revamp.css); equal-specificity wins by
+   order, so overrides here match or exceed globals' specificity.
+   Scope: /recomm /search /agents (system-page.tsx) and /company
+   (company-page.tsx). Identity: "a field laboratory notebook for AI releases."
+   Paper #fbfaf6 · olive #55603a · brass #9a7b45 · ink #0d0f0a.
+   =========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   0. Local tokens — the notebook olive is a touch deeper than --home-olive.
+   --------------------------------------------------------------------------- */
+:root {
+  --rp-olive: #55603a;
+  --rp-serif: var(--dt-font-serif);
+}
+
+/* ---------------------------------------------------------------------------
+   1. Display type — hero h1s render Fraunces, tuned like the rest of the
+      revamp. globals hardcodes Georgia on these; we re-point to Fraunces and
+      dial the optical axes. Selectors match globals' specificity (0,2,0 for
+      the .company-page prefix; (0,1,1) for .system-hero h1) and win by order.
+   --------------------------------------------------------------------------- */
+.system-hero h1,
+.company-page .company-hero h1 {
+  font-family: var(--rp-serif);
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 0, "WONK" 0;
+  font-weight: 520;
+  letter-spacing: -0.018em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.system-hero h1 {
+  max-width: 15ch;
+  font-size: clamp(40px, 5vw, 92px);
+}
+
+.company-page .company-hero h1 {
+  max-width: 16ch;
+  font-size: clamp(40px, 5.6vw, 100px);
+}
+
+/* Section headings on both pages: same Fraunces voice, slightly calmer. */
+.system-section h2,
+.system-decision h2,
+.system-mechanism h2,
+.system-case-copy h2,
+.system-workbench h2,
+.system-pilot-copy h2,
+.company-note h2,
+.company-section-head h2,
+.company-operating h2,
+.company-join h2 {
+  font-family: var(--rp-serif);
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 0, "WONK" 0;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+/* ---------------------------------------------------------------------------
+   2. Mono eyebrows / labels — the instrument-label voice, olive and precise.
+      Applies on system + company pages only (scoped by ancestor).
+   --------------------------------------------------------------------------- */
+.system-shell .home-label,
+.company-page .home-label {
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.17em;
+  color: var(--rp-olive);
+}
+
+/* ===========================================================================
+   3. MOBILE ROUTE RAIL — /recomm /search /agents
+      Desktop untouched. At <=760px collapse the 3 stacked rows into one
+      compact horizontally-scrollable pill row with scroll-snap, a hidden
+      scrollbar, and the current route highlighted.
+   =========================================================================== */
+@media (max-width: 760px) {
+  /* Rail becomes a single stacked block: eyebrow, then the scroller. */
+  .system-route-rail {
+    display: block;
+    min-height: 0;
+    padding-block: 12px 4px;
+  }
+
+  .system-route-rail > span {
+    min-height: 0;
+    margin-bottom: 10px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--rp-olive);
+  }
+
+  /* The link container is the horizontal scroller. */
+  .system-route-rail > div {
+    display: flex;
+    grid-template-columns: none;
+    gap: 8px;
+    border-left: 0;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* bleed to the edges so the last pill can scroll fully into view */
+    margin-inline: -14px;
+    padding-inline: 14px;
+    padding-bottom: 12px;
+  }
+
+  .system-route-rail > div::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Each route is a compact single-line pill. */
+  .system-route-rail a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    flex: 0 0 auto;
+    padding: 9px 15px;
+    border: 1px solid var(--home-line-soft);
+    border-top: 1px solid var(--home-line-soft); /* reset globals' 720px top rule */
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--home-paper) 92%, var(--home-white));
+    scroll-snap-align: start;
+    white-space: nowrap;
+  }
+
+  /* current route: olive ring + tint, drop the left accent bar. */
+  .system-route-rail a[aria-current="page"] {
+    border-color: var(--rp-olive);
+    background: color-mix(in srgb, var(--rp-olive) 8%, var(--home-white));
+  }
+
+  .system-route-rail a[aria-current="page"]::before {
+    display: none;
+  }
+
+  .system-route-rail small {
+    grid-row: auto;
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    color: var(--rp-olive);
+  }
+
+  .system-route-rail strong {
+    font-size: 12.5px;
+  }
+
+  /* hide the detail line ("rank behavior") on the compact pill. */
+  .system-route-rail em {
+    display: none;
+  }
+}
+
+/* ===========================================================================
+   4. COMPANY HERO WIDTH BUG — globals caps mobile width at 362px with a hard
+      14px left margin. Restore a full-width, centred column consistent with
+      the system pages. Selector matches globals' (0,2,0) and wins by order.
+   =========================================================================== */
+@media (max-width: 760px) {
+  .company-page .company-hero,
+  .company-note,
+  .company-founders,
+  .company-operating,
+  .company-join {
+    width: min(100% - 28px, 640px);
+    margin-inline: auto;
+  }
+
+  /* the 520px query pins these to 362px too — release them. */
+  .company-page .company-hero-copy,
+  .company-signal {
+    max-width: none;
+  }
+
+  /* mobile h1 sizing: keep it in the 34–40px band, Fraunces. */
+  .company-page .company-hero h1 {
+    font-size: clamp(34px, 8.4vw, 40px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  .company-note h2,
+  .company-section-head h2,
+  .company-operating h2,
+  .company-join h2 {
+    font-size: clamp(30px, 8vw, 40px);
+    letter-spacing: -0.02em;
+  }
+}
+
+@media (max-width: 520px) {
+  .company-page .company-hero-copy,
+  .company-signal {
+    max-width: none;
+  }
+}
+
+/* ===========================================================================
+   5. MOBILE SPACING — system pages at 375px.
+      Normalize vertical rhythm (~76–88px between sections) and a consistent
+      horizontal gutter. globals sets 82px section padding and 54px hero top;
+      we tighten the hero h1 clamp and even out the proof strip + decision.
+   =========================================================================== */
+@media (max-width: 760px) {
+  /* hero: a little less top air, honest bottom. */
+  .system-hero {
+    padding: 44px 0 60px;
+    gap: 30px;
+  }
+
+  .system-hero h1 {
+    font-size: clamp(34px, 9.2vw, 42px);
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+  }
+
+  /* proof strip: single column reads as a list; give each row breathing room
+     and a hairline rule instead of a cramped grid cell. */
+  .system-proof {
+    margin-block: 0;
+  }
+
+  .system-proof article {
+    padding-block: 18px;
+  }
+
+  /* consistent section rhythm across the mobile stack. */
+  .system-mechanism,
+  .system-workbench,
+  .system-case-file,
+  .system-decision,
+  .system-pilot-close {
+    padding: 76px 0;
+  }
+
+  /* decision block: stack copy over the stamp with a real gap. */
+  .system-decision {
+    gap: 28px;
+  }
+
+  /* pilot ticket + workbench core shouldn't leave a dead well of space. */
+  .system-workbench-core {
+    padding-block: 34px;
+  }
+}
+
+/* ===========================================================================
+   6. FOOTER — shared PublicFooter. Light polish only: mono labels tuned to the
+      notebook eyebrow, footer serif re-pointed to Fraunces, tidy mobile
+      stacking. No markup restructure. Scoped to system/company shells so home
+      (owned elsewhere) is untouched.
+   =========================================================================== */
+.system-shell .home-footer-statement span,
+.system-shell .home-footer-route span,
+.system-shell .home-footer-products small,
+.company-page .home-footer-statement span,
+.company-page .home-footer-route span,
+.company-page .home-footer-products small {
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--rp-olive);
+}
+
+.system-shell .home-footer-statement strong,
+.company-page .home-footer-statement strong {
+  font-family: var(--rp-serif);
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 0, "WONK" 0;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* consistent olive link hover (already olive in globals; make it explicit and
+   add a soft transition so it matches the rest of the revamp). */
+.system-shell .home-footer a,
+.company-page .home-footer a {
+  transition: color 150ms ease;
+}
+
+.system-shell .home-footer a:hover,
+.company-page .home-footer a:hover {
+  color: var(--rp-olive);
+}
+
+@media (max-width: 760px) {
+  /* tidy the footer product/link stacks: comfortable tap targets, no cramping. */
+  .system-shell .home-footer-products a,
+  .company-page .home-footer-products a {
+    padding-block: 4px;
+  }
+}

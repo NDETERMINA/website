@@ -1,7 +1,7 @@
 export function PilotTicket() {
   return (
     <>
-      <span>pilot intake</span>
+      <span>checklist</span>
       <strong>What to send</strong>
       <dl className="pilot-intake-list">
         <div>

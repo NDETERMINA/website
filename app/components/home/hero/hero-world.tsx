@@ -31,6 +31,9 @@ export function HeroWorld({ activeSignal }: { activeSignal?: HeroSignal | null }
       <figcaption className="home-hero-world-caption" aria-label="Release rehearsal world">
         <span>Release rehearsal world</span>
       </figcaption>
+      <p className="home-hero-world-plate" aria-hidden="true">
+        Plate 01 &mdash; release rehearsal world &middot; det-9183
+      </p>
       <div
         className="home-world-callout home-world-callout-engine"
         aria-label="World: conditions modeled"

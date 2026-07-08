@@ -186,7 +186,7 @@ export function HeroDiagram() {
             <circle key={x} className={index === 3 ? "is-brass" : undefined} cx={x} cy={index === 3 ? 132 : 166 + (index % 2) * 16} r={index === 3 ? 5.2 : 3.2} />
           ))}
           <Target x={988} y={140} active />
-          {["01", "02", "03", "04", "05", "..", "50"].map((label, index) => (
+          {["01", "02", "03", "04", "05", "⋯", "50"].map((label, index) => (
             <text key={label} className="hero-rank-number" x="1020" y={126 + index * 14}>{label}</text>
           ))}
         </g>

@@ -6,7 +6,7 @@ const founders = [
     role: "Co-founder",
     image: "https://github.com/AlankritVerma01.png",
     summary:
-      "Alankrit works across machine learning systems, product engineering, and AI evaluation. He studies Computer Science at the University of Toronto, has built recommender infrastructure at PlayStation, and founded GenAI Genesis.",
+      "Alankrit built recommender infrastructure at PlayStation and founded GenAI Genesis. He studies Computer Science at the University of Toronto.",
     details: ["University of Toronto CS", "ML systems and evaluation", "Founder, GenAI Genesis"],
     links: [
       ["Website", "https://alankrit.me/"],
@@ -19,7 +19,7 @@ const founders = [
     role: "Co-founder",
     image: "https://github.com/murphylee10.png",
     summary:
-      "Murphy is a software engineer and Computer Science student at the University of Toronto. His public engineering background includes Coinbase, Cloudflare, Amazon, and theScore.",
+      "Murphy has shipped backend and infrastructure work at Coinbase, Cloudflare, Amazon, and theScore. He studies Computer Science at the University of Toronto.",
     details: ["University of Toronto CS", "Backend and infrastructure engineering", "Previously Coinbase, Cloudflare, Amazon, theScore"],
     links: [
       ["GitHub", "https://github.com/murphylee10"],
@@ -29,9 +29,9 @@ const founders = [
 ] as const;
 
 const operatingNotes = [
-  ["builder-led", "We are close to the code, the product surface, and the customer problem."],
-  ["small team", "We want high-agency people who can own ambiguous technical work end to end."],
-  ["serious AI", "We care about systems that should be trusted before they affect real users."]
+  ["we write the code", "Both founders are in the product every day. There is no layer between you and the decisions."],
+  ["small on purpose", "Fewer people, bigger ownership. You ship things with your name on them."],
+  ["evidence over vibes", "If a claim about a release cannot be traced to an artifact, it does not count. We hold our own work to that too."]
 ] as const;
 
 const roles = [
@@ -51,11 +51,12 @@ export function CompanyPage() {
       <section className="company-hero" aria-labelledby="company-title">
         <div className="company-hero-copy">
           <p className="home-label">company</p>
-          <h1 id="company-title">We are building Determina for teams shipping serious AI systems.</h1>
+          <h1 id="company-title">The missing step between &ldquo;the demo works&rdquo; and &ldquo;ship it.&rdquo;</h1>
           <p>
-            Determina is an early company started by Alankrit Verma and Murphy Lee. We are building
-            the infrastructure layer for rehearsing AI behavior before release, with the discipline of
-            engineering tools and the urgency of real product teams.
+            Determina is two engineers, Alankrit Verma and Murphy Lee. We have both watched AI
+            changes go out on a good demo and a gut call. This is the tool we kept wishing
+            someone would build: run the change against a world that looks like production,
+            read the evidence, then decide.
           </p>
           <div className="home-actions" aria-label="Company actions">
             <a className="home-button home-button-primary" href="#team">
@@ -108,18 +109,19 @@ export function CompanyPage() {
 
       <section className="company-note" aria-labelledby="company-note-title">
         <p className="home-label">why this team</p>
-        <h2 id="company-note-title">We have lived the gap between demos, model metrics, and release decisions.</h2>
+        <h2 id="company-note-title">We have been on the launch calls where nobody could say what the model would actually do.</h2>
         <p>
-          Our work sits where ML systems, infrastructure, product judgment, and customer trust meet.
-          That is the founder-level bet behind Determina: make AI release behavior observable,
-          reviewable, and hard to hand-wave.
+          Between us we have built recommender infrastructure at PlayStation and backend systems
+          at Coinbase, Cloudflare, and Amazon. The pattern was the same everywhere: offline
+          metrics say one thing, production says another, and the release call gets made on
+          gut feel. Determina exists so that call can be made on evidence instead.
         </p>
       </section>
 
       <section className="company-operating" aria-labelledby="company-operating-title">
         <div>
           <p className="home-label">how we work</p>
-          <h2 id="company-operating-title">Small, technical, and direct.</h2>
+          <h2 id="company-operating-title">Two founders, zero layers.</h2>
         </div>
         <ul>
           {operatingNotes.map(([title, body]) => (
@@ -137,8 +139,8 @@ export function CompanyPage() {
           <p className="home-label">join us</p>
           <h2 id="company-join-title">Help us build the release infrastructure AI teams should already have.</h2>
           <p>
-            We are looking for unusually strong builders who want responsibility early. If you can move
-            between product judgment, systems work, and careful execution, we want to hear from you.
+            We want people who would rather own a whole problem than a ticket queue. A short
+            note about something you have built beats a resume &mdash; email us directly.
           </p>
         </div>
         <div className="company-role-panel">

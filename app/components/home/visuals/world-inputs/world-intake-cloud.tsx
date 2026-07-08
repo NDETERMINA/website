@@ -26,7 +26,7 @@ export function WorldIntakeCloud() {
         ))}
       </g>
       <path className="world-intake-rule" d="M-28 378 H300" />
-      <g className="world-intake-legend" transform="translate(18 456)">
+      <g className="world-intake-legend" transform="translate(18 410)">
         <path d="M0 -14 H44 M0 -14 V34 M0 34 H44" />
         <text className="world-intake-heading" x="16" y="0">Production traces</text>
         <text className="world-small" x="16" y="24">Live behavior and prior rehearsals</text>

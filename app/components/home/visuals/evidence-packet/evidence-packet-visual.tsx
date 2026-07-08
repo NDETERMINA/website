@@ -62,11 +62,10 @@ export function EvidencePacketVisual() {
 
       <article className="evidence-paper artifact-card trace-card">
         <span className="paper-pin" />
-        <span className="paper-tab" />
         <h3>Trace Path</h3>
         <p>ranker &rarr; profile_merge &rarr;</p>
         <p>candidate_pool &rarr; rerank &rarr;</p>
-        <p>results</p>
+        <p>results &middot; 4 hops &middot; 1.2s</p>
         <svg className="trace-graph" viewBox="0 0 210 88">
           <path d="M10 50 H40 C66 50 70 22 98 22 C132 22 132 66 164 66 H198" />
           <path d="M10 76 H44 C82 76 84 48 112 48 C140 48 142 24 176 24 H198" />
@@ -87,8 +86,8 @@ export function EvidencePacketVisual() {
         <span className="paper-pin" />
         <span className="lens-crosshair" />
         <h3>
-          Cohort / Source / Tool
-          <span>Lens</span>
+          Lens
+          <span>cohort / source / tool</span>
         </h3>
         <dl className="lens-list">
           <div><dt>cohort</dt><dd>enterprise users</dd></div>
@@ -157,12 +156,14 @@ export function EvidencePacketVisual() {
             <div className="dossier-stats">
               <span>43 artifacts</span>
               <span>7 findings</span>
+              <span>1 decision</span>
             </div>
             <div className="barcode">
               {Array.from({ length: 32 }).map((_, index) => (
                 <i key={index} />
               ))}
             </div>
+            <p className="dossier-serial">det-9183</p>
           </div>
         </div>
       </article>
@@ -196,8 +197,8 @@ export function EvidencePacketVisual() {
         <span className="paper-pin" />
         <Database className="card-icon" aria-hidden="true" />
         <h3>Rerun Memory</h3>
-        <p>promotion candidate</p>
-        <p>for similar profiles</p>
+        <p>future reruns inherit</p>
+        <p>this review case</p>
         <footer>memory_ref_77a1</footer>
       </article>
 

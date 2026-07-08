@@ -15,8 +15,8 @@ const packetRows = [
 ] as const;
 
 const thresholds = [
-  ["Policy", "passed", "92"],
-  ["Quality", "above bar", "86"],
+  ["Policy", "pass", "92"],
+  ["Quality", "0.78 / 0.70 bar", "86"],
   ["Risk", "review", "54"]
 ] as const;
 
@@ -45,8 +45,8 @@ function EvidencePacket() {
       <div className="decision-flow-file">
         <FileText size={28} strokeWidth={1.35} />
         <div>
-          <strong>R-047</strong>
-          <span>Captured 05 / 14 / 25</span>
+          <strong>det-9183</strong>
+          <span>Assembled 05 / 14 / 25</span>
         </div>
       </div>
       <div className="decision-flow-rows">
@@ -115,9 +115,10 @@ function MemoryEntry() {
         <div>
           <strong>Regression case</strong>
           <span>rank drift under personalization</span>
-          <em>Future reruns inherit the failure case.</em>
+          <em>Future reruns inherit this case.</em>
         </div>
       </div>
+      <span className="decision-flow-memory-return">&rarr; fed back to world</span>
       <span className="decision-flow-memory-pin" />
     </article>
   );

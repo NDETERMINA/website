@@ -1,0 +1,775 @@
+/* ===========================================================================
+   2026-07 REVAMP — one cohesive system on top of globals.css.
+   Loaded after globals.css; equal-specificity rules here win by order.
+   Identity: "a field laboratory notebook for AI releases."
+   Type: Fraunces (display) / Inter (body) / IBM Plex Mono (labels).
+   =========================================================================== */
+
+:root {
+  --dt-ink: #0d0f0a;
+  --revamp-display: var(--font-display), "Fraunces", Georgia, ui-serif, serif;
+  --revamp-ink: #0d0f0a;
+  --revamp-olive: #55603a;
+  --revamp-brass: #9a7b45;
+  --revamp-line: rgb(73 68 55 / 0.16);
+  --revamp-shadow-card:
+    0 1px 0 rgb(255 255 255 / 0.9) inset,
+    0 1px 2px rgb(34 31 23 / 0.05),
+    0 12px 32px rgb(34 31 23 / 0.08);
+  --revamp-ring: 0 0 0 2px var(--home-paper), 0 0 0 4px var(--revamp-olive);
+}
+
+/* ---------------------------------------------------------------------------
+   1. Display typography — Fraunces everywhere a page speaks loudly.
+   --------------------------------------------------------------------------- */
+
+.hero-title,
+.home-hero h1.hero-title,
+.home-title-line,
+.section-title-serif,
+.world-section h2#world-title,
+.observe-parity-copy h2,
+.evidence-section h2,
+.home-section.decision-section h2,
+.pilot-section h2 {
+  font-family: var(--revamp-display);
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 0, "WONK" 0;
+  font-weight: 520;
+  letter-spacing: -0.022em;
+  line-height: 1.02;
+}
+
+.hero-title,
+.home-hero h1.hero-title {
+  font-size: clamp(46px, 5.6vw, 88px);
+  max-width: 13ch;
+  text-wrap: balance;
+}
+
+.home-hero #home-hero-title .home-title-line {
+  font-family: var(--revamp-display);
+  font-weight: 520;
+  letter-spacing: -0.022em;
+}
+
+.world-section h2#world-title,
+.observe-parity-copy h2,
+.evidence-section h2,
+.home-section.decision-section h2,
+.pilot-section h2 {
+  max-width: 640px;
+  font-size: clamp(38px, 3.9vw, 64px);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+/* Mono eyebrows: the instrument-label voice, tuned. */
+.section-eyebrow,
+.tech-label,
+.artifact-label,
+.progress-label,
+.card-meta {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--revamp-olive);
+}
+
+.home-section.decision-section {
+  background: transparent;
+}
+
+/* Body copy: real Inter, calmer measure. */
+.section-copy,
+.world-section .home-section-copy p:not(.home-label),
+.observe-parity-copy > p:not(.home-label),
+.evidence-copy > p:not(.home-label),
+.decision-copy > p:not(.home-label),
+.pilot-section p {
+  font-size: clamp(16.5px, 1.15vw, 19px);
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   2. One continuous paper world — remove the patchwork tint bands.
+   --------------------------------------------------------------------------- */
+
+.home-shell {
+  background:
+    radial-gradient(120% 46% at 50% 0%, rgb(255 255 255 / 0.85), transparent 60%),
+    radial-gradient(90% 34% at 18% 30%, rgb(101 107 60 / 0.05), transparent 70%),
+    radial-gradient(90% 30% at 84% 52%, rgb(154 123 69 / 0.055), transparent 70%),
+    linear-gradient(180deg, #fffdf9 0%, var(--home-paper) 40%, #f6f1e6 78%, #f3ede0 100%);
+}
+
+.home-section.world-section,
+.home-section.observe-section,
+.home-section.evidence-section {
+  background: transparent;
+}
+
+/* Let content set section height — forced min-heights created dead bands. */
+.world-section,
+.observe-parity-section,
+.evidence-section,
+.home-section.decision-section,
+.pilot-section {
+  min-height: 0;
+}
+
+@media (min-width: 1181px) {
+  .world-section {
+    min-height: 0;
+    padding-bottom: 56px;
+  }
+
+  .observe-parity-section {
+    min-height: 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   3. Header discipline — progressive-blur scrim, no heading collisions.
+   --------------------------------------------------------------------------- */
+
+main section[id],
+.home-section[id],
+#pilot {
+  scroll-margin-top: 104px;
+}
+
+:root[data-home-scrolled] .home-header::before,
+:root[data-home-active-stage="02"] .home-header::before,
+:root[data-home-active-stage="03"] .home-header::before,
+:root[data-home-active-stage="04"] .home-header::before,
+:root[data-home-active-stage="05"] .home-header::before,
+:root[data-home-active-stage="06"] .home-header::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 -34px;
+  z-index: -1;
+  pointer-events: none;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--home-paper) 82%, transparent), transparent);
+  mask-image: linear-gradient(180deg, black 46%, transparent);
+  -webkit-mask-image: linear-gradient(180deg, black 46%, transparent);
+}
+
+/* ---------------------------------------------------------------------------
+   4. One button system.
+   --------------------------------------------------------------------------- */
+
+.home-button,
+.home-header-cta {
+  font-family: var(--font-geist-sans), ui-sans-serif, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.home-button-primary,
+.home-header-cta {
+  background: linear-gradient(180deg, #22251c, var(--revamp-ink));
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.14) inset,
+    0 10px 24px rgb(13 15 10 / 0.22);
+}
+
+.home-button-primary:hover,
+.home-header-cta:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.16) inset,
+    0 14px 30px rgb(13 15 10 / 0.26);
+}
+
+.home-button-primary:active,
+.home-header-cta:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.1) inset, 0 6px 14px rgb(13 15 10 / 0.2);
+}
+
+.home-shell :focus-visible,
+.system-shell :focus-visible {
+  outline: none;
+  box-shadow: var(--revamp-ring);
+  border-radius: 8px;
+}
+
+/* ---------------------------------------------------------------------------
+   5. Reveal-on-scroll (CSS scroll-driven; progressive enhancement).
+   --------------------------------------------------------------------------- */
+
+/* (Scroll-driven reveal was tried here and removed: with the sticky header +
+   overflow-clip shell it left sections stuck at opacity 0 in some scroll
+   states. Do not reintroduce without testing mid-page jumps.) */
+
+/* ---------------------------------------------------------------------------
+   6. Mobile — designed, not shrunk.
+   --------------------------------------------------------------------------- */
+
+/* World-inputs: swap the wide SVG for the ledger variant. */
+.world-inputs-mobile,
+.observe-mobile {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .hero-title,
+  .home-hero h1.hero-title {
+    font-size: clamp(37px, 10.4vw, 44px);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+  }
+
+  .home-hero #home-hero-title .home-title-line {
+    display: inline;
+  }
+
+  .world-section h2#world-title,
+  .observe-parity-copy h2,
+  .evidence-section h2,
+  .home-section.decision-section h2,
+  .pilot-section h2 {
+    font-size: clamp(31px, 8.6vw, 38px);
+    line-height: 1.06;
+  }
+
+  .world-stage .world-visual {
+    display: none;
+  }
+
+  .world-inputs-mobile {
+    display: block;
+  }
+
+  .observe-parity-visual svg {
+    display: none;
+  }
+
+  .system-shell .system-hero p:not(.home-label) {
+    font-size: 17px;
+    line-height: 1.58;
+  }
+
+  .observe-mobile {
+    display: block;
+  }
+}
+
+
+/* ---------------------------------------------------------------------------
+   7. Crit-pass fixes: evidence collage, decision gate story, world flow,
+      product-route findings. (2026-07-08 design-crit round.)
+   --------------------------------------------------------------------------- */
+
+/* Evidence collage: cards may overlap margins, never text (board is 940px,
+   verified against live getBoundingClientRect measurements). */
+.evidence-dossier {
+  left: 336px;
+  width: 356px;
+}
+
+/* The embedded ship/review/block mini-list is cut — section 05 owns the
+   triad, and the collage physically can't fit it without covering text. */
+.decision-cluster .decision-options {
+  display: none;
+}
+
+.decision-cluster {
+  top: 338px;
+  right: 10px;
+}
+
+.verifier-card {
+  top: 38px;
+  right: 0;
+}
+
+.memory-card {
+  top: 556px;
+  right: 12px;
+}
+
+/* Dossier internals: stamp pulled up and tightened so the tally and serial
+   sit clear beneath it. */
+.review-stamp {
+  width: 136px;
+  height: 136px;
+  margin-top: 18px;
+}
+
+.dossier-stats {
+  margin-top: 14px;
+}
+
+.dossier-stats {
+  gap: 8px;
+  padding: 5px 8px;
+}
+
+.dossier-stats span {
+  white-space: nowrap;
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+}
+
+.decision-card {
+  height: 192px;
+}
+
+.memory-card {
+  height: 136px;
+}
+
+/* One radius for every pinned card; rotation carries the collage feel. */
+.evidence-paper.artifact-card {
+  border-radius: 6px;
+}
+
+/* Case tally + serial: the packet's specimen count. */
+.dossier-stats {
+  display: inline-flex;
+  gap: 10px;
+  padding: 6px 10px;
+  border: 1px solid color-mix(in srgb, var(--revamp-brass) 40%, transparent);
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.dossier-serial {
+  position: absolute;
+  right: 0;
+  bottom: 17px;
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--dt-muted) 80%, var(--revamp-brass));
+}
+
+/* Product routes: findings read as tagged verdicts. */
+.home-product-route-finding b {
+  margin-right: 6px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--revamp-brass) 16%, transparent);
+  color: color-mix(in srgb, var(--revamp-brass) 75%, var(--dt-ink));
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* World inputs: the rows→engine routing must be legible; the incoming
+   intake haze stays a haze (it crosses the copy column). */
+.world-output-line {
+  opacity: 0.9;
+  stroke: color-mix(in srgb, var(--home-olive) 48%, var(--home-line));
+  stroke-width: 1.1;
+}
+
+.world-incoming-line {
+  opacity: 0.28;
+}
+
+/* Decision gate: the release visibly routes to REVIEW. */
+.decision-flow-outcome.is-review {
+  border-left: 3px solid var(--revamp-brass);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.8) inset, 0 10px 26px rgb(118 78 35 / 0.14);
+}
+
+.decision-flow-outcome.is-ship,
+.decision-flow-outcome.is-block {
+  opacity: 0.62;
+}
+
+/* Threshold notch: the release bar each meter is judged against. */
+.decision-flow-thresholds > div {
+  position: relative;
+}
+
+.decision-flow-thresholds > div::after {
+  content: "";
+  position: absolute;
+  left: 70%;
+  bottom: 0;
+  width: 1.5px;
+  height: 9px;
+  background: var(--revamp-brass);
+}
+
+.decision-flow-memory-return {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--revamp-olive);
+}
+
+/* Hero plate line: the case serial that threads through the whole page. */
+.home-hero-world-plate {
+  margin: 10px 4px 0;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--dt-muted) 78%, var(--revamp-brass));
+}
+
+/* Header CTA: one label in every state — kills the mid-morph text garble
+   and the desktop/mobile label mismatch. */
+.home-header-cta .home-cta-compact {
+  display: none;
+}
+
+.home-cta-full,
+:root[data-home-scrolled] .home-cta-full,
+:root[data-home-active-stage="02"] .home-cta-full,
+:root[data-home-active-stage="03"] .home-cta-full,
+:root[data-home-active-stage="04"] .home-cta-full,
+:root[data-home-active-stage="05"] .home-cta-full,
+:root[data-home-active-stage="06"] .home-cta-full {
+  max-width: none;
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 1100px) {
+  .home-cta-full {
+    display: inline-block;
+    max-width: none;
+    opacity: 1;
+  }
+}
+
+/* Decision diagram on mobile: a designed stack, not a scaled canvas. */
+@media (max-width: 760px) {
+  .decision-visual {
+    height: auto;
+    min-height: 0;
+  }
+
+  .decision-stage,
+  .decision-stage.decision-stage-calm,
+  .home-section.decision-section .decision-stage {
+    position: static;
+    display: grid;
+    gap: 14px;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    transform: none;
+  }
+
+  .home-section.decision-section .decision-visual {
+    height: auto;
+    min-height: 0;
+  }
+
+  .decision-flow-lines {
+    display: none;
+  }
+
+  .decision-stage .decision-flow-card,
+  .decision-stage .decision-flow-outcomes,
+  .decision-stage .decision-flow-memory {
+    position: static;
+    inset: auto;
+    width: 100%;
+    max-width: none;
+    transform: none;
+  }
+
+  .decision-flow-outcomes {
+    display: grid;
+    gap: 10px;
+  }
+}
+
+/* System-page mobile case card: the incident is the hero visual on phones. */
+.system-hero-mobile-case {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .system-shell .system-instrument {
+    display: none;
+  }
+
+  .system-hero-mobile-case {
+    display: block;
+    position: relative;
+    margin-top: 26px;
+    padding: 20px 20px 16px;
+    border: 1px solid var(--revamp-line);
+    border-radius: 14px;
+    background:
+      linear-gradient(180deg, rgb(255 255 255 / 0.7), rgb(255 255 255 / 0.18)),
+      var(--dt-surface);
+    box-shadow: var(--revamp-shadow-card);
+    transform: rotate(-0.4deg);
+  }
+
+  .system-hero-mobile-case::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 24px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #d8c69a, #8a713d 70%);
+    box-shadow: 0 2px 4px rgb(34 31 23 / 0.35);
+  }
+
+  .system-hero-mobile-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .system-hero-mobile-outcome {
+    padding: 3px 10px;
+    border: 1.4px solid var(--revamp-brass);
+    border-radius: 4px;
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--revamp-brass);
+    transform: rotate(2deg);
+  }
+
+  .system-hero-mobile-outcome.outcome-block {
+    border-color: var(--dt-block);
+    color: var(--dt-block);
+  }
+
+  .system-hero-mobile-outcome.outcome-ship {
+    border-color: var(--dt-ship);
+    color: var(--dt-ship);
+  }
+
+  .system-hero-mobile-incident {
+    margin: 0 0 10px;
+    font-family: var(--revamp-display);
+    font-optical-sizing: auto;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--dt-ink);
+  }
+
+  .system-hero-mobile-reason {
+    margin: 0;
+    padding-top: 10px;
+    border-top: 1px dashed color-mix(in srgb, var(--revamp-line) 70%, transparent);
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: var(--dt-muted);
+  }
+}
+
+/* World-inputs ledger (mobile) — a lab intake sheet, not a shrunk diagram. */
+.world-inputs-mobile {
+  position: relative;
+  width: 100%;
+  padding: 22px 20px 20px;
+  border: 1px solid var(--revamp-line);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.72), rgb(255 255 255 / 0.2)),
+    var(--dt-surface);
+  box-shadow: var(--revamp-shadow-card);
+}
+
+.world-inputs-mobile-heading {
+  margin: 0 0 14px;
+}
+
+.world-inputs-mobile-list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.world-inputs-mobile-row {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  grid-template-areas:
+    "num label"
+    "num detail";
+  column-gap: 12px;
+  padding: 11px 0;
+  border-top: 1px dashed color-mix(in srgb, var(--revamp-line) 70%, transparent);
+}
+
+.world-inputs-mobile-row:first-child {
+  border-top: 0;
+}
+
+.world-inputs-mobile-num {
+  grid-area: num;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--revamp-olive);
+  padding-top: 3px;
+}
+
+.world-inputs-mobile-label {
+  grid-area: label;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--dt-ink);
+}
+
+.world-inputs-mobile-detail {
+  grid-area: detail;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--dt-muted);
+}
+
+.world-inputs-mobile-engine {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--revamp-olive) 30%, var(--revamp-line));
+  background: linear-gradient(180deg, #23261b, #14160f);
+  color: #eef0e4;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  justify-content: center;
+}
+
+.world-inputs-mobile-engine-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--home-olive-soft);
+  box-shadow: 0 0 0 3px rgb(165 170 130 / 0.25);
+}
+
+/* Observe instrument (mobile). */
+.observe-mobile {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid var(--revamp-line);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.72), rgb(255 255 255 / 0.2)),
+    var(--dt-surface);
+  box-shadow: var(--revamp-shadow-card);
+}
+
+.observe-mobile-engine {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid color-mix(in srgb, var(--revamp-line) 70%, transparent);
+}
+
+.observe-mobile-engine-dial {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 42%, #3b4030, #14160f 68%);
+  border: 1px solid color-mix(in srgb, var(--revamp-brass) 55%, transparent);
+  box-shadow: 0 2px 6px rgb(13 15 10 / 0.35);
+}
+
+.observe-mobile-engine-dial::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2px;
+  height: 11px;
+  transform: translate(-50%, -100%) rotate(28deg);
+  transform-origin: bottom center;
+  border-radius: 2px;
+  background: var(--revamp-brass);
+}
+
+.observe-mobile-list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.observe-mobile-row {
+  display: grid;
+  gap: 3px;
+  padding: 13px 0 13px 18px;
+  position: relative;
+  border-bottom: 1px dashed color-mix(in srgb, var(--revamp-line) 70%, transparent);
+}
+
+.observe-mobile-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 19px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--revamp-olive);
+}
+
+.observe-mobile-row[data-behavior="retrieve"]::before {
+  border-color: var(--revamp-brass);
+}
+
+.observe-mobile-row[data-behavior="act"]::before {
+  border-color: var(--dt-ink);
+}
+
+.observe-mobile-label {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dt-ink);
+}
+
+.observe-mobile-detail {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--dt-muted);
+}
+
+.observe-mobile-note {
+  margin: 14px 0 0;
+  text-align: center;
+}

@@ -1,0 +1,245 @@
+/* ===========================================================================
+   revamp-craft.css — verified design-crit fixes.
+   Loads AFTER globals.css, revamp.css, and revamp-pages.css. Every rule below
+   is written to meet or exceed the specificity of the globals rule it beats;
+   the cascade-order advantage of loading last handles equal-specificity ties.
+   Identity: warm paper, olive #55603a, brass #9a7b45, ink #0d0f0a,
+   Fraunces/Inter/IBM Plex Mono (--font-display/--font-sans/--font-mono,
+   --font-geist-mono maps to Plex Mono).
+   =========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   1. HERO FEATURE STRIP (.home-proof-strip)
+   Effective desktop layout lives at globals ~15243-15310 (top-level, later
+   than the 12092/13859/14536 blocks). Beat it with .home-hero-prefixed rules.
+   --------------------------------------------------------------------------- */
+
+/* 1a. Dark intro cell text is vertically centered (align-content: center at
+   globals:15262) while the 5 content cells read as top-aligned. Top-align the
+   dark cell to the same top padding as the sibling cells. */
+.home-hero .home-proof-strip > p {
+  align-content: start;
+}
+
+/* Match the article content-start too, so icon/title/body begin at the same
+   top line as the dark cell's first text line (both now start-aligned). */
+.home-hero .home-proof-strip article {
+  align-content: start;
+}
+
+/* 1b. Vertical dividers between cells are border-lefts on each article
+   (globals:13872) that run the full cell height with no inset. Replace with a
+   single consistent inset divider (~18px top/bottom) drawn via ::before so all
+   five dividers match. The dark intro cell keeps no leading divider. */
+.home-hero .home-proof-strip article {
+  border-left: 0;
+}
+
+.home-hero .home-proof-strip article::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 18px;
+  bottom: 18px;
+  left: 0;
+  width: 1px;
+  background: rgb(17 17 13 / 0.08);
+  pointer-events: none;
+}
+
+/* 1c. Normalize proof-strip icon rendering: consistent optical box + stroke
+   weight so the asterisk/document/db glyphs stop drifting. Beats the icon svg
+   sizing at globals:1091/15293 and the stroke-width at globals:1105. */
+.home-hero .home-proof-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.home-hero .home-proof-icon path,
+.home-hero .home-proof-icon circle,
+.home-hero .home-proof-icon ellipse {
+  stroke-width: 1.5;
+}
+
+/* ---------------------------------------------------------------------------
+   2. PILOT DARK STRIP (.pilot-outcome-list — 01 SEND / 02 REHEARSE / 03 DECIDE)
+   Near-black band: background var(--home-ink) (globals:14289), eyebrow color
+   var(--home-olive) (globals:6031) → ~2.5:1. Cells divided by border-left
+   (globals:6025) that runs full height with no inset.
+   --------------------------------------------------------------------------- */
+
+/* 2a. Raise the "01 SEND" mono eyebrow to a pale olive/cream for >=4.5:1 on
+   near-black. Beats .pilot-outcome-list span (single class, globals:6028). */
+.pilot-outcome-list span {
+  color: color-mix(in srgb, var(--home-olive) 42%, #fff8ec);
+}
+
+/* 2b. Same inset divider treatment as 1b — full inner height, ~18px inset.
+   Beats .pilot-outcome-list li:not(:first-child) (globals:6024, 0,2,0). */
+.pilot-outcome-list li:not(:first-child) {
+  position: relative;
+  border-left: 0;
+}
+
+.pilot-outcome-list li:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  bottom: 18px;
+  left: 0;
+  width: 1px;
+  background: rgb(255 250 240 / 0.14);
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   3. PILOT INTAKE CARD (.pilot-intake-list) — remove inner hairlines.
+   Rows carry border-top (globals:5984), open at top/bottom → reads unbalanced.
+   Remove all inner rules and rely on spacing (more premium). Compensate the
+   lost top rule with a touch more row rhythm.
+   --------------------------------------------------------------------------- */
+.pilot-intake-list div {
+  border-top: 0;
+  padding: 12px 0;
+}
+
+.pilot-intake-list div:first-child {
+  padding-top: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+   4. FOOTER STEPPER (.home-footer-route) + footer nav baselines.
+   Effective desktop rules at globals:16254-16290 (min-width:1181px). The rail
+   uses align-items: center (globals:6195) so li's center in the 224px-tall
+   container, dropping the dots (li::before at li top) far below the fixed
+   track line (::before top:34px). Anchor li's to the top so dot centers meet
+   the line.
+   --------------------------------------------------------------------------- */
+.home-footer-route {
+  align-items: start;
+}
+
+/* Line center = 34.5px (top:34px, 1px). Dot (9px, li::before top:0) sits at the
+   li's top, which now starts at the container's padding-top (30px) → dot center
+   30 + 4.5 = 34.5px. Line and dots coincide. Pin li top padding explicitly so
+   the dot origin can't drift. */
+.home-footer-route li {
+  align-self: start;
+}
+
+/* Active "REMEMBER" label: keep it mono (inherited) and ink; globals:6275 sets
+   font-weight 820 which, with the mono stack, is fine — but guard against it
+   rendering as bold Inter by re-asserting the mono family + ink. */
+.home-footer-route .is-active-route,
+.home-footer-route .is-active-route span {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  color: var(--home-ink);
+}
+
+/* Top-align the footer nav groups (product routes vs Company/Docs cluster) to
+   one shared baseline: identical top padding + border so both clusters start on
+   the same line. Brand column already sits at grid top via align-items:start
+   (globals:6286). */
+.home-footer-products a,
+.home-footer-links {
+  padding-top: 12px;
+  border-top: 1px solid color-mix(in srgb, var(--home-ink) 14%, var(--home-line));
+}
+
+/* ---------------------------------------------------------------------------
+   5. CTA SHADOW TOKEN — one canonical primary-button drop shadow.
+   revamp.css defines the canonical on .home-button-primary (single class).
+   globals:4207 .decision-actions .home-button-primary (0,2,0) forces
+   box-shadow: none, breaking parity on the decision-section CTA. Restore the
+   canonical at matching-or-higher specificity.
+   --------------------------------------------------------------------------- */
+.decision-actions .home-button-primary,
+.home-section.decision-section .home-button-primary,
+.system-pilot-copy .home-button-primary,
+.company-role-panel .home-button-primary {
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.14) inset,
+    0 10px 24px rgb(13 15 10 / 0.22);
+}
+
+/* ---------------------------------------------------------------------------
+   6. LOGO MARK CONSISTENCY — rounded-square in every header state.
+   At rest .home-brand-mark is border-radius: 12px (globals:14393). The scrolled/
+   floating states force border-radius: 999px (globals:17596), rendering a
+   circle. Enforce the rounded square everywhere, including data-home-scrolled
+   and every active-stage state (matches the notebook identity).
+   --------------------------------------------------------------------------- */
+:root[data-home-scrolled] .home-brand-mark,
+:root[data-home-active-stage="02"] .home-brand-mark,
+:root[data-home-active-stage="03"] .home-brand-mark,
+:root[data-home-active-stage="04"] .home-brand-mark,
+:root[data-home-active-stage="05"] .home-brand-mark,
+:root[data-home-active-stage="06"] .home-brand-mark {
+  border-radius: 12px;
+}
+
+/* ---------------------------------------------------------------------------
+   7. MOBILE HEADER CLEARANCE — sections cramped under the floating pill.
+   scroll-margin-top: 104px already set (revamp.css:143). Add a little top
+   breathing room to home sections at mobile so their headings clear the pill.
+   --------------------------------------------------------------------------- */
+@media (max-width: 760px) {
+  .home-section {
+    padding-top: 106px;
+  }
+
+  main section[id],
+  .home-section[id],
+  #pilot {
+    scroll-margin-top: 116px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   8. COMPANY RECORD CARD MOBILE (.company-signal on /company).
+   The ledger grid (globals:9730+) collapses into empty cells with orphaned
+   labels on mobile. Restyle at <=760px as a clean stacked record: kill the grid
+   texture, stack label/value tightly, founder names in the serif directly under
+   their labels. CSS-only.
+   --------------------------------------------------------------------------- */
+@media (max-width: 760px) {
+  .company-signal {
+    min-height: 0;
+    grid-template-rows: auto auto auto auto;
+    /* Suppress the background grid texture — keep only the flat paper tint. */
+    background: color-mix(in srgb, var(--home-paper) 92%, var(--home-white));
+    background-size: auto;
+  }
+
+  .company-signal-topline,
+  .company-signal-statement {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 16px 18px;
+  }
+
+  /* Stack each CO-FOUNDER / name pair tightly, no wide 130px label gutter. */
+  .company-signal-founders {
+    display: grid;
+    gap: 0;
+    padding: 8px 18px 12px;
+  }
+
+  .company-signal-founders div {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 16px 0;
+  }
+
+  /* Founder names in the serif directly under their labels, 24px. */
+  .company-signal-founders strong {
+    font-size: 24px;
+    line-height: 1.05;
+  }
+
+  .company-signal-statement p {
+    max-width: none;
+    font-size: 16px;
+  }
+}

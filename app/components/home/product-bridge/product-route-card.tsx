@@ -17,7 +17,9 @@ export function ProductRouteCard({ route }: { route: ProductRoute }) {
       <ProductRouteGlyph type={route.type} />
       <span className="home-product-route-question">{route.question}</span>
       <span className="home-product-route-proof">
-        <small>{route.incident}</small>
+        <small className="home-product-route-finding">
+          <b>Finding</b> {route.incident}
+        </small>
         <small>{route.returns}</small>
       </span>
       <span className="home-product-route-action">

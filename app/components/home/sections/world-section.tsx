@@ -1,5 +1,6 @@
 import { ArrowMark } from "@/app/components/system/system-page";
 import { WorldInputsVisual } from "../visuals/world-inputs-visual";
+import { WorldInputsMobile } from "../visuals/world-inputs/world-inputs-mobile";
 
 export function WorldSection() {
   return (
@@ -20,6 +21,7 @@ export function WorldSection() {
       </div>
       <div className="world-stage">
         <WorldInputsVisual />
+        <WorldInputsMobile />
       </div>
     </section>
   );
