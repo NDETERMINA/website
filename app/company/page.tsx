@@ -5,7 +5,7 @@ import { CompanyPage as CompanyContent } from "@/app/components/company/company-
 export const metadata: Metadata = {
   title: "Company",
   description:
-    "Meet Determina, the company started by Alankrit Verma and Murphy Lee to build release infrastructure for serious AI systems."
+    "Meet Determina, the company started by Alankrit Verma to build release infrastructure for serious AI systems."
 };
 
 export default function CompanyPage() {

@@ -3,7 +3,7 @@ import { ArrowMark, PublicFooter, PublicHeader } from "@/app/components/system/s
 const founders = [
   {
     name: "Alankrit Verma",
-    role: "Co-founder",
+    role: "Founder",
     image: "https://github.com/AlankritVerma01.png",
     summary:
       "Alankrit built recommender infrastructure at PlayStation and founded GenAI Genesis. He studies Computer Science at the University of Toronto.",
@@ -13,23 +13,11 @@ const founders = [
       ["GitHub", "https://github.com/AlankritVerma01"],
       ["LinkedIn", "https://www.linkedin.com/in/alankritverma"]
     ]
-  },
-  {
-    name: "Murphy Lee",
-    role: "Co-founder",
-    image: "https://github.com/murphylee10.png",
-    summary:
-      "Murphy has shipped backend and infrastructure work at Coinbase, Cloudflare, Amazon, and theScore. He studies Computer Science at the University of Toronto.",
-    details: ["University of Toronto CS", "Backend and infrastructure engineering", "Previously Coinbase, Cloudflare, Amazon, theScore"],
-    links: [
-      ["GitHub", "https://github.com/murphylee10"],
-      ["LinkedIn", "https://ca.linkedin.com/in/murphylee10"]
-    ]
   }
 ] as const;
 
 const operatingNotes = [
-  ["we write the code", "Both founders are in the product every day. There is no layer between you and the decisions."],
+  ["we write the code", "The founder is in the product every day. There is no layer between you and the decisions."],
   ["small on purpose", "Fewer people, bigger ownership. You ship things with your name on them."],
   ["evidence over vibes", "If a claim about a release cannot be traced to an artifact, it does not count. We hold our own work to that too."]
 ] as const;
@@ -53,14 +41,14 @@ export function CompanyPage() {
           <p className="home-label">company</p>
           <h1 id="company-title">The missing step between &ldquo;the demo works&rdquo; and &ldquo;ship it.&rdquo;</h1>
           <p>
-            Determina is two engineers, Alankrit Verma and Murphy Lee. We have both watched AI
-            changes go out on a good demo and a gut call. This is the tool we kept wishing
-            someone would build: run the change against a world that looks like production,
-            read the evidence, then decide.
+            Determina is built by Alankrit Verma. He has watched too many AI changes go out
+            on a good demo and a gut call. This is the tool he kept wishing someone would
+            build: run the change against a world that looks like production, read the
+            evidence, then decide.
           </p>
           <div className="home-actions" aria-label="Company actions">
             <a className="home-button home-button-primary" href="#team">
-              Meet the founders
+              Meet the founder
               <ArrowMark />
             </a>
             <a className="home-inline-link" href="#join">
@@ -74,8 +62,8 @@ export function CompanyPage() {
 
       <section className="company-founders" id="team" aria-labelledby="company-founders-title">
         <div className="company-section-head">
-          <p className="home-label">founders</p>
-          <h2 id="company-founders-title">The people building it.</h2>
+          <p className="home-label">founder</p>
+          <h2 id="company-founders-title">The person building it.</h2>
         </div>
         <div className="company-founder-grid">
           {founders.map((founder) => (
@@ -111,17 +99,17 @@ export function CompanyPage() {
         <p className="home-label">why this team</p>
         <h2 id="company-note-title">We have been on the launch calls where nobody could say what the model would actually do.</h2>
         <p>
-          Between us we have built recommender infrastructure at PlayStation and backend systems
-          at Coinbase, Cloudflare, and Amazon. The pattern was the same everywhere: offline
-          metrics say one thing, production says another, and the release call gets made on
-          gut feel. Determina exists so that call can be made on evidence instead.
+          Alankrit built recommender infrastructure at PlayStation and has spent years working
+          on ML systems and evaluation. The pattern was the same everywhere: offline metrics
+          say one thing, production says another, and the release call gets made on gut feel.
+          Determina exists so that call can be made on evidence instead.
         </p>
       </section>
 
       <section className="company-operating" aria-labelledby="company-operating-title">
         <div>
           <p className="home-label">how we work</p>
-          <h2 id="company-operating-title">Two founders, zero layers.</h2>
+          <h2 id="company-operating-title">One founder, zero layers.</h2>
         </div>
         <ul>
           {operatingNotes.map(([title, body]) => (
@@ -171,12 +159,8 @@ function CompanySignal() {
       </div>
       <div className="company-signal-founders">
         <div>
-          <span>co-founder</span>
+          <span>founder</span>
           <strong>Alankrit Verma</strong>
-        </div>
-        <div>
-          <span>co-founder</span>
-          <strong>Murphy Lee</strong>
         </div>
       </div>
       <div className="company-signal-line" />
