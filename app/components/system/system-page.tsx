@@ -427,7 +427,22 @@ export function PublicHeader({ active }: { active?: PublicHeaderActive }) {
       <HeaderScrollState />
       <div className="home-header-inner">
         <Link href="/" className="home-brand" aria-label="Determina home">
-          <span className="home-brand-mark">D</span>
+          <span className="home-brand-mark" aria-hidden="true">
+            {/* Brand mark: input path branching into trials, resolving inside a bounded D. */}
+            <svg viewBox="0 0 64 64" fill="none" stroke="#1537D7" strokeLinecap="round" strokeLinejoin="round">
+              <path
+                d="M22 12 H35 C46 12 53 19.5 53 32 C53 44.5 46 52 35 52 H22 C19 52 17 50 17 47 V39 M17 25 V17 C17 14 19 12 22 12"
+                strokeWidth="5"
+              />
+              <path d="M10 32 H24" strokeWidth="4" />
+              <path d="M26 32 C31 32 33 27 37 23" strokeWidth="3" />
+              <path d="M26 32 H40" strokeWidth="3" />
+              <path d="M26 32 C31 32 33 37 37 41" strokeWidth="3" />
+              <circle cx="39.5" cy="20.5" r="3.2" fill="#1537D7" stroke="none" />
+              <circle cx="44.5" cy="32" r="3.8" fill="#1537D7" stroke="none" />
+              <circle cx="39.5" cy="43.5" r="3.2" fill="#1537D7" stroke="none" />
+            </svg>
+          </span>
           <span>Determina</span>
         </Link>
         <nav className="home-nav" aria-label="Main navigation">

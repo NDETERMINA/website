@@ -243,3 +243,13 @@
     font-size: 16px;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   LOGO GLYPH — the brand D-flow mark rendered inside the .home-brand-mark
+   tile (replaces the old letter "D"). The tile box, radius, and scroll-state
+   rules above all still apply; this only sizes the inline SVG within it.
+   --------------------------------------------------------------------------- */
+.home-brand-mark svg {
+  width: 68%;
+  height: 68%;
+}
