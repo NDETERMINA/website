@@ -48,7 +48,7 @@ export const metadata: Metadata = {
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" }
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-    other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#10110e" }]
+    other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#1537D7" }]
   },
   openGraph: {
     title: "Determina by NDETERMINA",

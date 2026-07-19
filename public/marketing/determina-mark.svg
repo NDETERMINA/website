@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <title>Determina mark</title>
+  <g fill="none" stroke="#1537D7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- D enclosure: the safe, bounded environment. Left wall opens for the input path. -->
+    <path d="M286 210 H570 C718 210 818 312 818 512 C818 712 718 814 570 814 H286
+             C250 814 226 790 226 754 V616
+             M226 408 V270 C226 234 250 210 286 210"
+          stroke-width="34"/>
+    <!-- Input path entering the environment -->
+    <path d="M160 512 H340" stroke-width="28"/>
+    <circle cx="142" cy="512" r="24" fill="#1537D7" stroke="none"/>
+    <!-- Branching uncertainty: three dotted trial paths -->
+    <path d="M348 512 C424 512 458 438 532 356" stroke-width="14" stroke-dasharray="1 33"/>
+    <path d="M348 512 H586" stroke-width="14" stroke-dasharray="1 33"/>
+    <path d="M348 512 C424 512 458 586 532 668" stroke-width="14" stroke-dasharray="1 33"/>
+    <circle cx="556" cy="330" r="26" fill="#1537D7" stroke="none"/>
+    <circle cx="556" cy="694" r="26" fill="#1537D7" stroke="none"/>
+    <!-- Resolution: candidate fades, path firms up, outcome lands -->
+    <circle cx="628" cy="512" r="20" fill="#8FA1F3" stroke="none"/>
+    <path d="M648 512 H726" stroke-width="24"/>
+    <circle cx="756" cy="512" r="32" fill="#1537D7" stroke="none"/>
+  </g>
+</svg>

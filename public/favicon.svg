@@ -1,9 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="10" fill="#10110e"/>
-  <path d="M18 20h28M18 32h28M18 44h28" fill="none" stroke="#fbfaf6" stroke-width="3.75" stroke-linecap="round"/>
-  <path d="M28 18v28M38 18v28" fill="none" stroke="#d2c9ba" stroke-width="1.75" stroke-linecap="round" opacity=".86"/>
-  <circle cx="28" cy="32" r="6.4" fill="#fbfaf6"/>
-  <circle cx="38" cy="20" r="4.7" fill="#9a7b45"/>
-  <circle cx="38" cy="44" r="4.7" fill="#656b3c"/>
-  <path d="M28 32h10" fill="none" stroke="#10110e" stroke-width="2.6" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <title>Determina favicon</title>
+  <rect width="64" height="64" rx="14" fill="#1537D7"/>
+  <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Simplified D enclosure -->
+    <path d="M22 12 H35 C46 12 53 19.5 53 32 C53 44.5 46 52 35 52 H22
+             C19 52 17 50 17 47 V39
+             M17 25 V17 C17 14 19 12 22 12"
+          stroke-width="5"/>
+    <!-- Input path -->
+    <path d="M10 32 H24" stroke-width="4"/>
+    <!-- Solid branches (dots don't survive small sizes) -->
+    <path d="M26 32 C31 32 33 27 37 23" stroke-width="3"/>
+    <path d="M26 32 H40" stroke-width="3"/>
+    <path d="M26 32 C31 32 33 37 37 41" stroke-width="3"/>
+    <circle cx="39.5" cy="20.5" r="3.2" fill="#ffffff" stroke="none"/>
+    <circle cx="44.5" cy="32" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="39.5" cy="43.5" r="3.2" fill="#ffffff" stroke="none"/>
+  </g>
 </svg>
