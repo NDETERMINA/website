@@ -29,7 +29,7 @@ const roles = [
   "design engineers who care about clarity"
 ] as const;
 
-const foundersEmail = "mailto:founders@ndetermina.com?subject=Joining%20Determina";
+const foundersEmail = "mailto:founders@determina.dev?subject=Joining%20Determina";
 
 export function CompanyPage() {
   return (

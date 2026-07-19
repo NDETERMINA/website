@@ -2,7 +2,7 @@ export const siteLinks = {
   pilot: "#pilot",
   waitlist:
     process.env.NEXT_PUBLIC_WAITLIST_URL ||
-    "mailto:founders@ndetermina.com?subject=Determina%20system%20type%20pilot",
+    "mailto:founders@determina.dev?subject=Determina%20system%20type%20pilot",
   githubProduct:
     "https://github.com/NDETERMINA/determina/tree/main/packages/python/public/determina",
   githubSource: "https://github.com/NDETERMINA/determina",

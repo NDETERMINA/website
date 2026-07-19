@@ -17,7 +17,7 @@ export function DocsHeader({ searchEntries }: { searchEntries: SearchEntry[] }) 
         <span aria-hidden className="docs-header-divider" />
 
         <a
-          href="https://ndetermina.com"
+          href="https://determina.dev"
           target="_blank"
           rel="noreferrer"
           className="docs-header-by"

@@ -45,7 +45,7 @@ export function DocsFooter() {
           title="Pilot"
           links={[
             { label: "Request access", href: siteLinks.waitlist, external: true },
-            { label: "Contact", href: "mailto:founders@ndetermina.com", external: true }
+            { label: "Contact", href: "mailto:founders@determina.dev", external: true }
           ]}
         />
       </div>
