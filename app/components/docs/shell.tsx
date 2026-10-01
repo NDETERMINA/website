@@ -15,8 +15,12 @@ export function DocsShell({
   children: ReactNode;
 }) {
   return (
-    <div data-docs-theme="dark" style={{ minHeight: "100vh" }}>
+    <div className="lab-shell lab-docs" data-docs-theme="signal">
       <DocsHeader searchEntries={searchEntries} />
+      <details className="docs-mobile-nav docs-container">
+        <summary>Browse documentation</summary>
+        <DocsSidebar groups={groups} mobile />
+      </details>
       <div className="docs-container">
         <div className="docs-shell">
           <DocsSidebar groups={groups} />

@@ -1,10 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, IBM_Plex_Mono, Inter } from "next/font/google";
+import { Fraunces, IBM_Plex_Mono, Instrument_Sans, Inter } from "next/font/google";
 
 import "./globals.css";
 import "./revamp.css";
 import "./revamp-pages.css";
 import "./revamp-craft.css";
+import "./lab.css";
+
+const labSans = Instrument_Sans({ subsets: ["latin"], variable: "--font-lab", display: "swap" });
 
 const displaySerif = Fraunces({
   subsets: ["latin"],
@@ -34,7 +37,7 @@ export const metadata: Metadata = {
   },
   description:
     "Determina finds AI behavior failures ordinary tests miss, running controlled system-type coverage for recommender, search, and agent systems before launch.",
-  metadataBase: new URL("https://website.determina.dev"),
+  metadataBase: new URL("https://determina.dev"),
   manifest: "/site.webmanifest",
   appleWebApp: {
     capable: true,
@@ -58,7 +61,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#10110e"
+  themeColor: "#eef2f5"
 };
 
 export default function RootLayout({
@@ -70,7 +73,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${displaySerif.variable} ${bodySans.variable} ${labelMono.variable}`}
+      className={`${displaySerif.variable} ${bodySans.variable} ${labelMono.variable} ${labSans.variable}`}
     >
       <body className="antialiased">
         {children}

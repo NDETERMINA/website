@@ -15,11 +15,14 @@ export function DocsSearch({ entries }: { entries: Entry[] }) {
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const closeSearch = () => {
       setOpen(false);
       setQ("");
+      triggerRef.current?.focus();
     };
 
     const onKey = (e: KeyboardEvent) => {
@@ -30,8 +33,14 @@ export function DocsSearch({ entries }: { entries: Entry[] }) {
         } else {
           setOpen(true);
         }
-      } else if (e.key === "Escape") {
+      } else if (e.key === "Escape" && open) {
         closeSearch();
+      } else if (e.key === "Tab" && open) {
+        const controls = dialogRef.current?.querySelectorAll<HTMLElement>('a[href], button, input');
+        if (!controls?.length) return;
+        const first = controls[0], last = controls[controls.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
     };
     window.addEventListener("keydown", onKey);
@@ -47,6 +56,7 @@ export function DocsSearch({ entries }: { entries: Entry[] }) {
   const closeSearch = () => {
     setOpen(false);
     setQ("");
+    triggerRef.current?.focus();
   };
 
   const results = useMemo(() => {
@@ -91,19 +101,22 @@ export function DocsSearch({ entries }: { entries: Entry[] }) {
   return (
     <>
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setOpen(true)}
         className="docs-search-trigger"
         aria-label="Search docs"
       >
         <SearchIcon size={14} aria-hidden />
-        <span style={{ flex: 1, textAlign: "left" }}>Search commands, concepts, errors…</span>
+        <span style={{ flex: 1, textAlign: "left" }}>Search documentation</span>
         <span className="docs-kbd">⌘K</span>
       </button>
 
       {open ? (
         <div
+          ref={dialogRef}
           role="dialog"
+          aria-label="Search documentation"
           aria-modal
           onClick={(e) => {
             if (e.target === e.currentTarget) closeSearch();
@@ -129,7 +142,7 @@ export function DocsSearch({ entries }: { entries: Entry[] }) {
               background: "var(--docs-surface)",
               border: "1px solid var(--docs-border)",
               borderRadius: 10,
-              boxShadow: "0 24px 64px rgba(0,0,0,0.5)",
+              boxShadow: "0 18px 50px rgba(16,27,45,0.2)",
               overflow: "hidden"
             }}
           >
@@ -144,6 +157,7 @@ export function DocsSearch({ entries }: { entries: Entry[] }) {
             >
               <SearchIcon size={15} aria-hidden style={{ color: "var(--docs-text-muted)" }} />
               <input
+                aria-label="Search documentation pages"
                 ref={inputRef}
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
@@ -152,7 +166,6 @@ export function DocsSearch({ entries }: { entries: Entry[] }) {
                   flex: 1,
                   background: "transparent",
                   border: 0,
-                  outline: "none",
                   color: "var(--docs-text)",
                   fontSize: 14
                 }}

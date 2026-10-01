@@ -1,5 +1,6 @@
 import { BookOpen, Boxes, Bot, Bug, Cloud, Code2, FileJson2, GitBranch, ListChecks, Plug, Route, Search, Server, Sparkles, Terminal, Workflow } from "lucide-react";
 
+import HowItWorks from "@/content/docs/start/how-it-works.mdx";
 import Overview from "@/content/docs/start/overview.mdx";
 import Quickstart from "@/content/docs/start/quickstart.mdx";
 import LocalSmokeTest from "@/content/docs/start/local-smoke-test.mdx";
@@ -30,6 +31,17 @@ import { DOC_GROUPS } from "./schema";
 
 export const docsPages: DocPage[] = [
   {
+    slug: "how-it-works", title: "How Determina works", navTitle: "How it works",
+    description: "How configured conditions become behavior trials, inspectable evidence, and release comparisons.",
+    group: "Start", order: 15, Content: HowItWorks,
+    headings: [
+      { id: "the-world-around-the-system", title: "The world around the system" },
+      { id: "conditions-behavior-evidence", title: "Conditions, behavior, evidence" },
+      { id: "what-a-trial-can-tell-you", title: "What a trial can tell you" },
+      { id: "choose-the-right-path", title: "Choose the right path" }
+    ]
+  },
+  {
     slug: "overview",
     title: "Determina Docs",
     navTitle: "Overview",
@@ -50,7 +62,7 @@ export const docsPages: DocPage[] = [
     title: "Hosted Quickstart",
     navTitle: "Hosted quickstart",
     description:
-      "Configure the API, create a Project, register a System Version, run a Behavior Trial, and download artifacts.",
+      "Configure the CLI, set up your repository, run a first hosted review, and inspect the results.",
     group: "Start",
     order: 20,
     kind: "quickstart",
@@ -58,11 +70,9 @@ export const docsPages: DocPage[] = [
     headings: [
       { id: "before-you-start", title: "Before you start" },
       { id: "configure-the-cli", title: "Configure the CLI" },
-      { id: "create-a-project", title: "Create a Project" },
-      { id: "register-a-system", title: "Register a System" },
-      { id: "create-a-system-version", title: "Create a System Version" },
-      { id: "run-a-behavior-trial", title: "Run a Behavior Trial" },
-      { id: "download-results-packet-artifacts", title: "Download artifacts" }
+      { id: "set-up-this-repo", title: "Set up this repo" },
+      { id: "run-your-first-review", title: "Run your first review" },
+      { id: "inspect-results", title: "Inspect results" }
     ]
   },
   {
@@ -80,7 +90,7 @@ export const docsPages: DocPage[] = [
       { id: "what-this-lane-is-for", title: "What this lane is for" },
       { id: "install", title: "Install" },
       { id: "check-a-local-integration-shape", title: "Check a local integration shape" },
-      { id: "inspect-local-output", title: "Inspect output" }
+      { id: "inspect-local-output", title: "Inspect local output" }
     ]
   },
   {
@@ -93,7 +103,7 @@ export const docsPages: DocPage[] = [
     Content: Projects,
     headings: [
       { id: "what-a-project-owns", title: "What a Project owns" },
-      { id: "create-and-list-projects", title: "Create and list" },
+      { id: "create-and-list-projects", title: "Create and list projects" },
       { id: "naming-and-boundaries", title: "Naming and boundaries" }
     ]
   },
@@ -106,7 +116,7 @@ export const docsPages: DocPage[] = [
     order: 20,
     Content: Systems,
     headings: [
-      { id: "system-vs-system-version", title: "System vs version" },
+      { id: "system-vs-system-version", title: "System vs System Version" },
       { id: "create-a-system", title: "Create a System" },
       { id: "create-a-version", title: "Create a Version" },
       { id: "configuration-shape", title: "Configuration shape" }
@@ -121,7 +131,7 @@ export const docsPages: DocPage[] = [
     order: 30,
     Content: BehaviorTrials,
     headings: [
-      { id: "what-a-behavior-trial-does", title: "What it does" },
+      { id: "what-a-behavior-trial-does", title: "What a Behavior Trial does" },
       { id: "run-hosted", title: "Run hosted" },
       { id: "scenarios-and-seeds", title: "Scenarios and seeds" }
     ]
@@ -149,7 +159,7 @@ export const docsPages: DocPage[] = [
     order: 50,
     Content: ResultsPackets,
     headings: [
-      { id: "what-a-results-packet-is", title: "What it is" },
+      { id: "what-evidence-is", title: "What Evidence Is" },
       { id: "common-artifacts", title: "Common artifacts" },
       { id: "compare-artifacts", title: "Compare artifacts" },
       { id: "agent-artifacts", title: "Agent artifacts" }
@@ -164,9 +174,9 @@ export const docsPages: DocPage[] = [
     order: 10,
     Content: NativeHttp,
     headings: [
-      { id: "when-to-use-native-http", title: "When to use it" },
-      { id: "local-contract-checks", title: "Local checks" },
-      { id: "source-contracts", title: "Source contracts" }
+      { id: "when-to-use-native-http", title: "When to use native HTTP" },
+      { id: "local-contract-checks", title: "Local contract checks" },
+      { id: "system-guides", title: "System guides" }
     ]
   },
   {
@@ -178,8 +188,8 @@ export const docsPages: DocPage[] = [
     order: 20,
     Content: SchemaMappedHttp,
     headings: [
-      { id: "when-to-use-schema-mapped-http", title: "When to use it" },
-      { id: "generate-a-starter-config", title: "Starter config" },
+      { id: "when-to-use-schema-mapped-http", title: "When to use schema-mapped HTTP" },
+      { id: "generate-a-starter-config", title: "Generate a starter config" },
       { id: "lane-boundaries", title: "Lane boundaries" }
     ]
   },
@@ -193,8 +203,8 @@ export const docsPages: DocPage[] = [
     badge: "local",
     Content: PythonCallable,
     headings: [
-      { id: "where-python-callables-fit", title: "Where it fits" },
-      { id: "local-driver-configs", title: "Driver configs" },
+      { id: "where-python-callables-fit", title: "Where Python callables fit" },
+      { id: "local-driver-configs", title: "Local driver configs" },
       { id: "examples", title: "Examples" }
     ]
   },
@@ -208,8 +218,8 @@ export const docsPages: DocPage[] = [
     Content: AgentHttpSession,
     headings: [
       { id: "session-lifecycle", title: "Session lifecycle" },
-      { id: "default-url-shortcut", title: "URL shortcut" },
-      { id: "custom-driver-configs", title: "Custom configs" }
+      { id: "default-url-shortcut", title: "Default URL shortcut" },
+      { id: "custom-driver-configs", title: "Custom driver configs" }
     ]
   },
   {
@@ -222,7 +232,7 @@ export const docsPages: DocPage[] = [
     badge: "local",
     Content: ProviderDrivers,
     headings: [
-      { id: "what-provider-drivers-cover", title: "What they cover" },
+      { id: "what-provider-drivers-cover", title: "What provider drivers cover" },
       { id: "safe-configuration", title: "Safe configuration" },
       { id: "boundaries", title: "Boundaries" }
     ]
@@ -251,9 +261,9 @@ export const docsPages: DocPage[] = [
     order: 10,
     Content: Recommenders,
     headings: [
-      { id: "risks-determina-tests", title: "Risks tested" },
+      { id: "risks-determina-tests", title: "Risks Determina tests" },
       { id: "supported-workflows", title: "Supported workflows" },
-      { id: "results-language", title: "Results language" }
+      { id: "evidence-language", title: "Evidence language" }
     ]
   },
   {
@@ -265,7 +275,7 @@ export const docsPages: DocPage[] = [
     order: 20,
     Content: SearchSystems,
     headings: [
-      { id: "risks-determina-tests", title: "Risks tested" },
+      { id: "risks-in-scope", title: "Risks in scope" },
       { id: "supported-workflows", title: "Supported workflows" },
       { id: "generated-test-case-boundary", title: "Generated test case boundary" }
     ]
@@ -279,9 +289,9 @@ export const docsPages: DocPage[] = [
     order: 30,
     Content: Agents,
     headings: [
-      { id: "risks-determina-tests", title: "Risks tested" },
+      { id: "risks-determina-tests", title: "Risks Determina tests" },
       { id: "supported-drivers", title: "Supported drivers" },
-      { id: "local-and-hosted-boundaries", title: "Boundaries" }
+      { id: "local-and-hosted-boundaries", title: "Local and hosted boundaries" }
     ]
   },
   {
@@ -295,7 +305,7 @@ export const docsPages: DocPage[] = [
     Content: GeneratedTestCases,
     headings: [
       { id: "current-support", title: "Current support" },
-      { id: "recommender-and-search-packs", title: "Recommender and search" },
+      { id: "recommender-and-search-packs", title: "Recommender and search packs" },
       { id: "agent-packs", title: "Agent packs" }
     ]
   },
@@ -311,7 +321,7 @@ export const docsPages: DocPage[] = [
     headings: [
       { id: "when-to-use-this", title: "When to use this" },
       { id: "validate-and-plan", title: "Validate and plan" },
-      { id: "execute-a-saved-plan", title: "Execute saved plan" }
+      { id: "execute-a-saved-plan", title: "Execute a saved plan" }
     ]
   },
   {
@@ -340,8 +350,8 @@ export const docsPages: DocPage[] = [
     Content: CiReleaseGates,
     headings: [
       { id: "what-ci-should-do", title: "What CI should do" },
-      { id: "github-actions-example", title: "GitHub Actions" },
-      { id: "review-the-output", title: "Review output" }
+      { id: "github-actions-example", title: "GitHub Actions example" },
+      { id: "review-the-output", title: "Review the output" }
     ]
   },
   {
@@ -354,10 +364,10 @@ export const docsPages: DocPage[] = [
     kind: "reference",
     Content: CliReference,
     headings: [
-      { id: "hosted-production-commands", title: "Hosted commands" },
-      { id: "local-no-key-setup-commands", title: "Local no-key setup" },
-      { id: "gated-platform-core-command-surfaces", title: "Gated command surfaces" },
-      { id: "advanced-commands", title: "Advanced commands" }
+      { id: "primary-public-commands", title: "Primary public commands" },
+      { id: "advanced-hosted-commands", title: "Advanced hosted commands" },
+      { id: "advanced-local-reference-commands", title: "Advanced local/reference commands" },
+      { id: "advanced-generated-and-plan-first-workflows", title: "Advanced generated and plan-first workflows" }
     ]
   },
   {
@@ -370,9 +380,9 @@ export const docsPages: DocPage[] = [
     kind: "reference",
     Content: ArtifactsContracts,
     headings: [
-      { id: "results-packet-files", title: "Results Packet files" },
-      { id: "contract-source-links", title: "Contract source links" },
-      { id: "example-source-links", title: "Example source links" }
+      { id: "evidence-files", title: "Evidence Files" },
+      { id: "integration-guides", title: "Integration guides" },
+      { id: "setup-guides", title: "Setup guides" }
     ]
   },
   {
@@ -384,8 +394,8 @@ export const docsPages: DocPage[] = [
     order: 10,
     Content: Troubleshooting,
     headings: [
-      { id: "api-and-platform-id-errors", title: "API and IDs" },
-      { id: "system-or-driver-errors", title: "System or driver" },
+      { id: "api-and-platform-id-errors", title: "API and platform ID errors" },
+      { id: "system-or-driver-errors", title: "System or driver errors" },
       { id: "missing-output", title: "Missing output" },
       { id: "capability-mismatch", title: "Capability mismatch" }
     ]
@@ -414,6 +424,7 @@ export const docAliases: DocAlias[] = [
 
 export const docPageIcons = {
   overview: BookOpen,
+  "how-it-works": Workflow,
   quickstart: Cloud,
   "local-smoke-test": Terminal,
   projects: Boxes,

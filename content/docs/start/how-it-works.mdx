@@ -1,0 +1,25 @@
+## The world around the system
+
+A recommendation, search result, or agent action depends on more than the model. Users, source freshness, tool responses, authorization, and earlier actions change what happens next.
+
+Determina makes those surrounding conditions explicit. A behavior trial runs a system version against a configured environment and records the resulting trajectory. A comparison can then examine a candidate against a baseline under the same declared conditions.
+
+## Conditions, behavior, evidence
+
+**Configure conditions.** Describe the task, users or cohorts, available sources and tools, and relevant state. Keep the configuration and seed with the run so the setup can be inspected later. See [Systems and Versions](/docs/systems-and-versions) and [Source Specs](/docs/source-specs-plan-first).
+
+**Observe behavior.** Record the inputs, outputs, tool calls, and state changes that occur during the trial. The useful result is the path the system took, alongside the conditions that produced it. See [Behavior Trials](/docs/behavior-trials).
+
+**Inspect evidence.** Review findings together with traces and manifests. Compare a candidate with a baseline before making a release decision. See [Results Packets](/docs/results-packets) and [Compare and Launch Decisions](/docs/compare-launch-decisions).
+
+## What a trial can tell you
+
+A finding can expose a failure under the tested conditions. A passing trial says those particular checks did not find a failure; it does not establish universal safety or predict every real user interaction.
+
+Seeds and saved inputs make runs traceable. External model providers and changing services may still introduce variation. Inspect the run manifest and integration boundary before treating two runs as equivalent.
+
+## Choose the right path
+
+[Recommenders](/docs/recommenders) focus on rankings and cohorts. [Agents](/docs/agents) focus on actions, tools, and resource changes. [Search](/docs/search) describes the search integration and evidence model; the hosted search product remains in development.
+
+Start with the [local smoke test](/docs/local-smoke-test) for package and integration checks. Use the [hosted quickstart](/docs/quickstart) when you have platform access. Contact [founders@determina.dev](mailto:founders@determina.dev) for access or an integration example.

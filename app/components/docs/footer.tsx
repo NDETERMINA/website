@@ -25,6 +25,7 @@ export function DocsFooter() {
           title="Docs"
           links={[
             { label: "Overview", href: "/docs" },
+            { label: "How it works", href: "/docs/how-it-works" },
             { label: "Hosted quickstart", href: "/docs/quickstart" },
             { label: "Results Packets", href: "/docs/results-packets" },
             { label: "CLI reference", href: "/docs/cli-reference" }
@@ -34,10 +35,11 @@ export function DocsFooter() {
         <FooterColumn
           title="Project"
           links={[
-            { label: "GitHub", href: siteLinks.githubProduct, external: true },
+            { label: "Company", href: "/company" },
+            { label: "Website source", href: siteLinks.githubProduct, external: true },
             { label: "PyPI", href: siteLinks.pyPI, external: true },
-            { label: "Changelog", href: siteLinks.releases, external: true },
-            { label: "Issues", href: siteLinks.issues, external: true }
+            { label: "CLI reference", href: siteLinks.releases },
+            { label: "Support", href: siteLinks.issues, external: true }
           ]}
         />
 
@@ -52,7 +54,7 @@ export function DocsFooter() {
 
       <div className="docs-container docs-footer-bottom">
         <span className="docs-footer-meta">
-          © {new Date().getFullYear()} NDETERMINA · Determina is open-source under MIT
+          © {new Date().getFullYear()} NDETERMINA · Website source under MIT
         </span>
         <a
           href={siteLinks.githubProduct}

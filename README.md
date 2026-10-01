@@ -1,37 +1,44 @@
-# Determina Website
+# Determina website
 
-Website and docs for Determina by NDETERMINA.
+The public website and documentation for [Determina](https://determina.dev).
+The homepage introduces one idea; product and documentation pages carry the detail.
 
 ## Routes
 
-- `/`: product overview and primary docs entry.
-- `/docs`: docs landing page.
-- `/docs/swarm-model`: how release questions become seeded behavior swarms.
-- `/docs/domain-products`: recommender, search, and agent domain product overview.
-- `/docs/recommender-domain`: recommender-specific guide.
-- `/docs/search-domain`: search-specific guide.
-- `/docs/agent-domain`: agent trajectory guide.
-- `/docs/integration-paths`: native HTTP, schema-mapped HTTP, Python, and agent drivers.
-- `/docs/quickstart`: install and first multi-domain audits.
-- `/docs/cli-reference`: CLI commands and important options.
-- `/docs/workflows`: common usage paths.
-- `/docs/outputs`: reports, JSON, traces, plans, and manifests.
-- `/docs/generation`: generated scenario/population coverage.
-- `/docs/plan-first`: saved plan workflows.
-- `/docs/troubleshooting`: common failures and fixes.
+- `/`: introduction and links to system types.
+- `/recomm`, `/agents`, `/search`: system-specific examples and availability.
+- `/company`: founder, company, and contact.
+- `/docs`: documentation, with searchable navigation and mobile browsing.
+- `/docs/how-it-works`: the product model, evidence, and limits.
+- `/docs/quickstart`: hosted setup and first review, requiring platform access.
+- `/docs/local-smoke-test`: package and integration checks.
+- `/docs/cli-reference`: command reference.
+
+Legacy documentation addresses redirect to their current guides. The old
+`/engine-standard` address redirects to `/docs/how-it-works`.
 
 ## Development
 
-```bash
-npm install
+```sh
+npm ci
 npm run dev
 ```
 
-Set `NEXT_PUBLIC_WAITLIST_URL` to the Tally or Google Form URL used by the domain-pilot CTA.
+Set `NEXT_PUBLIC_WAITLIST_URL` to override the default pilot contact address.
 
-## Checks
-
-```bash
+```sh
 npm run lint
 npm run build
 ```
+
+## Source and deployment
+
+[NDETERMINA/website](https://github.com/NDETERMINA/website) contains the MIT-licensed
+website source. The product engine is maintained separately in a private repository;
+this repository does not grant access to its implementation or hosted execution.
+
+The source website directory is synchronized to this repository by the upstream
+website sync workflow. Vercel deploys its main branch to the existing production
+project. Build output, local environment files, and local design work are excluded
+from synchronization. Contact [founders@determina.dev](mailto:founders@determina.dev)
+for product access, support, or an integration example.

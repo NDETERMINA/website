@@ -30,12 +30,12 @@ export function DocsSidebarGroup({
   );
 }
 
-export function DocsSidebar({ groups }: { groups: DocsSidebarGroupData[] }) {
+export function DocsSidebar({ groups, mobile = false }: { groups: DocsSidebarGroupData[]; mobile?: boolean }) {
   const pathname = usePathname();
   const currentSlug = pathname?.replace(/^\/docs\/?/, "") || "overview";
 
   return (
-    <aside className="docs-sidebar" aria-label="Docs navigation">
+    <aside className={mobile ? "docs-mobile-links" : "docs-sidebar"} aria-label={mobile ? "Mobile docs navigation" : "Docs navigation"}>
       {groups.map((group) => (
         <DocsSidebarGroup key={group.group} title={group.group}>
           {group.pages.map((item) => {
@@ -47,6 +47,7 @@ export function DocsSidebar({ groups }: { groups: DocsSidebarGroupData[] }) {
               <Link
                 key={item.slug}
                 href={href}
+                onClick={mobile ? (event) => event.currentTarget.closest("details")?.removeAttribute("open") : undefined}
                 aria-current={isActive ? "page" : undefined}
                 className="docs-sidebar-link"
               >

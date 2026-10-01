@@ -20,3 +20,8 @@ pnpm-debug.log*
 *.tsbuildinfo
 
 plans/
+
+# Local design comps and verification captures
+.impeccable/
+/PRODUCT.md
+/DESIGN.md

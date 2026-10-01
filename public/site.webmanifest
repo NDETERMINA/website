@@ -4,7 +4,7 @@
   "description": "Behavioral rehearsal and trace-backed release decisions for AI systems.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fbfaf6",
+  "background_color": "#eef2f5",
   "theme_color": "#1537D7",
   "icons": [
     {

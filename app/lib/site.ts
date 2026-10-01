@@ -3,40 +3,25 @@ export const siteLinks = {
   waitlist:
     process.env.NEXT_PUBLIC_WAITLIST_URL ||
     "mailto:founders@determina.dev?subject=Determina%20system%20type%20pilot",
-  githubProduct:
-    "https://github.com/NDETERMINA/determina/tree/main/packages/python/public/determina",
-  githubSource: "https://github.com/NDETERMINA/determina",
+  githubProduct: "https://github.com/NDETERMINA/website",
+  githubSource: "https://github.com/NDETERMINA/website",
   pyPI: "https://pypi.org/project/determina/",
-  releases: "https://github.com/NDETERMINA/determina/releases",
-  issues: "https://github.com/NDETERMINA/determina/issues",
-  externalContract:
-    "https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/EXTERNAL_SYSTEM_CONTRACT.md",
-  searchContract:
-    "https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/EXTERNAL_SYSTEM_CONTRACT_SEARCH.md",
-  agentContract:
-    "https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/EXTERNAL_SYSTEM_CONTRACT_AGENTS.md",
-  demoGuide:
-    "https://github.com/NDETERMINA/determina/blob/main/packages/python/public/determina/DEMO.md",
-  exampleService:
-    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/recommender_http_service",
-  hfExample:
-    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/hf_recommender_service",
-  recommenderSchemaMappedJsonpath:
-    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/recommender_schema_mapped_jsonpath",
-  recommenderSchemaMappedTransform:
-    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/recommender_schema_mapped_transform",
-  recommenderPythonExample:
-    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/recommender_in_process_python_api",
-  agentPythonExample:
-    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/agent_in_process_python_api",
-  agentHttpSessionExample:
-    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/agent_http_session",
-  agentMcpExample:
-    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/agent_mcp_stdio",
-  agentLangGraphExample:
-    "https://github.com/NDETERMINA/determina/tree/main/examples/determina/agent_langgraph_in_process",
-  proofStudy:
-    "https://github.com/NDETERMINA/determina/tree/main/studies/01-recommender-offline-eval"
+  releases: "/docs/cli-reference",
+  issues: "mailto:founders@determina.dev?subject=Determina%20support",
+  externalContract: "/docs/native-http",
+  searchContract: "/docs/search",
+  agentContract: "/docs/agent-http-session",
+  demoGuide: "/docs/local-smoke-test",
+  exampleService: "/docs/native-http",
+  hfExample: "/docs/python-callable",
+  recommenderSchemaMappedJsonpath: "/docs/schema-mapped-http",
+  recommenderSchemaMappedTransform: "/docs/schema-mapped-http",
+  recommenderPythonExample: "/docs/python-callable",
+  agentPythonExample: "/docs/python-callable",
+  agentHttpSessionExample: "/docs/agent-http-session",
+  agentMcpExample: "/docs/mcp-langgraph",
+  agentLangGraphExample: "/docs/mcp-langgraph",
+  proofStudy: "/docs/how-it-works"
 };
 
 export const workflowSteps = [
