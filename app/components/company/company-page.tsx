@@ -1,5 +1,4 @@
-import { LabArrow, LabFooter, LabHeader } from "@/app/components/lab/site-shell";
-import { SignalField } from "@/app/components/lab/signal-field";
+import { LabArrow, LabFooter, LabHeader, LabMark } from "@/app/components/lab/site-shell";
 
 const founderLinks = [
   ["Website", "https://alankrit.me/"],
@@ -18,7 +17,14 @@ export function CompanyPage() {
           <p>Determina is built to explore that gap. We simulate the users, state, and conditions around a system, observe how its behavior changes, and make the evidence inspectable.</p>
         </div>
       </section>
-      <SignalField compact />
+      <section className="lab-company-standard" aria-label="Our standard">
+        <div className="lab-company-monogram"><LabMark /></div>
+        <div className="lab-company-commitments">
+          <div><h2>Show the trace.</h2><p>Make behavior claims inspectable, from the condition that started a run to the evidence it produced.</p></div>
+          <div><h2>Name the boundary.</h2><p>Be explicit about what was observed and what remains outside the tested conditions.</p></div>
+          <div><h2>Keep the decision human.</h2><p>Give teams evidence they can question. The release decision belongs to its owner.</p></div>
+        </div>
+      </section>
       <section className="lab-founder" id="team" aria-labelledby="founder-title">
         <div><h2 id="founder-title">Alankrit Verma</h2><p>Founder</p></div>
         <div>

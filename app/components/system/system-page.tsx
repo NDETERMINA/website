@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { ChevronDown } from "lucide-react";
 import { LabArrow, LabFooter, LabHeader } from "@/app/components/lab/site-shell";
-import { SignalField } from "@/app/components/lab/signal-field";
+import { RankingStudy, AgentTraceStudy, CitationStudy } from "@/app/components/lab/product-studies";
 import { siteLinks } from "@/app/lib/site";
 
 type Outcome = "SHIP" | "REVIEW" | "BLOCK";
@@ -347,13 +347,15 @@ const productHeadlines: Record<RouteKey, string> = {
 export function SystemPage({ page }: { page: SystemPageData }) {
   return <div className="lab-shell">
     <LabHeader active="product" />
-    <main id="main-content" className="lab-product-page lab-container">
+    <main id="main-content" className={`lab-product-page lab-product-${page.slug} lab-container`}>
       <nav className="lab-system-switcher" aria-label="System types">
         {productRoutes.map(([key, label, href]) => <Link key={key} href={href} aria-current={page.slug === key ? "page" : undefined}>{label}</Link>)}
       </nav>
       <section className="lab-product-hero" aria-labelledby="system-title">
         <div>
           <h1 id="system-title">{productHeadlines[page.slug]}</h1>
+        </div>
+        <div>
           <p className="lab-lede">{page.lede}</p>
           {page.slug === "search" && <p className="lab-availability">In development. Search examples are available in the engine; the hosted search product is not yet runnable.</p>}
           <div className="lab-actions">
@@ -361,8 +363,8 @@ export function SystemPage({ page }: { page: SystemPageData }) {
             <Link href={page.docsHref}>Read the docs</Link>
           </div>
         </div>
-        <SignalField compact />
       </section>
+      {page.slug === "recomm" ? <RankingStudy /> : page.slug === "agents" ? <AgentTraceStudy /> : <CitationStudy />}
       <section className="lab-example" aria-labelledby="example-title">
         <div className="lab-example-heading">
           <h2 id="example-title">{page.caseFile?.question ?? page.mechanismTitle}</h2>

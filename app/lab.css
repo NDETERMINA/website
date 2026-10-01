@@ -259,3 +259,84 @@ html:has(.lab-shell), body:has(.lab-shell) { background: #eef2f5; }
   .lab-docs .docs-footer-wordmark { flex-wrap: wrap; }
   .lab-docs .docs-footer-bottom { align-items: flex-start; }
 }
+
+/* Each system has its own instrument; the homepage owns the living field. */
+.lab-product-page .lab-product-hero { grid-template-columns: 1.2fr 1fr; align-items: start; margin-block: 58px 72px; }
+.lab-product-page .lab-product-hero h1 { max-width: 14ch; }
+.lab-product-page .lab-product-hero .lab-lede { margin-top: 4px !important; }
+.lab-product-page .lab-example { border-top: 0; margin-top: 36px; }
+.lab-study-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--lab-rule); padding-block: 18px; font-size: 14px; color: var(--lab-muted); }
+.lab-study-tabs { display: flex; gap: 24px; }
+.lab-study-tabs button { border: 0; background: none; padding: 8px 0; color: var(--lab-muted); cursor: pointer; }
+.lab-study-tabs button[aria-pressed="true"] { color: var(--lab-blue); text-decoration: underline; text-underline-offset: 6px; }
+.lab-ranking-study { border-top: 1px solid var(--lab-rule); }
+.lab-ranking-stage { display: grid; grid-template-columns: 1fr 1fr; gap: 12vw; padding-block: 42px 30px; }
+.lab-rank-context > p { color: var(--lab-muted); font-size: 15px; }
+.lab-rank-context h2 { font-size: clamp(30px, 3vw, 44px); line-height: 1.1; font-weight: 500; letter-spacing: -0.03em; margin-top: 20px; }
+.lab-rank-reading { display: flex; align-items: center; gap: 24px; margin-top: 38px; color: var(--lab-blue); }
+.lab-rank-reading strong { font-size: clamp(70px, 7vw, 110px); font-weight: 500; line-height: 1; letter-spacing: -0.04em; }
+.lab-rank-reading span { max-width: 26ch; font-size: 15px; line-height: 1.5; }
+.lab-rank-list { list-style: none; padding: 0; margin: 0; }
+.lab-rank-list li { min-height: 51px; display: flex; align-items: center; gap: 20px; border-bottom: 1px solid var(--lab-rule); }
+.lab-rank-position { width: 20px; color: var(--lab-muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.lab-rank-placeholder { display: block; height: 1px; background: var(--lab-rule); width: 55%; }
+.lab-rank-candidate { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex: 1; color: var(--lab-blue); font-size: 16px; }
+.lab-rank-list li.is-selected { border-bottom-color: var(--lab-blue); }
+.lab-study-footnote { font-size: 13px; color: var(--lab-muted); max-width: 85ch; padding-block: 12px 24px; }
+.lab-agent-study { border-top: 1px solid var(--lab-rule); }
+.lab-trace-track { display: flex; padding-block: 38px; border-bottom: 1px solid var(--lab-rule); }
+.lab-trace-track button { flex: 1; display: flex; align-items: center; gap: 18px; border: 0; background: transparent; color: var(--lab-muted); cursor: pointer; padding: 16px 18px 16px 0; font-size: 21px; text-align: left; }
+.lab-trace-track button[aria-pressed="true"] { color: var(--lab-blue); }
+.lab-trace-node { height: 26px; width: 26px; border: 1px solid var(--lab-rule); border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; flex-shrink: 0; }
+.lab-trace-track button[aria-pressed="true"] .lab-trace-node { border-color: var(--lab-blue); }
+.lab-trace-chevron { margin-left: auto; color: var(--lab-rule); }
+.lab-trace-track button:last-child .lab-trace-chevron { display: none; }
+.lab-trace-inspector { display: grid; grid-template-columns: 1.1fr 1fr; gap: 10vw; padding-block: 44px; min-height: 250px; }
+.lab-trace-inspector h2 { font-size: clamp(27px, 2.6vw, 38px); font-weight: 500; letter-spacing: -0.025em; line-height: 1.15; }
+.lab-trace-inspector > div > p { max-width: 48ch; margin-top: 20px; font-size: 17px; }
+.lab-trace-record { padding-left: 34px; border-left: 1px solid var(--lab-rule); }
+.lab-trace-record > span { font-size: 13px; color: var(--lab-muted); }
+.lab-trace-record code { display: block; margin-top: 22px; color: var(--lab-blue); font-family: var(--font-mono), monospace; font-size: clamp(15px, 1.45vw, 21px); overflow-wrap: anywhere; }
+.lab-trace-record > p { color: var(--lab-muted); font-size: 14px !important; }
+.lab-citation-study { display: grid; grid-template-columns: 1fr 1fr; gap: 10vw; border-top: 1px solid var(--lab-rule); padding-block: 45px 30px; }
+.lab-citation-query > p:first-child, .lab-source-label { font-size: 14px; color: var(--lab-muted); }
+.lab-citation-query h2 { margin-top: 23px; font-size: clamp(30px, 3vw, 44px); line-height: 1.13; letter-spacing: -0.025em; font-weight: 500; }
+.lab-citation-query > p { margin-top: 22px; max-width: 32ch; font-size: 17px; }
+.lab-citation-query > svg { color: var(--lab-blue); margin-top: 35px; }
+.lab-source-row { display: flex; align-items: center; gap: 20px; justify-content: space-between; padding-block: 24px; width: 100%; background: transparent; border: 0; border-bottom: 1px solid var(--lab-rule); color: var(--lab-muted); cursor: pointer; text-align: left; }
+.lab-source-row span:first-child { font-size: 24px; color: var(--lab-ink); }
+.lab-source-row strong { font-weight: 500; }
+.lab-source-row span:nth-child(2) { font-size: 13px; margin-left: auto; }
+.lab-source-row[aria-pressed="true"] { color: var(--lab-blue); border-bottom-color: var(--lab-blue); }
+.lab-source-row[aria-pressed="true"] span:first-child { color: var(--lab-blue); }
+.lab-citation-result { padding-top: 28px; }
+.lab-citation-result > span { display: block; font-size: 13px; color: var(--lab-muted); }
+.lab-citation-result > strong { display: block; font-size: 23px; font-weight: 500; color: var(--lab-blue); margin-top: 8px; }
+.lab-citation-result > p { font-size: 15px; max-width: 45ch; margin-top: 18px; }
+.lab-company-standard { display: grid; grid-template-columns: .85fr 1fr; gap: 12vw; border-top: 1px solid var(--lab-rule); padding-block: 58px 80px; }
+.lab-company-monogram { display: flex; align-items: flex-start; color: var(--lab-blue); padding-top: 15px; }
+.lab-company-monogram svg { width: clamp(100px, 22vw, 320px); height: auto; }
+.lab-company-commitments > div + div { margin-top: 34px; }
+.lab-company-commitments h2 { font-size: clamp(25px, 2.4vw, 35px); font-weight: 500; letter-spacing: -0.025em; line-height: 1.15; }
+.lab-company-commitments p { margin-top: 12px; max-width: 45ch; color: var(--lab-muted); font-size: 17px; }
+@media (max-width: 650px) {
+  .lab-product-page .lab-product-hero { grid-template-columns: 1fr; gap: 26px; margin-block: 42px 42px; }
+  .lab-study-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .lab-ranking-stage { grid-template-columns: 1fr; gap: 32px; padding-top: 28px; }
+  .lab-rank-context h2 { margin-top: 14px; }
+  .lab-rank-reading { margin-top: 24px; }
+  .lab-rank-list li { min-height: 46px; }
+  .lab-study-footnote { padding-top: 0; }
+  .lab-trace-scope { display: none; }
+  .lab-trace-track { padding-block: 18px; gap: 8px; }
+  .lab-trace-track button { font-size: 13px; flex-direction: column; align-items: flex-start; gap: 10px; padding: 10px 0; }
+  .lab-trace-chevron { display: none; }
+  .lab-trace-inspector { grid-template-columns: 1fr; gap: 28px; padding-block: 30px; }
+  .lab-trace-record { border-left: 0; border-top: 1px solid var(--lab-rule); padding: 24px 0 0; }
+  .lab-citation-study { grid-template-columns: 1fr; gap: 35px; padding-top: 30px; }
+  .lab-citation-query > svg { display: none; }
+  .lab-citation-query h2 { margin-top: 16px; }
+  .lab-company-standard { grid-template-columns: 1fr; gap: 35px; padding-block: 35px 50px; }
+  .lab-company-monogram svg { width: 90px; }
+  .lab-company-monogram { padding-top: 0; }
+}

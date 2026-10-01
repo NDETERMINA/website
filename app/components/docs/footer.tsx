@@ -37,7 +37,7 @@ export function DocsFooter() {
           links={[
             { label: "Company", href: "/company" },
             { label: "Website source", href: siteLinks.githubProduct, external: true },
-            { label: "PyPI", href: siteLinks.pyPI, external: true },
+            { label: "Local setup", href: "/docs/local-smoke-test" },
             { label: "CLI reference", href: siteLinks.releases },
             { label: "Support", href: siteLinks.issues, external: true }
           ]}
